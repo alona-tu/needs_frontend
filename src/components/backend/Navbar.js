@@ -8,21 +8,24 @@ import {
   NavItem,
   NavLink,
 } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
 import avatar from '../../pages/BackEnd/Dashboard/images/book.jpg'
 import customer from '../../pages/BackEnd/Dashboard/images/australia-customer.jpg'
 import BreadcrumbBackend from './Breadcrumb'
 import { userActions } from '../../actions'
 
 function Navbar() {
+  const loginUser = useSelector((state) => state.authentication.user)
+
+  //logout
+  const { logout } = userActions
+
   const openFullscreen = () => {
     const elem = document.body
     if (elem.requestFullscreen) {
       elem.requestFullscreen()
     }
   }
-
-  //logout
-  const { logout } = userActions
 
   return (
     <>
@@ -124,7 +127,7 @@ function Navbar() {
                       textAlign: 'end',
                     }}
                   >
-                    Book33
+                    {loginUser.user.username}
                   </div>
                   <div
                     className="staff-status"
@@ -136,22 +139,23 @@ function Navbar() {
                 <Dropdown as={NavItem}>
                   <Dropdown.Toggle as={NavLink}>
                     <div className="staff-avatar">
-                      <img src={avatar} alt="" />
+                      <img
+                        src={`http://122.116.38.12:5050/img/brands/${loginUser.user.brand_img}`}
+                      />
                     </div>
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="dropdown-staff dropdown-menu-right">
                     <Dropdown.Item>
                       <Link to="/">
-                        <i class="fas fa-home pr-2"></i>
-                        回到首頁
+                        <i class="fas fa-home pr-2"></i>回到首頁
                       </Link>
-                      <div className="dropdown-divider"></div>
                     </Dropdown.Item>
+                    <div className="dropdown-divider"> </div>
                     <Dropdown.Item>
                       <i className="fas fa-user pr-2" />
                       個人資料
-                      <div className="dropdown-divider"></div>
                     </Dropdown.Item>
+                    <div className="dropdown-divider"> </div>
                     <Dropdown.Item
                       onClick={(e) => {
                         e.preventDefault()
@@ -160,7 +164,6 @@ function Navbar() {
                     >
                       <i className="fas fa-sign-out-alt pr-2" />
                       登出
-                      {/* <div className="dropdown-divider"></div> */}
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>

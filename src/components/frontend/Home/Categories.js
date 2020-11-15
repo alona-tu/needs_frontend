@@ -15,36 +15,32 @@ const Categories = () => {
     <>
       <Container className="py-5">
         <Row>
-          <Col xs={3}>
+          <Col xs={3} className="categories">
             <Link to="">
-              {' '}
               <div className="categories-wrapper">
                 <img src={Categories1} alt="" />
                 <h3 className="categories-title">貼紙/紙品</h3>
               </div>
             </Link>
           </Col>
-          <Col xs={3}>
+          <Col xs={3} className="categories">
             <Link to="">
-              {' '}
               <div className="categories-wrapper">
                 <img src={Categories2} alt="" />
                 <h3 className="categories-title">筆記本/年曆</h3>
               </div>
             </Link>
           </Col>
-          <Col xs={3}>
+          <Col xs={3} className="categories">
             <Link to="">
-              {' '}
               <div className="categories-wrapper">
                 <img src={Categories3} alt="" />
                 <h3 className="categories-title">文具用品</h3>
               </div>
             </Link>
           </Col>
-          <Col xs={3}>
+          <Col xs={3} className="categories">
             <Link to="">
-              {' '}
               <div className="categories-wrapper">
                 <img src={Categories4} alt="" />
                 <h3 className="categories-title">書籍周邊</h3>
@@ -53,33 +49,30 @@ const Categories = () => {
           </Col>
         </Row>
         <Row>
-          <Col xs={3}>
+          <Col xs={3} className="categories">
             <Link to="">
-              {' '}
               <div className="categories-wrapper">
                 <img src={Categories5} alt="" />
                 <h3 className="categories-title">婚禮週邊</h3>
               </div>
             </Link>
           </Col>
-          <Col xs={3}>
+          <Col xs={3} className="categories">
             <div className="categories-wrapper">
               <img src={Categories6} alt="" />
               <h3 className="categories-title">生活收納</h3>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col xs={3} className="categories">
             <Link to="">
-              {' '}
               <div className="categories-wrapper">
                 <img src={Categories7} alt="" />
                 <h3 className="categories-title">創意小物</h3>
               </div>
             </Link>
           </Col>
-          <Col xs={3}>
+          <Col xs={3} className="categories">
             <Link to="">
-              {' '}
               <div className="categories-wrapper">
                 <img src={Categories8} alt="" />
                 <h3 className="categories-title">手作體驗</h3>

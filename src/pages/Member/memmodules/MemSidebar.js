@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
+import './MemSidebar.scss'
+import { Modal, Button } from 'react-bootstrap'
 
 import {
   BsPersonFill,
@@ -13,9 +15,11 @@ import { RiMessage2Fill } from 'react-icons/ri'
 import { MdAddAPhoto } from 'react-icons/md'
 
 const MemSidebar = (props) => {
-  // console.log(props.match.params.id)
-  const [avatar, setAvatar] = useState('')
-  const [uploadAvatarFile, setUploadAvatarFile] = useState('')
+  const [avatar, setAvatar] = useState([])
+  const [id, setId] = useState(0)
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
   const isLogin = useSelector((state) => state.authentication.loggedIn)
   const loginUser = useSelector((state) => state.authentication.user)
 
@@ -23,21 +27,23 @@ const MemSidebar = (props) => {
     let url = `http://localhost:5000/member?id=${val}`
     const res = await axios.get(url).catch((err) => console.log('Error'.err))
     setAvatar(res.data[0].avatar)
-    console.log(res.data[0].avatar)
+    console.log('res.data[0].avatar', res.data[0].avatar)
   }
 
-  const updateAvatar = async (e) => {
-    console.log(e.target.files[0])
-    setUploadAvatarFile(e.target.files[0])
+  const formData = new FormData()
+
+  const updateAvatar = (e) => {
+    const file = e.target.files[0]
+    formData.append('avatar', file)
   }
 
-  const sendAvatarToNodejs = async (e) => {
+  const sendAvatarToNodejs = (e) => {
     // e.preventDefault()
-    const formData = new FormData()
-    formData.append('avatar', uploadAvatarFile)
-    let url = `http://localhost:5000/member/upload/${props.match.params.id}`
+    // const formData = new FormData()
+    // console.log('props.match.params.id', props.match.params.id)
+    let url = `http://localhost:5000/member/upload?id=${id}`
     try {
-      await axios.post(url, formData)
+      axios.post(url, formData)
     } catch (err) {
       if (err.response.status === 500) {
         console.log('伺服器有點問題')
@@ -51,6 +57,7 @@ const MemSidebar = (props) => {
     if (isLogin) {
       const memId = loginUser.user.id
       getData(memId)
+      setId(memId)
     } else {
       window.location.href = '/login'
     }
@@ -64,20 +71,57 @@ const MemSidebar = (props) => {
           src={`http://localhost:5000/img/avatar/${avatar}`}
           alt="avatar"
         />
-        <p className="font-ss">
-          <div className="d-flex ml-5 wrapper">
-            <div className="icons">
-              <MdAddAPhoto />
-            </div>
-            <form onSubmit={sendAvatarToNodejs}>
-              <input type="file" onChange={updateAvatar} />
-              <input type="submit" value="uploadAvatar" />
+
+        <div className="d-flex justify-content-end mr-3 mt-1">
+          <Button className="photoicon" variant="primary" onClick={handleShow}>
+            <MdAddAPhoto />
+            更換頭貼
+          </Button>
+
+          <Modal show={show} onHide={handleClose} animation={false}>
+            <Modal.Header closeButton>
+              <Modal.Title>
+                <MdAddAPhoto />
+                快快快來張美照
+              </Modal.Title>
+            </Modal.Header>
+            <form onSubmit={(e) => sendAvatarToNodejs(e)} name="form1">
+              <Modal.Body>
+                <input
+                  type="file"
+                  name="filename"
+                  id="filename"
+                  onChange={(e) => updateAvatar(e)}
+                />
+              </Modal.Body>
+
+              <Modal.Footer>
+                <Button
+                  type="file"
+                  name="filename"
+                  id="filename"
+                  variant="secondary"
+                  onClick={(e) => updateAvatar(e)}
+                >
+                  換美美頭貼
+                </Button>
+              </Modal.Footer>
             </form>
-          </div>
-        </p>
+          </Modal>
+
+          {/* <form onSubmit={(e) => sendAvatarToNodejs(e)} name="form1">
+              <input
+                type="file"
+                name="filename"
+                id="filename"
+                onChange={(e) => updateAvatar(e)}
+              />
+              <input type="submit" value="上傳美照" />
+            </form> */}
+        </div>
         <div className="sidebar mx-auto">
-          <p className="font-s">
-            <Link to="/member/card">
+          <div className="font-s">
+            <Link to="/member/card/:id">
               <div className="d-flex  wrapper ">
                 <div className="icons">
                   <BsPersonFill />
@@ -85,8 +129,8 @@ const MemSidebar = (props) => {
                 我的帳號
               </div>
             </Link>
-          </p>
-          <p className="font-s">
+          </div>
+          <div className="font-s">
             <Link to="/member/shop">
               <div className="d-flex  wrapper">
                 <div className="icons">
@@ -95,8 +139,8 @@ const MemSidebar = (props) => {
                 購買清單
               </div>
             </Link>
-          </p>
-          <p className="font-s">
+          </div>
+          <div className="font-s">
             <Link to="/member/like">
               <div className="d-flex  wrapper">
                 <div className="icons">
@@ -105,9 +149,9 @@ const MemSidebar = (props) => {
                 我的關注
               </div>
             </Link>
-          </p>
-          <p className="font-s">
-            <Link to="/member/inform">
+          </div>
+          <div className="font-s">
+            <Link to="/member/informone">
               <div className="d-flex  wrapper">
                 <div className="icons">
                   <BsFillBellFill />
@@ -115,18 +159,18 @@ const MemSidebar = (props) => {
                 通知中心
               </div>
             </Link>
-          </p>
-          <p className="font-s">
+          </div>
+          <div className="font-s">
             <Link to="/member/ecoin">
               <div className="d-flex  wrapper">
                 <div className="icons">
                   <FaCoins />
                 </div>
-                <p class="whiteSpacePre">Ｅcoin </p>
+                <div className="whiteSpacePre">Ｅcoin </div>
               </div>
             </Link>
-          </p>
-          <p className="font-s">
+          </div>
+          <div className="font-s">
             <Link to="/member/comment">
               <div className="d-flex  wrapper">
                 <div className="icons">
@@ -135,8 +179,8 @@ const MemSidebar = (props) => {
                 我的評論
               </div>
             </Link>
-          </p>
-          <p className="font-s">
+          </div>
+          <div className="font-s">
             <Link to="#">
               <div className="d-flex  wrapper">
                 <div className="icons">
@@ -145,7 +189,7 @@ const MemSidebar = (props) => {
                 常見問題
               </div>
             </Link>
-          </p>
+          </div>
         </div>
       </div>
     </>

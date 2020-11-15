@@ -20,7 +20,7 @@ function HotProduct() {
                 </h4>
               </div>
             </Col>
-            <Col xs={12} style={{ maxWidth: '20%' }}>
+            <Col xs={12} className="hot-product">
               <div className="hot-product-wrapper">
                 <div className="top-wrapper">
                   <div className="top">Top</div>
@@ -39,7 +39,7 @@ function HotProduct() {
                 </div>
               </div>
             </Col>
-            <Col xs={12} style={{ maxWidth: '20%' }}>
+            <Col xs={12} className="hot-product">
               <div className="hot-product-wrapper">
                 <div className="top-wrapper">
                   <div className="top">Top</div>
@@ -58,7 +58,7 @@ function HotProduct() {
                 </div>
               </div>
             </Col>
-            <Col xs={12} style={{ maxWidth: '20%' }}>
+            <Col xs={12} className="hot-product">
               <div className="hot-product-wrapper">
                 <div className="top-wrapper">
                   <div className="top">Top</div>
@@ -77,7 +77,7 @@ function HotProduct() {
                 </div>
               </div>
             </Col>
-            <Col xs={12} style={{ maxWidth: '20%' }}>
+            <Col xs={12} className="hot-product">
               <div className="hot-product-wrapper">
                 <div className="top-wrapper">
                   <div className="top">Top</div>
@@ -96,7 +96,7 @@ function HotProduct() {
                 </div>
               </div>
             </Col>
-            <Col xs={12} style={{ maxWidth: '20%' }}>
+            <Col xs={12} className="hot-product">
               <div className="hot-product-wrapper">
                 <div className="top-wrapper">
                   <div className="top">Top</div>

@@ -29,7 +29,7 @@ const CarouselBanner = () => {
   return (
     <>
       <Container fluid>
-        <Col xs={12} className="p-0">
+        <Col xs={12} className="p-0 carousel1">
           <div>
             <Slider {...settings}>
               <div>

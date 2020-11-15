@@ -19,7 +19,7 @@ class CPCPie extends Component {
             startAngle: -135,
             endAngle: 135,
             hollow: {
-              margin: 15,
+              margin: 25,
               size: '80%',
             },
             track: {
@@ -56,7 +56,6 @@ class CPCPie extends Component {
         },
         labels: ['Progress'],
       },
-      series: [(2500 / 5000) * 100],
     }
   }
 
@@ -67,21 +66,21 @@ class CPCPie extends Component {
           <div className="mixed-chart">
             <Chart
               options={this.state.options}
-              series={this.state.series}
+              series={[this.props.costPercentage]}
               type="radialBar"
               height="250"
             />
           </div>
           <div className="row">
             <div className="col-6 goal-box goal-completed">
-              <p className="mb-2">預算</p>
-              <sup className="font-medium-1">$</sup>
-              <span className="goal-figures">5000</span>
-            </div>
-            <div className="col-6 goal-box goal-in-progress">
               <p className="mb-2">已花費</p>
               <sup className="font-medium-1">$</sup>
-              <span className="goal-figures">2500</span>
+              <span className="goal-figures">{this.props.totalCost}</span>
+            </div>
+            <div className="col-6 goal-box goal-in-progress">
+              <p className="mb-2">預算</p>
+              <sup className="font-medium-1">$</sup>
+              <span className="goal-figures">{this.props.totalBudget}</span>
             </div>
           </div>
         </div>

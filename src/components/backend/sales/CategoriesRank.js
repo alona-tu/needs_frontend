@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Card, Tabs, Tab, Table } from 'react-bootstrap'
 
-function CategoriesRank() {
+function CategoriesRank(props) {
   return (
     <>
       <Card>
@@ -18,22 +18,11 @@ function CategoriesRank() {
                   <thead className="rank-header">
                     <tr>
                       <th>排名</th>
-                      <th>商品</th>
+                      <th>類別</th>
                       <th>銷售額</th>
                     </tr>
                   </thead>
-                  <tbody className="rank-body">
-                    <tr>
-                      <td>1</td>
-                      <td>橡皮擦</td>
-                      <td>$825</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>筆</td>
-                      <td>$575</td>
-                    </tr>
-                  </tbody>
+                  <tbody className="rank-body">{props.dataTableForCate}</tbody>
                 </Table>
               </Tab>
             </Tabs>

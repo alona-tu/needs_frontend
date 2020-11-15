@@ -6,16 +6,6 @@ class CTR extends React.Component {
     super(props)
 
     this.state = {
-      series: [
-        {
-          name: '曝光次數',
-          data: [2048, 1520, 2513, 1682, 2130, 1408, 1982],
-        },
-        {
-          name: '點擊次數',
-          data: [101, 72, 178, 52, 113, 143, 132],
-        },
-      ],
       options: {
         chart: {
           type: 'bar',
@@ -50,7 +40,7 @@ class CTR extends React.Component {
           },
         },
         xaxis: {
-          categories: [...props.durationDays],
+          categories: [...props.durationDays].reverse(),
           labels: {
             formatter: function (val) {
               return val + '次'
@@ -86,7 +76,16 @@ class CTR extends React.Component {
       <>
         <Chart
           options={this.state.options}
-          series={this.state.series}
+          series={[
+            {
+              name: '曝光次數',
+              data: [...this.props.impression],
+            },
+            {
+              name: '點擊次數',
+              data: [...this.props.clicks],
+            },
+          ]}
           type="bar"
           height={350}
         />

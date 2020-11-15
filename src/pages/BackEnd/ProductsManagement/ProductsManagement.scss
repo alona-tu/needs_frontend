@@ -28,7 +28,7 @@ $primary_focus: #7367f0;
   }
 
   .btn {
-    font-family: 'Noto Sans TC', sans-serif;
+    // font-family: 'Noto Sans TC', sans-serif;
     font-size: 1 rem;
     line-height: 1.75;
     letter-spacing: 1.2px;
@@ -157,12 +157,14 @@ $primary_focus: #7367f0;
       }
       .productTitle {
         width: 35%;
+        padding-right: 16px;
       }
       .specification {
         width: 20%;
       }
       .title {
         width: 8%;
+        padding-right: 16px;
       }
       .actions {
         text-align: center;
@@ -226,6 +228,7 @@ $primary_focus: #7367f0;
           -webkit-line-clamp: 3;
           overflow: hidden;
           white-space: pre-line;
+          padding-right: 16px;
         }
       }
     }
@@ -273,7 +276,7 @@ $primary_focus: #7367f0;
       border-color: #212529;
 
       .btn {
-        font-family: 'Noto Sans TC', sans-serif;
+        // font-family: 'Noto Sans TC', sans-serif;
         font-size: 1 rem;
         line-height: 1.75;
         letter-spacing: 1.2px;

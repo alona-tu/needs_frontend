@@ -1,31 +1,48 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
-import HashLoader from 'react-spinners/HashLoader'
+import './MemLike.scss'
+
 import { useSelector } from 'react-redux'
 import { FaStore } from 'react-icons/fa'
 
 function MemLike() {
   const [memlike, setMemLike] = useState([])
-  const [dataLoading, setDataLoading] = useState(false)
-
+  const [type, setType] = useState('brands')
+  const [photo, setPhoto] = useState([])
+  const [title, setTitle] = useState([])
   const isLogin = useSelector((state) => state.authentication.loggedIn)
   const loginUser = useSelector((state) => state.authentication.user)
   const getData = async (val) => {
-    setDataLoading(true)
-    let url = `http://localhost:5000/like?customer_id=${val}`
+    let url = `http://localhost:5000/like?customer_id=${val}&filter=${type}`
     const res = await axios.get(url).catch((err) => console.log('Error'.err))
-    setMemLike(res.data)
-    setDataLoading(false)
+    setMemLike(res.data.rows)
+    console.log('res.data.rows', res.data.rows)
+    // getlike()
   }
+  // function getlike() {
+  //   switch (type) {
+  //     case 'brands':
+  //       setPhoto('{`http://localhost:5000/img/brands/${item.index_img}`}')
+  //       setTitle('{item.brand_name}')
+  //       break
+  //     case 'product':
+  //       setPhoto('{`http://localhost:5000/img/brands/${item.img_path}`}')
+  //       setTitle('{item.title}')
+  //       break
+  //     default:
+  //       break
+  //   }
+  // }
   useEffect(() => {
     if (isLogin) {
       const memId = loginUser.user.id
+      console.log('aa')
       getData(memId)
     } else {
       window.location.href = '/login'
     }
-  }, [])
+  }, [type])
 
   return (
     <>
@@ -43,12 +60,12 @@ function MemLike() {
           <div className="container">
             <div className="row justify-content-around align-self-center topside">
               <Link href="#" className="col-2 d-flex topsidebox">
-                <div className="m-auto">
+                <div className="m-auto" onClick={(e) => setType('brands')}>
                   <p className="font-s">關注商家</p>
                 </div>
               </Link>
               <Link href="#" className="col-2 d-flex topsidebox">
-                <div className="m-auto">
+                <div className="m-auto" onClick={(e) => setType('product')}>
                   <p className="font-s">關注商品</p>
                 </div>
               </Link>
@@ -64,19 +81,32 @@ function MemLike() {
             {memlike.map((item, index) => {
               return (
                 <div className="likecard">
-                  <img
-                    className="mark"
-                    src={`http://localhost:5000/img/brands/${item.index_img}`}
-                    alt="brands"
-                  />
+                  {type === 'brands' ? (
+                    <>
+                      <img
+                        className="mark"
+                        src={`http://localhost:5000/img/brands/${item.index_img}`}
+                        alt="brands"
+                      />
 
-                  <p className="font-s">{item.brand_name}</p>
+                      <p className="font-s">{item.brand_name}</p>
+                      <p className="font-s">*****</p>
+                      <div className="d-flex justify-content-center">
+                        <p className="font-s">粉絲數量</p>
+                        <p className="font-s">267</p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <img
+                        className="mark"
+                        src={`http://localhost:5000/img/products/${item.image_path}`}
+                        alt="products"
+                      />
 
-                  <p className="font-s">*****</p>
-                  <div className="d-flex justify-content-center">
-                    <p className="font-s">粉絲數量</p>
-                    <p className="font-s">267</p>
-                  </div>
+                      <p className="font-s">{item.title}</p>
+                    </>
+                  )}
                 </div>
               )
             })}

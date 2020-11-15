@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './home.scss'
-import './home-rwd.scss'
 import '@/styles/investmentAdvantage.scss'
 import CarouselBanner from '../../components/frontend/Home/Carousel'
 import Categories from '../../components/frontend/Home/Categories'

@@ -1,18 +1,35 @@
 import React from 'react'
 import { Card, Carousel, Row, Col } from 'react-bootstrap'
 import CTR from '../../../components/backend/ads/charts/CTR'
-import AdsChart1 from './charts/AdsChart1'
-import AdsChart2 from './charts/AdsChart2'
-import AdsChart3 from './charts/AdsChart3'
 
-function AdsPreview() {
+function AdsPreview(props) {
+  let imgPre = props.imgPre
+  let imgPreUrl = imgPre ? 'http://localhost:5000/adsCover/' + imgPre : ''
+  let productTitle1 = props.productTitle1
+  let productOutline1 = props.productOutline1
+  let productImg1 = props.productImg1
+  let productImg1Url = productImg1
+    ? 'http://localhost:5000/adsProduct/' + productImg1
+    : ''
+  let productTitle2 = props.productTitle2
+  let productOutline2 = props.productOutline2
+  let productImg2 = props.productImg2
+  let productImg2Url = productImg2
+    ? 'http://localhost:5000/adsProduct/' + productImg2
+    : ''
+  let productTitle3 = props.productTitle3
+  let productOutline3 = props.productOutline3
+  let productImg3 = props.productImg3
+  let productImg3Url = productImg3
+    ? 'http://localhost:5000/adsProduct/' + productImg3
+    : ''
+
   return (
     <>
       <Card>
         <Card.Body>
           <div className="ads-preview-card-header">
             <Card.Title className="mb-3">廣告預覽</Card.Title>
-            <div className="ads-type">首頁廣告</div>
           </div>
           <div className="ads-preview">
             <Carousel indicators={false} interval={50000}>
@@ -21,10 +38,7 @@ function AdsPreview() {
                   <Row>
                     {/* <Col xs={3}></Col> */}
                     <Col xs={6}>
-                      <Card.Img
-                        variant="top"
-                        src={require('../../../images/backend/ads/ads1.jpg')}
-                      />
+                      <Card.Img variant="top" src={imgPreUrl} />
                     </Col>
                     {/* <Col xs={3}></Col> */}
                     <Col xs={6}>
@@ -33,8 +47,6 @@ function AdsPreview() {
                         <Card.Text>
                           活動廣告的主頁照片，於首頁展示三樣欲曝光商品，增加點閱率。
                           <br />
-                          <br />
-                          可點選輪播查看展示之商品，並從圓餅圖中判斷商品個別點擊率之比例。
                         </Card.Text>
                       </Card.Body>
                     </Col>
@@ -45,17 +57,14 @@ function AdsPreview() {
                 <Card>
                   <Row>
                     <Col xs={6}>
-                      <Card.Img
-                        variant="top"
-                        src={require('../../../images/backend/ads/ads2.jpg')}
-                      />
+                      <Card.Img variant="top" src={productImg1Url} />
                     </Col>
                     <Col xs={6}>
                       <Card.Body className="ads-chart-wrapper">
                         <Card.Title className="ads-title">
-                          LABAN CAMBRIDGE 劍橋鋼筆
+                          {productTitle1}
                         </Card.Title>
-                        <AdsChart1 />
+                        <Card.Text>{productOutline1}</Card.Text>
                       </Card.Body>
                     </Col>
                   </Row>
@@ -65,17 +74,14 @@ function AdsPreview() {
                 <Card>
                   <Row>
                     <Col xs={6}>
-                      <Card.Img
-                        variant="top"
-                        src={require('../../../images/backend/ads/ads3.jpg')}
-                      />
+                      <Card.Img variant="top" src={productImg2Url} />
                     </Col>
                     <Col xs={6}>
                       <Card.Body className="ads-chart-wrapper">
                         <Card.Title className="ads-title">
-                          【Uptrend My diary ｜超級空白手帳 VII】
+                          {productTitle2}
                         </Card.Title>
-                        <AdsChart2 />
+                        <Card.Text>{productOutline2}</Card.Text>
                       </Card.Body>
                     </Col>
                   </Row>
@@ -85,17 +91,14 @@ function AdsPreview() {
                 <Card>
                   <Row>
                     <Col xs={6}>
-                      <Card.Img
-                        variant="top"
-                        src={require('../../../images/backend/ads/ads4.jpg')}
-                      />
+                      <Card.Img variant="top" src={productImg3Url} />
                     </Col>
                     <Col xs={6}>
                       <Card.Body className="ads-chart-wrapper">
                         <Card.Title className="ads-title">
-                          【HIGHTIDE】2021方格週記事手帳B6 ‧ 皮革綁線茶
+                          {productTitle3}
                         </Card.Title>
-                        <AdsChart3 />
+                        <Card.Text>{productOutline3}</Card.Text>
                       </Card.Body>
                     </Col>
                   </Row>

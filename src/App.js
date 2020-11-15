@@ -14,7 +14,9 @@ import MemberCard from './pages/Member/MemberCard'
 import MemberCardEdit from './pages/Member/MemberCardEdit'
 import MemberShop from './pages/Member/MemberShop'
 import MemberLike from './pages/Member/MemberLike'
-import MemberInform from './pages/Member/MemberInform'
+import MemberInformOne from './pages/Member/MemberInformOne'
+import MemberInformTwo from './pages/Member/MemberInformTwo'
+import MemberInformThree from './pages/Member/MemberInformThree'
 import MemberEcoin from './pages/Member/MemberEcoin'
 import MemberComment from './pages/Member/MemberComment'
 import Investment from './pages/Investment'
@@ -32,6 +34,7 @@ import SignUp from './pages/Login/SignUp'
 //商家後台
 import BackEndSidebar from './components/backend/Sidebar'
 import BackEndNavbar from './components/backend/Navbar'
+import BgContainer from './components/backend/BgContainer'
 import BackEndDashboard from './pages/BackEnd/Dashboard'
 import Sales from './pages/BackEnd/Sales'
 import Ads from './pages/BackEnd/Ads'
@@ -69,6 +72,7 @@ const DynamicLayoutRoute = (props) => {
     case 'BACK_END_NAV': {
       return (
         <>
+          <BgContainer />
           <BackEndNavbar />
           <BackEndSidebar />
           {actualRouteComponent}
@@ -163,29 +167,40 @@ function App(props) {
             layout="FRONT_END_NAV"
           />
           <DynamicLayoutRoute
-            path="/member/card/:id"
+            path="/member/card"
+            // path="/member/card/:id"
             component={MemberCard}
             layout="FRONT_END_NAV"
           />
           <DynamicLayoutRoute
-            path="/member/edit/:id"
+            path="/member/edit"
             component={MemberCardEdit}
             layout="FRONT_END_NAV"
           />
 
           <DynamicLayoutRoute
-            path="/member/shop/:id"
+            path="/member/shop"
             component={MemberShop}
             layout="FRONT_END_NAV"
           />
           <DynamicLayoutRoute
-            path="/member/like/:id"
+            path="/member/like"
             component={MemberLike}
             layout="FRONT_END_NAV"
           />
           <DynamicLayoutRoute
-            path="/member/inform/:id"
-            component={MemberInform}
+            path="/member/informone"
+            component={MemberInformOne}
+            layout="FRONT_END_NAV"
+          />
+          <DynamicLayoutRoute
+            path="/member/informtwo"
+            component={MemberInformTwo}
+            layout="FRONT_END_NAV"
+          />
+          <DynamicLayoutRoute
+            path="/member/informThree"
+            component={MemberInformThree}
             layout="FRONT_END_NAV"
           />
           <DynamicLayoutRoute
@@ -230,10 +245,7 @@ function App(props) {
             component={TemplateEditedPage}
             layout="BACK_END_NAV"
           />
-          {/* <Route
-            path="/customer-backend/template-edit"
-            component={EditedPage}
-          /> */}
+
           <DynamicLayoutRoute
             path="/customer-backend/template-list"
             component={TemplateList}

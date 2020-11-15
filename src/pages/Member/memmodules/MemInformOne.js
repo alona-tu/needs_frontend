@@ -1,28 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  withRouter,
-  Switch,
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
-import HashLoader from 'react-spinners/HashLoader'
 import { useSelector } from 'react-redux'
+import './MemInformOne.scss'
 
 import { BsFillBellFill } from 'react-icons/bs'
-const MemInform = () => {
-  const [meminform, setMemInform] = useState([])
-  const [dataLoading, setDataLoading] = useState(false)
+const MemInformOne = () => {
+  const [meminformone, setMemInformone] = useState([])
 
   const isLogin = useSelector((state) => state.authentication.loggedIn)
   const loginUser = useSelector((state) => state.authentication.user)
   const getData = async (val) => {
-    setDataLoading(true)
-    let url = `http://localhost:5000/inform?customer_id=${val}`
+    let url = `http://localhost:5000/inform/one?customer_id=${val}`
     const res = await axios.get(url).catch((err) => console.log('Error'.err))
-    setMemInform(res.data)
-    setDataLoading(false)
+    setMemInformone(res.data)
   }
   useEffect(() => {
     if (isLogin) {
@@ -48,25 +39,28 @@ const MemInform = () => {
 
           <div className="container">
             <div className="row justify-content-around align-self-center topside">
-              <Link to="#" className="col-2 d-flex topsidebox">
+              <Link to="/member/informone" className="col-2 d-flex topsidebox">
                 <div className="m-auto">
                   <p className="font-s">所有通知</p>
                 </div>
               </Link>
-              <Link href="#" className="col-2 d-flex topsidebox">
+              <Link to="/member/informtwo" className="col-2 d-flex topsidebox">
                 <div className="m-auto">
                   <p className="font-s">關注通知</p>
                 </div>
               </Link>
 
-              <Link href="#" className="col-2 d-flex topsidebox">
+              <Link
+                to="/member/informthree"
+                className="col-2 d-flex topsidebox"
+              >
                 <div className="m-auto">
                   <p className="font-s">NEEDS公告</p>
                 </div>
               </Link>
             </div>
           </div>
-          {meminform.map((item, index) => {
+          {meminformone.map((item, index) => {
             return (
               <div className="informbar d-flex justify-content-start">
                 <img
@@ -93,4 +87,4 @@ const MemInform = () => {
   )
 }
 
-export default MemInform
+export default MemInformOne

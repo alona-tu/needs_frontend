@@ -57,7 +57,14 @@ const MemberLogin = (props) => {
             </Button>
           </div>
           <div className="loginInput">
-            <h4>會員登入</h4>
+            <h4
+              onClick={() => {
+                setUsername('sherry@gmail.com')
+                setPassword('1234')
+              }}
+            >
+              會員登入
+            </h4>
             <div className="socialMedia">
               <a href="">
                 <FaFacebook size="44px" color="#3b5998" />

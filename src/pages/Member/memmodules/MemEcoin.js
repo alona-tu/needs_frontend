@@ -1,29 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-  withRouter,
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
-import HashLoader from 'react-spinners/HashLoader'
+
 import { useSelector } from 'react-redux' //引入redux
+import './MemEcoin.scss'
+
 import { FaCoins } from 'react-icons/fa'
 
 const MemEcoin = () => {
   const [memecoin, setMemEcoin] = useState([])
-  const [dataLoading, setDataLoading] = useState(false)
 
   const isLogin = useSelector((state) => state.authentication.loggedIn) //redux判斷是否為lodin狀態
   const loginUser = useSelector((state) => state.authentication.user) //redux初始值設定為空值
 
   const getData = async (val) => {
-    setDataLoading(true)
     let url = `http://localhost:5000/member?id=${val}`
     const res = await axios.get(url).catch((err) => console.log('error'.err))
     setMemEcoin(res.data)
-    setDataLoading(false)
   }
 
   useEffect(() => {
@@ -40,14 +33,14 @@ const MemEcoin = () => {
     <>
       <div className="memecoin">
         <div className="maincard">
-          <p className="font-m">
+          <div className="font-m">
             <div className="d-flex wrapper">
               <p className="icons">
                 <FaCoins />
               </p>
               <p>Ｅcoin</p>
             </div>
-          </p>
+          </div>
 
           <div className="container">
             <div className="row justify-content-around align-self-center topside">

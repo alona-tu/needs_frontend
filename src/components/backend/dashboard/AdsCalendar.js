@@ -4,6 +4,10 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 
 export default class AdsCalendar extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
   render() {
     return (
       <FullCalendar
@@ -17,8 +21,8 @@ export default class AdsCalendar extends React.Component {
         events={[
           {
             title: '居家換季 收納質感',
-            start: '2020-10-12',
-            end: '2020-10-15',
+            start: '2020-11-12',
+            end: '2020-11-15',
             extendedProps: {
               status: 'done',
               id: 4,
@@ -49,7 +53,7 @@ export default class AdsCalendar extends React.Component {
             }
 
             info.el.style.border = 'none'
-            console.log(info.event.extendedProps)
+            // console.log(info.event.title)
           }
         }}
         dateClick={function (info) {

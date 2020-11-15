@@ -54,15 +54,36 @@ const MerchantLogin = (props) => {
             </Button>
           </div>
           <div className="loginInput">
-            <h4>商家登入</h4>
+            <h4
+              onClick={() => {
+                setUsername('plin@qmail.com')
+                setPassword('1234')
+              }}
+            >
+              商家登入
+            </h4>
             <div className="socialMedia">
               <a href="">
                 <FaFacebook size="44px" color="#3b5998" />
               </a>
-              <a href="">
+              <a
+                href=""
+                onClick={(e) => {
+                  e.preventDefault()
+                  setUsername('ftsai@qmail.com')
+                  setPassword('1234')
+                }}
+              >
                 <AiFillGooglePlusCircle size="50px" color="#dd4b39" />
               </a>
-              <a href="">
+              <a
+                href=""
+                onClick={(e) => {
+                  e.preventDefault()
+                  setUsername('echen')
+                  setPassword('1234')
+                }}
+              >
                 <AiFillTwitterCircle size="50px" color="#26a6d1" />
               </a>
             </div>

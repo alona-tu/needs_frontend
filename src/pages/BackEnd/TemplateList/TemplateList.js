@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 // import Axios from 'axios'
 import Templatepic1 from './images/Atlanta_pro.png'
 import TemplatepicBig from './images/minimal_pro.png'
-
+import './Styles/TemplateList.scss'
+import '../../../styles/Backend/_backend.scss'
 import {
   Col,
   Container,

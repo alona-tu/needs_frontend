@@ -47,7 +47,6 @@ const OrdersContent = (props) => {
     const newOpen = [...open]
     newOpen[index] = !open[index]
     setOpen(newOpen)
-    console.log(open)
   }
 
   const handleEdit = (index, item) => {
@@ -171,9 +170,8 @@ const OrdersContent = (props) => {
                   <AiOutlinePlus size="18px" className="mb-1" />
                   查看明細
                 </p>
-
                 {open[index] ? (
-                  <div className="orderDetails">
+                  <div className="orderDetails collapseshow">
                     <div className="card mb-3" key={index.id}>
                       <div className="card-header">配送明細</div>
                       <div className="card-title d-flex">

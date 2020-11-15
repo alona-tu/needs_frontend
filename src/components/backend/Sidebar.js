@@ -11,12 +11,14 @@ function Sidebar() {
           <Accordion defaultActiveKey="0">
             <div className="navigation-header">
               <div className="brand-logo">
-                <img
-                  className="my-4"
-                  style={{ width: '100%' }}
-                  src={logo}
-                  alt=""
-                />
+                <Link to="/">
+                  <img
+                    className="my-4"
+                    style={{ width: '100%' }}
+                    src={logo}
+                    alt=""
+                  />
+                </Link>
               </div>
               <span>主選單</span>
             </div>
@@ -74,7 +76,6 @@ function Sidebar() {
             <Card>
               <Card.Header>
                 <Link to="/customer-backend/template-home">
-                  {' '}
                   <Accordion.Toggle
                     className="btn-toggle"
                     as={Button}
@@ -155,7 +156,6 @@ function Sidebar() {
             <Card>
               <Card.Header>
                 <Link to="">
-                  {' '}
                   <Accordion.Toggle
                     className="btn-toggle"
                     as={Button}
@@ -168,6 +168,23 @@ function Sidebar() {
                     <div className="badge-wrapper">
                       <div className="badge badge-warning">新訊息</div>
                     </div>
+                  </Accordion.Toggle>
+                </Link>
+              </Card.Header>
+            </Card>
+            <Card>
+              <Card.Header>
+                <Link to="">
+                  <Accordion.Toggle
+                    className="btn-toggle"
+                    as={Button}
+                    variant="link"
+                    eventKey="0"
+                  >
+                    <span className="font-wrapper">
+                      <i className="fas fa-address-card icon-pr"></i>
+                      基本資料
+                    </span>
                   </Accordion.Toggle>
                 </Link>
               </Card.Header>

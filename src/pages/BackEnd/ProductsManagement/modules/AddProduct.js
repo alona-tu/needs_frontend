@@ -111,6 +111,7 @@ const AddProduct = (props) => {
         onHide={(e) => {
           setShowAddProd(false)
           setFormData({})
+          setPreview([])
         }}
         backdrop="static"
         keyboard={false}
@@ -266,6 +267,7 @@ const AddProduct = (props) => {
               onClick={(e) => {
                 setShowAddProd(false)
                 setFormData({})
+                setPreview([])
               }}
             >
               取消

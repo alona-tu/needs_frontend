@@ -16,7 +16,7 @@ function RecommendStore() {
           </Col>
         </Row>
         <Row>
-          <Col xs={4}>
+          <Col s={12} md={4} className="mt-2">
             <Card className="recommend-store-wrapper">
               <Card.Body>
                 <div className="store-info-wrapper">
@@ -52,7 +52,7 @@ function RecommendStore() {
             </Card>
           </Col>
 
-          <Col xs={4}>
+          <Col s={12} md={4} className="mt-2">
             <Card className="recommend-store-wrapper">
               <Card.Body>
                 <div className="store-info-wrapper">
@@ -87,7 +87,7 @@ function RecommendStore() {
               </Card.Body>
             </Card>
           </Col>
-          <Col xs={4}>
+          <Col xs={12} md={4} className="mt-2">
             <Card className="recommend-store-wrapper">
               <Card.Body>
                 <div className="store-info-wrapper">

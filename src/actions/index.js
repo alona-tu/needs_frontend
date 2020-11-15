@@ -25,9 +25,14 @@ function login(username, password, selectedRole) {
         dispatch(failure())
         dispatch(error('帳號或密碼錯誤'))
       } else {
+        sessionStorage.setItem('user', JSON.stringify(user))
         dispatch(clear())
         dispatch(success(user))
-        History.goBack()
+        if (selectedRole === 'member') {
+          History.goBack()
+        } else {
+          window.location.href = '/'
+        }
       }
     })
   }
@@ -49,7 +54,6 @@ const checkAuth = (username, password, selectedRole) => {
   return fetch(req)
     .then(handleResponse)
     .then((user) => {
-      sessionStorage.setItem('user', JSON.stringify(user))
       return user
     })
 }

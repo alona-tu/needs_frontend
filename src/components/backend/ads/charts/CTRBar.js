@@ -6,12 +6,6 @@ class CTRBar extends React.Component {
     super(props)
 
     this.state = {
-      series: [
-        {
-          name: 'CTR',
-          data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2],
-        },
-      ],
       options: {
         chart: {
           height: 350,
@@ -86,7 +80,12 @@ class CTRBar extends React.Component {
       <>
         <Chart
           options={this.state.options}
-          series={this.state.series}
+          series={[
+            {
+              name: 'CTR',
+              data: [...this.props.getCtr],
+            },
+          ]}
           type="bar"
           height={350}
         />

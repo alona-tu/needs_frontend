@@ -19,6 +19,9 @@ function BreadcrumbBackend(props) {
     case '/customer-backend/contracts-management':
       path = '平台合約'
       break
+    case '/customer-backend/template-home':
+      path = '首頁主題'
+      break
     default:
       path = ''
   }

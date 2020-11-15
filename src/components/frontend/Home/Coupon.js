@@ -3,15 +3,180 @@ import Axios from 'axios'
 import { Container, Col, Row, Button } from 'react-bootstrap'
 
 function Coupon() {
-  // const [productList, setProductList] = useState([])
-  // useEffect(() => {
-  //   Axios.get('http://localhost:5000/try-db').then((response) => {
-  //     setProductList(response.data)
-  //   })
-  // }, [])
-  // if (productList.length == 0) {
-  //   return ''
-  // }
+  const [couponArray1, setCouponArray1] = useState('')
+  const [couponArray2, setCouponArray2] = useState('')
+  const [couponArray3, setCouponArray3] = useState('')
+  const [couponCoverUrl1, setCouponCoverUrl1] = useState('')
+  const [couponCoverUrl2, setCouponCoverUrl2] = useState('')
+  const [couponCoverUrl3, setCouponCoverUrl3] = useState('')
+
+  const getCoupon1 = (e) => {
+    Axios.get(`http://localhost:5000/dashboard/adsforproduct1`).then(
+      (response) => {
+        const data = response.data
+      }
+    )
+  }
+
+  const getAll = () => {
+    Axios.get(`http://localhost:5000/dashboard/allproduct`).then((response) => {
+      const productData = response.data
+      Axios.get(`http://localhost:5000/dashboard/allads`).then((response) => {
+        const adsData = response.data
+        let couponProductArray = []
+        let couponProductID1
+        let couponProductID2
+        let couponProductID3
+        for (let i = 0; i < adsData.length; i++) {
+          couponProductArray.push(
+            adsData[i].productid1,
+            adsData[i].productid2,
+            adsData[i].productid3
+          )
+        }
+        couponProductID1 = couponProductArray.slice(0, 3)
+        couponProductID2 = couponProductArray.slice(3, 6)
+        couponProductID3 = couponProductArray.slice(6, 9)
+
+        let coupon1TitleArray = []
+        let coupon2TitleArray = []
+        let coupon3TitleArray = []
+
+        let coupon1ImgArray = []
+        let coupon2ImgArray = []
+        let coupon3ImgArray = []
+
+        let coupon1PriceArray = []
+        let coupon2PriceArray = []
+        let coupon3PriceArray = []
+        for (let i = 0; i < productData.length; i++) {
+          for (let j = 0; j < couponProductID1.length; j++) {
+            if (productData[i].id === couponProductID1[j]) {
+              coupon1TitleArray.push(productData[i].title)
+              coupon1PriceArray.push(productData[i].price)
+              coupon1ImgArray.push(productData[i].image_path)
+            }
+          }
+          for (let k = 0; k < couponProductID2.length; k++) {
+            if (productData[i].id === couponProductID2[k]) {
+              coupon2TitleArray.push(productData[i].title)
+              coupon2PriceArray.push(productData[i].price)
+              coupon2ImgArray.push(productData[i].image_path)
+            }
+          }
+          for (let l = 0; l < couponProductID3.length; l++) {
+            if (productData[i].id === couponProductID3[l]) {
+              coupon3TitleArray.push(productData[i].title)
+              coupon3PriceArray.push(productData[i].price)
+              coupon3ImgArray.push(productData[i].image_path)
+            }
+          }
+        }
+        let couponRowArray1 = []
+        for (let i = 0; i < adsData.length; i++) {
+          let couponImg1 = ''
+          couponImg1 = coupon1ImgArray[i].split(',')
+          couponImg1 = couponImg1[0]
+          let couponImgUrl1 = couponImg1
+            ? 'http://localhost:5000/adsProduct/' + couponImg1
+            : ''
+          let couponCover = adsData[0].img
+          let couponCoverUrl1 = couponCover
+            ? 'http://localhost:5000/adsCover/' + couponCover
+            : ''
+          setCouponCoverUrl1(couponCoverUrl1)
+          couponRowArray1.push(
+            <>
+              <Col xs={12} style={{ maxWidth: '22.2%' }}>
+                <div className="promo3">
+                  <img src={couponImgUrl1} alt="" />
+                </div>
+                <div className="promo-info">
+                  <div className="promo-title">{coupon1TitleArray[i]}</div>
+                  <div className="promo-brand">小山坡</div>
+                  <span className="promo-price">
+                    NT$ {coupon1PriceArray[i]}
+                  </span>
+                  {/* <span className="promo-sub-price">{data[i].sale_price}</span> */}
+                </div>
+              </Col>
+            </>
+          )
+        }
+        setCouponArray1(couponRowArray1)
+
+        let couponRowArray2 = []
+        for (let i = 0; i < adsData.length; i++) {
+          let couponImg2 = ''
+          couponImg2 = coupon2ImgArray[i].split(',')
+          couponImg2 = couponImg2[0]
+          let couponImgUrl2 = couponImg2
+            ? 'http://localhost:5000/adsProduct/' + couponImg2
+            : ''
+          let couponCover = adsData[1].img
+          let couponCoverUrl2 = couponCover
+            ? 'http://localhost:5000/adsCover/' + couponCover
+            : ''
+          setCouponCoverUrl2(couponCoverUrl2)
+          couponRowArray2.push(
+            <>
+              <Col xs={12} style={{ maxWidth: '22.2%' }}>
+                <div className="promo3">
+                  <img src={couponImgUrl2} alt="" />
+                </div>
+                <div className="promo-info">
+                  <div className="promo-title">{coupon2TitleArray[i]}</div>
+                  <div className="promo-brand">小山坡</div>
+                  <span className="promo-price">
+                    NT$ {coupon2PriceArray[i]}
+                  </span>
+                  {/* <span className="promo-sub-price">{data[i].sale_price}</span> */}
+                </div>
+              </Col>
+            </>
+          )
+        }
+        setCouponArray2(couponRowArray2)
+
+        let couponRowArray3 = []
+        for (let i = 0; i < adsData.length; i++) {
+          let couponImg3 = ''
+          couponImg3 = coupon3ImgArray[i].split(',')
+          couponImg3 = couponImg3[0]
+          let couponImgUrl3 = couponImg3
+            ? 'http://localhost:5000/adsProduct/' + couponImg3
+            : ''
+          let couponCover = adsData[2].img
+          let couponCoverUrl3 = couponCover
+            ? 'http://localhost:5000/adsCover/' + couponCover
+            : ''
+          setCouponCoverUrl3(couponCoverUrl3)
+          couponRowArray3.push(
+            <>
+              <Col xs={12} style={{ maxWidth: '22.2%' }}>
+                <div className="promo3">
+                  <img src={couponImgUrl3} alt="" />
+                </div>
+                <div className="promo-info">
+                  <div className="promo-title">{coupon3TitleArray[i]}</div>
+                  <div className="promo-brand">小山坡</div>
+                  <span className="promo-price">
+                    NT$ {coupon3PriceArray[i]}
+                  </span>
+                  {/* <span className="promo-sub-price">{data[i].sale_price}</span> */}
+                </div>
+              </Col>
+            </>
+          )
+        }
+        setCouponArray3(couponRowArray3)
+      })
+    })
+  }
+  useEffect(() => {
+    getCoupon1()
+    getAll()
+  }, [])
   return (
     <>
       <Container>
@@ -26,169 +191,30 @@ function Coupon() {
             </div>
           </Col>
         </Row>
+
         <Row className="promo-wrapper">
           <Col xs={12} style={{ maxWidth: '33.3%' }}>
             <div className="promo-primary">
-              <img
-                src={require('../../../pages/Home/images/promo0.jpg')}
-                alt=""
-              />
+              <img src={couponCoverUrl1} alt="" className="w-100" />
             </div>
           </Col>
-          <Col xs={12} style={{ maxWidth: '22.2%' }}>
-            <div className="promo1">
-              <img
-                src={require('../../../pages/Home/images/promo0-1.jpg')}
-                alt=""
-              />
-            </div>
-            <div className="promo-info">
-              ``
-              <div className="promo-title">
-                【EL COMMUN】2021橫式週記事手帳B6 ‧白海藍鯨
-                {/* {productList[0].title} */}
-              </div>
-              <div className="promo-brand">EL COMMUN</div>
-              <span className="promo-price">NT$684</span>
-              <span className="promo-sub-price">NT$760</span>
-            </div>
-          </Col>
-          <Col xs={12} style={{ maxWidth: '22.2%' }}>
-            <div className="promo2">
-              <img
-                src={require('../../../pages/Home/images/promo0-2.jpg')}
-                alt=""
-              />
-            </div>
-            <div className="promo-info">
-              <div className="promo-title">
-                【Uptrend My diary ｜超級空白手帳 VII
-              </div>
-              <div className="promo-brand">Uptrend</div>
-              <span className="promo-price">NT$175</span>
-              <span className="promo-sub-price">NT$250</span>
-            </div>
-          </Col>
-          <Col xs={12} style={{ maxWidth: '22.2%' }}>
-            <div className="promo3">
-              <img
-                src={require('../../../pages/Home/images/promo0-3.jpg')}
-                alt=""
-              />
-            </div>
-            <div className="promo-info">
-              <div className="promo-title">
-                【HIGHTIDE】2021方格週記事手帳B6 ‧ 皮革綁線茶
-              </div>
-              <div className="promo-brand">小山坡</div>
-              <span className="promo-price">NT$1071</span>
-              <span className="promo-sub-price">NT$1190</span>
-            </div>
-          </Col>
+          {couponArray1}
         </Row>
         <Row className="promo-wrapper">
           <Col xs={12} style={{ maxWidth: '33.3%' }}>
             <div className="promo-primary">
-              <img
-                src={require('../../../pages/Home/images/promo1.jpg')}
-                alt=""
-              />
+              <img src={couponCoverUrl2} alt="" />
             </div>
           </Col>
-          <Col xs={12} style={{ maxWidth: '22.2%' }}>
-            <div className="promo1">
-              <img
-                src={require('../../../pages/Home/images/promo1-1.jpg')}
-                alt=""
-              />
-            </div>
-            <div className="promo-info">
-              <div className="promo-title">【2021年月曆拼貼體驗課</div>
-              <div className="promo-brand">樂意Loidesign</div>
-              <span className="promo-price">NT$1200</span>
-              <span className="promo-sub-price">NT$1500</span>
-            </div>
-          </Col>
-          <Col xs={12} style={{ maxWidth: '22.2%' }}>
-            <div className="promo2">
-              <img
-                src={require('../../../pages/Home/images/promo1-2.jpg')}
-                alt=""
-              />
-            </div>
-            <div className="promo-info">
-              <div className="promo-title">暖男香氛蠟燭暖香燈</div>
-              <div className="promo-brand">A'ROMA P</div>
-              <span className="promo-price">NT$875</span>
-              <span className="promo-sub-price">NT$950</span>
-            </div>
-          </Col>
-          <Col xs={12} style={{ maxWidth: '22.2%' }}>
-            <div className="promo3">
-              <img
-                src={require('../../../pages/Home/images/promo1-3.jpg')}
-                alt=""
-              />
-            </div>
-            <div className="promo-info">
-              <div className="promo-title">迷你乾燥花束禮盒-六色彩虹</div>
-              <div className="promo-brand">萍水相逢</div>
-              <span className="promo-price">NT$1071</span>
-              <span className="promo-sub-price">NT$1190</span>
-            </div>
-          </Col>
+          {couponArray2}
         </Row>
         <Row className="promo-wrapper">
           <Col xs={12} style={{ maxWidth: '33.3%' }}>
             <div className="promo-primary">
-              <img
-                src={require('../../../pages/Home/images/promo2.jpg')}
-                alt=""
-              />
+              <img src={couponCoverUrl3} alt="" />
             </div>
           </Col>
-          <Col xs={12} style={{ maxWidth: '22.2%' }}>
-            <div className="promo1">
-              <img
-                src={require('../../../pages/Home/images/promo2-1.jpg')}
-                alt=""
-              />
-            </div>
-            <div className="promo-info">
-              <div className="promo-title">奧樂雞燙金聖誕卡&明信片四入組</div>
-              <div className="promo-brand">jzFUN</div>
-              <span className="promo-price">NT$684</span>
-              <span className="promo-sub-price">NT$760</span>
-            </div>
-          </Col>
-          <Col xs={12} style={{ maxWidth: '22.2%' }}>
-            <div className="promo2">
-              <img
-                src={require('../../../pages/Home/images/promo2-2.jpg')}
-                alt=""
-              />
-            </div>
-            <div className="promo-info">
-              <div className="promo-title">聖誕雙層玻璃杯-新show四件組</div>
-              <div className="promo-brand">好玻 GOODGLAS</div>
-              <span className="promo-price">NT$975</span>
-              <span className="promo-sub-price">NT$1100</span>
-            </div>
-          </Col>
-          <Col xs={12} style={{ maxWidth: '22.2%' }}>
-            <div className="promo3">
-              <img
-                src={require('../../../pages/Home/images/promo2-3.jpg')}
-                alt=""
-              />
-            </div>
-            <div className="promo-info">
-              <div className="promo-title">聖誕樹皮革小書</div>
-              <div className="promo-brand">來本冊子Re:mainer</div>
-              <span className="promo-price">NT$1071</span>
-              <span className="promo-sub-price">NT$1190</span>
-            </div>
-          </Col>
+          {couponArray3}
         </Row>
         <hr />
       </Container>
