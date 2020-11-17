@@ -14,13 +14,14 @@ const ContractsManagement = (props) => {
   const [type, setType] = useState('all')
   const [viewType, setViewType] = useState('list')
 
-  // const merchantId = useSelector((state) => state.authentication.user.user.id)
-  const [merchantId, setMerchantId] = useState(12)
+  const isLogin = useSelector((state) => state.authentication.loggedIn)
+  const merchantId = useSelector((state) => state.authentication.user.user.id)
+  // const [merchantId, setMerchantId] = useState(12)
   const [data, setData] = useState([])
   const [pageItems, setPageItems] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
-  const [showSignUp, setShowSignUp] = useState(true)
+  const [showSignUp, setShowSignUp] = useState(false)
 
   const toPage = (e) => {
     setCurrentPage(e)
@@ -35,7 +36,7 @@ const ContractsManagement = (props) => {
   const getData = (merchantId, type) => {
     //跟server拿資料
     Axios.get(
-      `http://122.116.38.12:5050/bk-contracts-api/list?id=${merchantId}&filter=${type}&page=${currentPage}`
+      `http://localhost:5000/bk-contracts-api/list?id=${merchantId}&filter=${type}&page=${currentPage}`
     )
       .then((res) => {
         const data = res.data.rows
@@ -66,6 +67,7 @@ const ContractsManagement = (props) => {
 
   //type跟currentPage改變觸發filter
   useEffect(() => {
+    if (!isLogin) return (window.location.href = '/login')
     getData(merchantId, type)
   }, [currentPage, type])
 

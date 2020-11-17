@@ -4,18 +4,12 @@ import './ProductSideBar.scss'
 
 const ProductSideBar = (props) => {
   const { categories, setSelectCategory, history } = props
-  const [clickStyle, setClickStyle] = useState({ clicked: false })
+  const [isActive, setIsActive] = useState({ CateIndex: null })
 
-  const toggleClassLinkStyle = (id) => {
-    const newCategories = [...categories]
-    const Index = newCategories.findIndex((p) => p.id === id)
-    if (Index !== -1) {
-      newCategories[Index].clicked = !newCategories[Index].clicked
-      console.log('Index', newCategories[Index])
-      console.log('clicked', newCategories[Index].clicked)
-    }
-    setClickStyle(newCategories)
+  const toggleClassLinkStyle = (index) => {
+    setIsActive({ CateIndex: index })
   }
+  console.log(isActive)
 
   return (
     <>
@@ -23,13 +17,19 @@ const ProductSideBar = (props) => {
         所有分類
       </div>
       {categories.map((value, index) => {
-        if (value.id <= 8) return <></>
+        if (value.id <= 8) return
         return (
-          <div className="classItem" key={index}>
+          <div
+            className="classItem"
+            key={index}
+            style={{
+              fontWeight: isActive.CateIndex === index ? '500' : '400',
+              color: isActive.CateIndex === index ? ' #d44f44' : '#212529',
+            }}
+          >
             <div
-              className={clickStyle.clicked ? 'classLink active' : 'classLink'}
               onClick={() => {
-                toggleClassLinkStyle(value.id)
+                toggleClassLinkStyle(index)
                 setSelectCategory(index + 1)
                 history.push(`/productlist/${value.name}`)
               }}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useCombobox } from 'downshift'
+import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 
 import './SearchBox.scss'
 
@@ -13,10 +14,8 @@ function SerarchBox() {
   useEffect(() => {
     const AllData = async () => {
       let url = 'http://localhost:5000/productlist'
-      const res = await axios
-        .get(url)
-        .catch((err) => console.log('Serarch Err', err))
-      setGetAllData(res.data)
+      const res = await axios.get(url)
+      if (res) setGetAllData(res.data)
     }
     AllData()
   }, [])
@@ -30,12 +29,14 @@ function SerarchBox() {
     getItemProps,
   } = useCombobox({
     items: inputItems,
+    scrollIntoView: () => {},
     onInputValueChange: ({ inputValue }) => {
       setInputItems(
         getAllData.filter(
           (item) =>
             item.title.toLowerCase().startsWith(inputValue.toLowerCase()) ||
-            item.title.startsWith(inputValue)
+            item.title.startsWith(inputValue) ||
+            item.title.includes(inputValue)
         )
       )
     },
@@ -61,14 +62,30 @@ function SerarchBox() {
             >
               <li
                 style={
-                  highlightedIndex === index ? { background: '#cdcdcd' } : {}
+                  highlightedIndex === index
+                    ? {
+                        backgroundColor: '#e7e7e7',
+                      }
+                    : {}
                 }
               >
-                <Link to={`/products/${item.id}?room=${item.brand_en_name}`}>
-                  {/* <a href={`/products/${item.id}?room=${item.brand_en_name}`}> */}
-                  <p>{item.title}</p>
-                  {/* </a> */}
-                </Link>
+                <a href={`/products/${item.id}?room=${item.brand_en_name}`}>
+                  <div className="prodImg">
+                    <img
+                      src={`http://localhost:5000/img/products/${item.image_path}`}
+                    />
+                  </div>
+                  <OverlayTrigger
+                    key={item.id}
+                    placement="bottom-start"
+                    delay={{ show: 750 }}
+                    overlay={
+                      <Tooltip id={`tooltip-${item.id}}`}>{item.title}</Tooltip>
+                    }
+                  >
+                    <p>{item.title}</p>
+                  </OverlayTrigger>
+                </a>
               </li>
             </span>
           ))}

@@ -12,7 +12,6 @@ $enable-caret: false;
 @import '~bootstrap/scss/bootstrap.scss';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap');
 
-
 .footerSec {
   padding: 50px 5%;
   background-color: $bg-light;
@@ -58,6 +57,32 @@ $enable-caret: false;
   }
 }
 
+@media (max-width: 576px) {
+  .footerSec {
+    padding: 50px 5% 0 5%;
+    .subSection {
+      width: 100%;
+      margin-bottom: 0;
+      :last-child {
+        margin-bottom: 50px;
+      }
+      .title::after {
+        content: '+';
+        margin-left: 2px;
+      }
+      ul {
+        display: none;
+      }
+    }
+    &::before {
+      height: 310px;
+    }
+    .copyRight {
+      font-size: 12px;
+    }
+  }
+}
+
 .fixedBtn {
   position: fixed;
   right: 30px;
@@ -78,11 +103,20 @@ $enable-caret: false;
   }
   .toTop {
     background-color: #939393;
+    &:hover {
+      background-color: #6c757d;
+    }
   }
   .toCart {
     background-color: #fc6b5a;
+    &:hover {
+      background-color: #d44f44;
+    }
   }
   .toSupport {
     background-color: #37508d;
+    &:hover {
+      background-color: #243a6e;
+    }
   }
 }

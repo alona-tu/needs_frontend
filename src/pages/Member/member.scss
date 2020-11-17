@@ -9,12 +9,41 @@ $bg-light: #f0f0f0;
 $shadow: #e7e7e7;
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap');
-// @import '~bootstrap/scss/bootstrap.scss';
+
+
+.hiddenBar {
+    
+        
+    @media (max-width:995px) {
+        z-index: 2;
+        position: absolute;
+        transform: translate(-300px);
+        background-color: $bg-light;
+        max-width: 160px;
+        height: 480px;
+        border-radius: 10px;
+        box-shadow: 1px 1px 150px 2px #aba9a9;
+
+    }
+}
+
+.hiddenBtn {
+    width: 100px;
+    display: none;
+
+    @media (max-width:995px) {
+        display: grid;
+    }
+}
+.mirrorRotateLevel {
+  transform: rotateY(180deg);   /* 水平镜像翻转 */
+}
 
 .member {
-  .font-ss {
-    font-size: 0.87rem;
-  }
+    p {
+        margin: 0px;
+    }
+
 
   .font-s {
     font-size: 1rem;
@@ -28,178 +57,38 @@ $shadow: #e7e7e7;
     font-size: 2rem;
   }
 
-  .collaspse {
-    @media screen and (min-width: 481px) and (max-width: 768px) {
-    }
-  }
-  .hidebtn {
-    width: 50px;
-    height: 50px;
-  }
-  .maincard {
-    margin-bottom: 30px;
-    padding: 20px;
-    width: 950px;
-    min-height: 570px;
-    border-radius: 10px;
-    border: solid 2px $danger;
-    box-shadow: 6px 5px $shadow;
-    @media screen and (min-width: 481px) and (max-width: 768px) {
-      width: 450px;
-      min-height: 800px;
-    }
-  }
 
-  //---memshop topbar
-  //-->參考：https://wcc723.github.io/css/2020/02/21/css-border/#
-  .topside {
-    .topsidebox {
-      width: 150px;
-      height: 50px;
+
+
+    .maincard {
+        margin-bottom: 30px;
+        padding: 20px;
+        min-height: 570px;
+        border-radius: 10px;
+        border: solid 2px $danger;
+        box-shadow: 6px 5px $shadow;
+
+        @media (max-width:1000px) {
+            min-height: 800px;
+        }
     }
 
-    a:hover {
-      color: $danger;
+    //---memshop topbar
+    //-->參考：https://wcc723.github.io/css/2020/02/21/css-border/#
+    .topside {
+        .topsidebox {
+            width: 150px;
+            height: 50px;
+            cursor: point;
+        }
+
+        a:hover {
+            color: $danger;
+        }
+
+        a:active {
+            color: $danger;
+            box-shadow: 0 -2px $danger inset;
+        }
     }
-
-    a:active {
-      color: $danger;
-      box-shadow: 0 -2px $danger inset;
-    }
-  }
-
-  html,
-  body,
-  div,
-  span,
-  applet,
-  object,
-  iframe,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  blockquote,
-  pre,
-  a,
-  abbr,
-  acronym,
-  address,
-  big,
-  cite,
-  code,
-  del,
-  dfn,
-  em,
-  img,
-  ins,
-  kbd,
-  q,
-  s,
-  samp,
-  small,
-  strike,
-  strong,
-  sub,
-  sup,
-  tt,
-  var,
-  b,
-  u,
-  i,
-  center,
-  dl,
-  dt,
-  dd,
-  ol,
-  ul,
-  li,
-  fieldset,
-  form,
-  label,
-  legend,
-  table,
-  caption,
-  tbody,
-  tfoot,
-  thead,
-  tr,
-  th,
-  td,
-  article,
-  aside,
-  canvas,
-  details,
-  embed,
-  figure,
-  figcaption,
-  footer,
-  header,
-  hgroup,
-  menu,
-  nav,
-  output,
-  ruby,
-  section,
-  summary,
-  time,
-  mark,
-  audio,
-  video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-  }
-
-  /* HTML5 display-role reset for older browsers */
-  article,
-  aside,
-  details,
-  figcaption,
-  figure,
-  footer,
-  header,
-  hgroup,
-  menu,
-  nav,
-  section {
-    display: block;
-  }
-
-  body {
-    line-height: 1;
-  }
-
-  ol,
-  ul {
-    list-style: none;
-  }
-
-  blockquote,
-  q {
-    quotes: none;
-  }
-
-  blockquote:before,
-  blockquote:after,
-  q:before,
-  q:after {
-    content: '';
-    content: none;
-  }
-
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin: 0;
-  }
-
-  a {
-    text-decoration: none;
-  }
 }

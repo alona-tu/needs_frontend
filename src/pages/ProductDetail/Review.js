@@ -18,7 +18,7 @@ function Review(props) {
                   <div className="mr-4 ml-3">
                     <img
                       className="avatar rounded"
-                      src={require('../../assets/img/brands/pommedepin111_300x300.jpg')}
+                      src={`http://localhost:5000/img/avatar/${value.avatar}`}
                       alt=""
                     />
                   </div>

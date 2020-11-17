@@ -17,6 +17,8 @@ import MerchantOtherProducts from './MerchantOtherProducts'
 import History from './History'
 import SuccessModal from './SuccessModal'
 import FixedAddToCartBtn from './FixedAddToCartBtn'
+
+import FixedButtons from '../../components/FixedButtons'
 import HistoryList from '../../components/History/HistoryList'
 
 function ProductDetail(props) {
@@ -364,8 +366,8 @@ function ProductDetail(props) {
         <MerchantOtherProducts merchantInfo={merchantInfo} />
         <h5 className="mt-5">最近預覽</h5>
         <hr />
-        {/* <HistoryList /> */}
-        <History />
+        <HistoryList />
+        {/* <History /> */}
         <div className="mb-5"></div>
       </Container>
       <FixedAddToCartBtn

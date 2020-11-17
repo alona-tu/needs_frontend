@@ -120,6 +120,9 @@ $bg-light: #f0f0f0;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        h5 {
+          color: $white;
+        }
       }
       .stepTitle h5 {
         color: $font-black;
@@ -211,6 +214,9 @@ $bg-light: #f0f0f0;
     .feeContent {
       position: relative;
       color: $white;
+      h4 {
+        color: $white;
+      }
       .standardPlan {
         background-color: $secondary;
         display: flex;

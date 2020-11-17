@@ -1,5 +1,7 @@
 import React from 'react'
 import { MdViewList, MdViewComfy } from 'react-icons/md'
+import { BsGrid3X3Gap } from 'react-icons/bs'
+import { FaList } from 'react-icons/fa'
 import './Filter.scss'
 
 const Filter = (props) => {
@@ -12,9 +14,13 @@ const Filter = (props) => {
           <p className="info amount">（ {props.totalPosts} ）</p>
         </div>
         <div className="filterRight col-8 d-flex justify-content-end">
-          <div className="choiceView mr-1">
-            <MdViewComfy size={40} onClick={() => setProductView(true)} />
-            <MdViewList size={40} onClick={() => setProductView(false)} />
+          <div className="choiceView mr-2">
+            <BsGrid3X3Gap
+              className="mr-2"
+              size={30}
+              onClick={() => setProductView(true)}
+            />
+            <FaList size={30} onClick={() => setProductView(false)} />
           </div>
           <label className="rightInfo">排序方式:</label>
           <select className="form-control" onChange={props.handleSort}>

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 // import Axios from 'axios'
-import Templatepic1 from './images/Atlanta_pro.png'
-import TemplatepicBig from './images/minimal_pro.png'
-import './Styles/TemplateList.scss'
-import '../../../styles/Backend/_backend.scss'
+
 import {
   Col,
   Container,
@@ -21,34 +18,65 @@ import '../../../styles/Backend/_backend.scss'
 import TemplateCard from './TemplateCard'
 import { Handle } from 'rc-slider'
 import ModalHeader from 'react-bootstrap/esm/ModalHeader'
-import { data } from 'jquery'
+// import { data } from 'jquery'
 import QueueAnim from 'rc-queue-anim'
+import { css } from '@emotion/core'
+import DotLoader from 'react-spinners/DotLoader'
 
 function TemplateList(props) {
   //設定初始狀態
-  // const [dataLoading, setDataLoading] = useState(false)
+
   const [Template, setTemplate] = useState([])
   const [error, setError] = useState(null)
-  const [type, setType] = useState(2)
+  const [type, setType] = useState(3)
   const [myFav, setMyFav] = useState([])
   const [show, setShow] = useState(false)
   const [favName, setFavName] = useState('')
-  const [favOrNotBtn, setFavOrNotBtn] = useState('')
+  const [Name, setName] = useState('')
+  const [PlanType, setPlanType] = useState('')
+  const [Img, setImg] = useState('')
+  const [unItem, setUnItem] = useState('')
+  const [dataLoading, setDataLoading] = useState(false)
 
   //eventhandler
   const handleShow = () => setShow(true)
   const handleClose = () => setShow(false)
 
+  const UnFav = (unItem) => {
+    const currentFav = JSON.parse(localStorage.getItem('Fav')) || []
+    // console.log('currentFav',JSON.parse(localStorage.getItem('Fav')) );
+    // const index = currentFav.findIndex( (v) => v.Id == unItem.Id)//如果localstorage裡有點選要取消收藏的Id：>-1
+    if (unItem) {
+      const arr = currentFav.filter((item) => item.Id !== unItem)
+      localStorage.setItem('Fav', JSON.stringify(arr))
+      console.log('arr', arr)
+      setShow(false)
+      setUnItem('')
+    } else {
+      setShow(false)
+      console.log('hi')
+    }
+
+    // const index = currentFav.findIndex( (v) => v.Id === item.Id)
+    // console.log('index',index)
+    // if( index > -1){
+    // return
+    // }
+  }
+
   //檢查要加入的項目是否存在localStorage
-  const updateFavToLocalStorage = function (item) {
+  const updateFavToLocalStorage = (item) => {
     const currentFav = JSON.parse(localStorage.getItem('Fav')) || []
     console.log('currentFav', JSON.parse(localStorage.getItem('Fav')))
     const index = currentFav.findIndex((v) => v.Id === item.Id)
     //若存在就取消，沒有就加入（found:index ! == -1）：index為在findIndex時localstorage的currentFav.id和要加入的item.id比對，第幾筆相同（若有，會從0開始因此<0不存在）
+
     if (index > -1) {
       //currentFav[index].amount++
-      setFavName('已經收藏過囉～')
-      // showDeletBtn()
+      setFavName('要取消收藏嗎？')
+      console.log('item.Id', item.Id)
+      setUnItem(item.Id)
+      // handleShowdDeletBtn(true)
       handleShow()
       return
     } else {
@@ -60,9 +88,31 @@ function TemplateList(props) {
       setMyFav(currentFav)
       handleShow()
     }
-
     //設定加入
   }
+
+  const override = css`
+    display: block;
+    margin: 300px auto;
+    border-color: #7367f0;
+  `
+
+  const loading = (
+    <>
+      <div className="template">
+        <Col className="offset-2" xs={10}>
+          <div className="sweet-loading">
+            <DotLoader
+              css={override}
+              size={90}
+              color={'#123abc'}
+              // loading={this.state.loading}
+            />
+          </div>
+        </Col>
+      </div>
+    </>
+  )
 
   const messageModal = (
     <div className="template">
@@ -80,8 +130,8 @@ function TemplateList(props) {
           <h2>{favName}</h2>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="light" onClick={handleClose}>
-            繼續看看
+          <Button variant="light" onClick={(e) => UnFav(unItem)}>
+            確定
           </Button>
           <Button
             variant="dark"
@@ -98,8 +148,9 @@ function TemplateList(props) {
 
   //server-data
   async function getTemplateData(type) {
+    setDataLoading(true)
     // console.log('type',type)
-    const url = `http://localhost:5000/TemplateList?type=${type}`
+    const url = `http://localhost:5000/Template?type=${type}`
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({
@@ -110,18 +161,20 @@ function TemplateList(props) {
     try {
       const response = await fetch(request) //response:fetch網址的資料
       const data = await response.json()
+      console.log('data', data[1].img)
       setTemplate(data)
-
-      // console.log('data1',data)
-      // console.log('Template1',Template)
+      setName(data[1].name)
+      setPlanType(data[1].plan_level)
+      setImg(data[1].img)
+      setTimeout(() => setDataLoading(false), 500)
     } catch (error) {
       setError('oops! error')
+      setTimeout(() => setDataLoading(false), 500)
     }
   }
 
-  //console.log這兩個
-  // console.log('Template',Template[0])
-  // console.log('Template',Template[0].name)
+  console.log('name', Name)
+  console.log('planType', PlanType)
 
   useEffect(() => {
     getTemplateData(type)
@@ -140,31 +193,22 @@ function TemplateList(props) {
               <div className="template-main-div rounded ">
                 <p>
                   主題類別：<span></span>
-                  <Radio.Group name="radiogroup" defaultValue={3}>
-                    <Radio
-                      value={3}
-                      onClick={() => setType(3)}
-                      checked={type === 3}
-                    >
+                  <Radio.Group name="radiogroup" defaultValue={type}>
+                    <Radio value={3} onClick={() => setType(3)}>
                       {' '}
                       全部{' '}
                     </Radio>
-                    <Radio
-                      value={1}
-                      onClick={() => setType(1)}
-                      checked={type === 1}
-                    >
+                    <Radio value={1} onClick={() => setType(1)}>
                       {' '}
                       標準方案{' '}
                     </Radio>
-                    <Radio
-                      value={2}
-                      onClick={() => setType(2)}
-                      checked={type === 2}
-                    >
+                    <Radio value={2} onClick={() => setType(2)}>
                       {' '}
                       進階方案{' '}
                     </Radio>
+                    {/* <Radio value={3} onClick={()=>setType(3)} checked={type===3}> 全部 </Radio> 
+                  <Radio value={1} onClick={()=>setType(1)} checked={type===1}> 標準方案 </Radio> 
+                  <Radio value={2} onClick={()=>setType(2)} checked={type===2}> 進階方案 </Radio> */}
                   </Radio.Group>
                 </p>
               </div>
@@ -174,7 +218,7 @@ function TemplateList(props) {
         </Col>
       </div>
 
-      {/* ############# */}
+      {/* recommend-section */}
 
       <div className="template">
         <Col className="offset-2" xs={10}>
@@ -183,20 +227,22 @@ function TemplateList(props) {
               <div className="row rounded d-flex align-items-center">
                 <div className="col-8">
                   <img
-                    src={Templatepic1}
+                    src={`http://localhost:5000/img/template/${Img}`}
                     className="main-small-pic"
                     alt="Responsive image"
                   ></img>
                   <img
-                    src={TemplatepicBig}
+                    src={`http://localhost:5000/img/template/${
+                      type == 2 ? 'sparo_bg.png' : 'minimal_bg.png'
+                    }`}
                     className="img-fluid main-bg-pic"
                     alt="Responsive image"
                   ></img>
                 </div>
                 <div className="col-4 mh-100 text-adjust">
                   <div className="d-flex flex-column justify-content-around ">
-                    <h1 className="h4">name</h1>
-                    <p className="mt-2">方案：PRO</p>
+                    <h1 className="h4">{Name}</h1>
+                    <p className="mt-2">方案：{PlanType}</p>
                     <div className="pb-2">
                       <button
                         className="btn-bg gray mt-2"
@@ -225,14 +271,12 @@ function TemplateList(props) {
           <Container fluid>
             <Row>
               <CardDeck className="pb-3 card-adjust">
-                <QueueAnim component="ul" type={['right', 'left']} leaveReverse>
-                  <TemplateCard
-                    Template={Template}
-                    onClickMethod={function (abc) {
-                      updateFavToLocalStorage(abc)
-                    }}
-                  />
-                </QueueAnim>
+                <TemplateCard
+                  Template={Template}
+                  onClickMethod={function (abc) {
+                    updateFavToLocalStorage(abc)
+                  }}
+                />
               </CardDeck>
             </Row>
           </Container>
@@ -243,7 +287,7 @@ function TemplateList(props) {
   return (
     <>
       {messageModal}
-      {display}
+      {dataLoading ? loading : display}
     </>
   )
 }

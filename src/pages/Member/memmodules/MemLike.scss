@@ -17,6 +17,9 @@ $shadow: #e7e7e7;
             margin-left: 10px;
         }
     }
+    .selectLike{
+        cursor: pointer;
+    }
 
     .likecard {
         width: 150px;
@@ -26,10 +29,26 @@ $shadow: #e7e7e7;
         border-radius: 10px;
         text-align: center;
 
-        .mark {
+        .likemark {
             width: 100px;
             height: 100px;
-            border: solid 1px $font-gray;
+            border: solid 1px #999999;
+            border-radius: 10px;
+            margin: 10px auto;
+        }
+    }
+    .likecard2 {
+        width: 150px;
+        height: 200px;
+        margin: 10px;
+        border: solid 1px #999999;
+        border-radius: 10px;
+        text-align: center;
+
+        .likemark {
+            width: 100px;
+            height: 100px;
+            border: solid 1px  #999999;
             border-radius: 10px;
             margin: 10px auto;
         }

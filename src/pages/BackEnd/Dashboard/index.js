@@ -207,14 +207,14 @@ function Dashboard() {
               </Col>
             </Row>
             <Row className="my-3 dispatch-status">
-              <Col xs={6}>
+              <Col xs={12}>
                 <div className="card">
                   <AdsCalendar />
                 </div>
               </Col>
-              <Col xs={6}>
+              {/* <Col xs={6}>
                 <AdsPreview />
-              </Col>
+              </Col> */}
             </Row>
           </Container>
         </Col>

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
-import { updateCartUnits } from '../../actions/index'
 
 import Breadcrumbs from '../../components/Breadcrumbs'
 import ForProductListCarousel from '../../components/ProductList/ForProductListCarousel'
@@ -41,9 +39,6 @@ const ProductList = (props) => {
   // set price filter
   const [filterprice, setFilterPrice] = useState([0, 7000])
 
-  //Redux addCart
-  const { cart, updateCartUnits } = props
-
   useEffect(() => {
     getCategories()
   }, [])
@@ -53,10 +48,12 @@ const ProductList = (props) => {
     const fetchPosts = async () => {
       setDataLoading(true)
       let url = 'http://localhost:5000/productlist?sort=' + sort
-      const res = await axios.get(url).catch((err) => console.log('Error', err))
-      setAllPosts(res.data)
-      setShowPosts(res.data)
-      setDataLoading(false)
+      const res = await axios.get(url)
+      if (res) {
+        setAllPosts(res.data)
+        setShowPosts(res.data)
+        setDataLoading(false)
+      }
     }
     fetchPosts()
   }, [sort])
@@ -94,11 +91,11 @@ const ProductList = (props) => {
   const getCategories = async () => {
     setDataLoading(true)
     let url = 'http://localhost:5000/productlist/categories'
-    const res = await axios
-      .get(url)
-      .catch((err) => console.log(`Can't get categories`, err))
-    setCategories(res.data)
-    setDataLoading(false)
+    const res = await axios.get(url)
+    if (res) {
+      setCategories(res.data)
+      setDataLoading(false)
+    }
   }
 
   // Get current posts
@@ -167,17 +164,11 @@ const ProductList = (props) => {
         </div>
         <div className="container mt-5 overflow-hidden">
           <h5 className="d-flex justify-content-center">最近瀏覽</h5>
-          <HistoryList cart={cart} updateCartUnits={updateCartUnits} />
+          <HistoryList />
         </div>
       </div>
     </>
   )
 }
 
-const mapStateToProps = ({ cart }) => {
-  return { cart }
-}
-
-export default connect(mapStateToProps, {
-  updateCartUnits,
-})(ProductList)
+export default ProductList

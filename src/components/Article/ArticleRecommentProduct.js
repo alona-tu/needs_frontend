@@ -62,7 +62,7 @@ const ArticleRecommentProduct = (props) => {
           </div>
           <div className="textArea">
             <div className="">{value.title}</div>
-            <div className="btmArea mt-2">
+            <div className="btmArea mt-2 d-flex flex-lg-row flex-md-column">
               <span className="merchant">{value.merchant}</span>
               <div className="priceArea">
                 <span className="price">{value.price}</span>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import {
   Row,
   Button,
@@ -29,11 +29,13 @@ const ToolBar = (props) => {
     searchInp,
     setSearchInp,
     getData,
+    categories,
   } = props
 
   const handleSubmit = (merchantId, type, searchType, searchInp) => {
     getData(merchantId, type, searchType, searchInp)
   }
+
   return (
     <>
       <Row className="toolsSec my-3">
@@ -72,21 +74,61 @@ const ToolBar = (props) => {
             as="select"
             id="inlineFormCustomSelect"
             custom
-            onChange={(e) => setSearchType(e.target.value)}
+            onChange={(e) => setSearchType(Number(e.target.value))}
           >
-            <option value="0">商品名稱</option>
-            <option value="1">商品類別</option>
+            <option value={0}>商品名稱</option>
+            <option value={1}>商品類別</option>
           </Form.Control>
-          <InputGroup>
-            <FormControl
-              aria-describedby="basic-addon1"
+          {searchType === 0 ? (
+            <InputGroup>
+              <FormControl
+                aria-describedby="basic-addon1"
+                onChange={(e) => setSearchInp(e.target.value)}
+              />
+            </InputGroup>
+          ) : (
+            <Form.Control
+              as="select"
+              id="inlineFormCustomSelect"
+              custom
+              className="selectInp"
               onChange={(e) => setSearchInp(e.target.value)}
-            />
-          </InputGroup>
+            >
+              <option value="" selected>
+                請選擇
+              </option>
+              {categories.map((item, index) => {
+                const arr = item.category.split(',')
+                return (
+                  <>
+                    <option
+                      key={item.id}
+                      value={item.id}
+                      className="parentCat"
+                      disabled
+                    >
+                      {item.parentCategory}
+                    </option>
+                    {arr.map((itm, idx) => {
+                      return (
+                        itm && (
+                          <>
+                            <option key={idx} value={itm.split(':')[0]}>
+                              {itm.split(':')[1]}
+                            </option>
+                          </>
+                        )
+                      )
+                    })}
+                  </>
+                )
+              })}
+            </Form.Control>
+          )}
+
           <Button
             variant="light"
             className="searchbtn"
-            type="submit"
             onClick={(e) =>
               handleSubmit(merchantId, type, searchType, searchInp)
             }

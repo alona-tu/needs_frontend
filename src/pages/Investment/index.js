@@ -11,7 +11,6 @@ import BrandData from '@assets/data/brands.json'
 import Join from './modules/Join'
 import CollapseList from './modules/CollapseList'
 import CollapseData from '@assets/data/investment_q&a.json'
-import FixedButtons from '../../components/FixedButtons'
 
 const Investment = () => {
   //Animation set Show

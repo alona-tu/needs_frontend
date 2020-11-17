@@ -19,6 +19,8 @@ const CreateArticle = (props) => {
   const instanceRef = React.useRef(null)
   //Show the Information when clicking Btn.
   const [showInfo, setShowInfo] = useState(false)
+  const [showSendInfo, setShowSendInfo] = useState(false)
+  const [showEmailInfo, setShowEmailInfo] = useState(false)
 
   let articleHTML = ''
 
@@ -117,6 +119,7 @@ const CreateArticle = (props) => {
   }
 
   const sendContent = async () => {
+    setShowSendInfo(false)
     await axios
       .post('http://localhost:5000/article', [title, image, outline, showHTML])
       .catch((error) => {
@@ -160,20 +163,57 @@ const CreateArticle = (props) => {
       {showInfo ? (
         <ArticleShowInfo showInfo={showInfo} closeHandler={closeHandler} />
       ) : null}
-
       <EditorJs
         onChange={handleSave}
         instanceRef={(instance) => (instanceRef.current = instance)}
         tools={EDITOR_JS_TOOLS}
         data={contentDetial}
       />
-      <div className="d-flex justify-content-center">
-        <Button onClick={saveToHtml}>儲存</Button>
-
-        <Button className="" onClick={sendContent}>
-          送出
+      <div className="d-flex justify-content-center ArticleEditor">
+        <Button className="sendBtn" onClick={saveToHtml}>
+          儲存
         </Button>
-        <Button onClick={sendEmail}>電子報</Button>
+
+        <Button
+          className="sendBtn"
+          style={{ display: showSendInfo ? 'none' : 'block' }}
+          onClick={() => setShowSendInfo(!showSendInfo)}
+        >
+          發表文章
+        </Button>
+        {showSendInfo ? (
+          <div>
+            <Button className="btn-danger mr-5" onClick={sendContent}>
+              確認送出
+            </Button>
+            <Button
+              className="btn-success"
+              onClick={() => setShowSendInfo(!showSendInfo)}
+            >
+              取消
+            </Button>
+          </div>
+        ) : null}
+        <Button
+          className="sendBtn"
+          style={{ display: showEmailInfo ? 'none' : 'block' }}
+          onClick={() => setShowEmailInfo(!showEmailInfo)}
+        >
+          電子報
+        </Button>
+        {showEmailInfo ? (
+          <div>
+            <Button className="btn-danger mr-5" onClick={sendEmail}>
+              確認送出
+            </Button>
+            <Button
+              className="btn-success"
+              onClick={() => setShowEmailInfo(!showEmailInfo)}
+            >
+              取消
+            </Button>
+          </div>
+        ) : null}
       </div>
     </>
   )

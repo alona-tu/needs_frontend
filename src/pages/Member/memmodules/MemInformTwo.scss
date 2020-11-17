@@ -8,7 +8,7 @@ $bg-gray: #cdcdcd;
 $bg-light: #f0f0f0;
 $shadow: #e7e7e7;
 //meminform
-.meminform {
+.memInformTwo {
     .wrapper {
         .icons {
             width: 24px;
@@ -25,9 +25,15 @@ $shadow: #e7e7e7;
         border-radius: 10px;
         margin: 10px;
 
+        @media screen and (min-width:481px) and (max-width:768px) {
+            width: 410px;
+            min-height: 100px;
+            margin: 10px auto;
+        }
+
         .sign {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border: solid 1px $font-gray;
             border-radius: 10px;
             margin: auto 5px;

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter,useHistory} from 'react-router-dom'
+import swal from 'sweetalert';
 
-import { Col, Container, Button } from 'react-bootstrap'
+
+import { Col, Container, Card, CardDeck, Row , Modal ,Button } from 'react-bootstrap'
 
 import TemplatepicBig from './images/minimal_pro.png'
 import './Styles/TemplateHome.scss'
@@ -10,17 +12,94 @@ import '../../../styles/Backend/_backend.scss'
 import { MdVisibility, MdVisibilityOff, MdEdit } from 'react-icons/md'
 import TemplateCard from '../TemplateList/TemplateCard'
 
+
+
 function TemplateHome(props) {
+
+const [favName,setFavName] = useState('')
+const [myFav,setMyFav] = useState([])
+const [show,setShow] = useState(false)
+const [unItem, setUnItem] =useState('')
+
+const handleShow = () =>setShow(true)
+const handleClose = () =>setShow(false)
+
+// const whosLogin = useSelector((state) => state.authentication.loggedIn)
+
+const UnFav = (unItem) => {
+  const currentFav = JSON.parse(localStorage.getItem('Fav')) || []
+  // console.log('currentFav',JSON.parse(localStorage.getItem('Fav')) );
+  // const index = currentFav.findIndex( (v) => v.Id == unItem.Id)//如果localstorage裡有點選要取消收藏的Id：>-1
+  if(unItem){
+    const arr = currentFav.filter(item => (item.Id !== unItem))
+    localStorage.setItem('Fav', JSON.stringify(arr))
+    console.log('arr',arr)
+    setShow(false)
+  }else{
+    setShow(false)
+    console.log('hi')
+  }
+}
 
 const currentFav = JSON.parse(localStorage.getItem('Fav')) || []
 
-  return (
-    <>
-      <div className="template">
+const updateFavToLocalStorage = function (item) {
+  const currentFav = JSON.parse(localStorage.getItem('Fav')) || []
+  console.log('currentFav',JSON.parse(localStorage.getItem('Fav')) );
+  const index = currentFav.findIndex( (v) => v.Id === item.Id)
+
+      if( index > -1){
+        //currentFav[index].amount++
+        setFavName('要取消收藏嗎？')
+        console.log('item.Id',item.Id);
+        setUnItem(item.Id)
+        // handleShowdDeletBtn(true)
+        handleShow()
+        return
+      }else{
+        console.log('item',item);
+        currentFav.push(item)
+        console.log('currentFav',currentFav);
+        setFavName('收藏成功！')
+        localStorage.setItem('Fav', JSON.stringify(currentFav))
+        setMyFav(currentFav)
+        handleShow()
+      }
+    
+    //設定加入
+    
+  }
+
+  const messageModal = (
+    <div className="template">
+        <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} centered>
+      <Modal.Header closeButton>
+        <Modal.Title></Modal.Title>
+      </Modal.Header>
+      <Modal.Body><h2>{favName}</h2></Modal.Body>
+      <Modal.Footer>
+        <Button variant="light" onClick={e=>UnFav(unItem)} >
+        確定
+        </Button>
+        {/* <Button
+          variant="dark"
+          onClick={() => {
+            props.history.push('/customer-backend/template-home')
+          }}
+        >
+          前往收藏清單
+        </Button> */}
+      </Modal.Footer>
+    </Modal>
+    </div>
+  )
+
+  const home = (
+    <div className="template">
         <Col className="offset-2" xs={10}>
-          <Container className="fluid">
+          <div className="container-fluid w-80">
             <h4 className="mt-4">主題</h4>
-            <Button className="mt-4 btn-light" onClick={()=>{props.history.push('/homepage')}}>
+            <Button className="mt-4 btn-light" onClick={()=>{props.history.push('/homepage/Pommedepin111')}}>
               <MdVisibility /> 查看目前主頁
             </Button>
             <hr />
@@ -48,11 +127,17 @@ const currentFav = JSON.parse(localStorage.getItem('Fav')) || []
             <hr />
             {/* <TemplateCard template = {}/> */}
 
-            <TemplateCard Template = {currentFav} />
+            <TemplateCard Template = {currentFav} onClickMethod={ function(abc) { updateFavToLocalStorage(abc)} }/>
 
-          </Container>
+          </div>
         </Col>
       </div>
+  )
+
+  return (
+    <>
+      {home}
+      {messageModal}
     </>
   )
 }

@@ -19,10 +19,10 @@ import MemberInformTwo from './pages/Member/MemberInformTwo'
 import MemberInformThree from './pages/Member/MemberInformThree'
 import MemberEcoin from './pages/Member/MemberEcoin'
 import MemberComment from './pages/Member/MemberComment'
+// import MemberQA from './pages/Member/MemberQA'
 import Investment from './pages/Investment'
 import Article from './pages/Article/Article'
 import ProductList from './pages/ProductList/ProductList'
-import MerchantHome from './pages/MerchantHome/merchantHome'
 import ProductDetail from './pages/ProductDetail'
 import Cart from './pages/Cart'
 import CreatingOrder from './pages/CreatingOrder'
@@ -30,6 +30,10 @@ import Payment from './pages/Payment'
 import Complete from './pages/Payment/complete'
 import Login from './pages/Login/Login'
 import SignUp from './pages/Login/SignUp'
+import Pommedepin111 from './pages/MerchantHome/Pommedepin111'
+import Annieeinna_hs from './pages/MerchantHome/annieeinna_hs'
+import ToolsLiveBy3 from './pages/MerchantHome/ToolsLiveBy3'
+import LittleMountain from './pages/MerchantHome/小山坡'
 
 //商家後台
 import BackEndSidebar from './components/backend/Sidebar'
@@ -39,7 +43,7 @@ import BackEndDashboard from './pages/BackEnd/Dashboard'
 import Sales from './pages/BackEnd/Sales'
 import Ads from './pages/BackEnd/Ads'
 import CreateArticle from './pages/Article/CreateArticle'
-import TemplateEditedPage from './pages/BackEnd/TemplateEditedPage/TemplateEditedPage'
+import EditedPage from './pages/BackEnd/TemplateEditedPage/TemplateEditedPage'
 import TemplateHome from './pages/BackEnd/TemplateHome/TemplateHome'
 import TemplateList from './pages/BackEnd/TemplateList/TemplateList'
 import ArticleDetial from './pages/Article/ArticleDetial'
@@ -213,9 +217,33 @@ function App(props) {
             component={MemberComment}
             layout="FRONT_END_NAV"
           />
+          {/* <DynamicLayoutRoute
+            path="/member/QA"
+            component={MemberQA}
+            layout="FRONT_END_NAV"
+          /> */}
           <DynamicLayoutRoute
-            path="/homepage"
-            component={MerchantHome}
+            // exact
+            path="/homepage/pommedepin111/12"
+            component={Pommedepin111}
+            layout="FRONT_END_NAV"
+          />
+          <DynamicLayoutRoute
+            // exact
+            path="/homepage/Annieeinna_hs"
+            component={Annieeinna_hs}
+            layout="FRONT_END_NAV"
+          />
+          <DynamicLayoutRoute
+            // exact
+            path="/homepage/ToolsLiveBy/3"
+            component={ToolsLiveBy3}
+            layout="FRONT_END_NAV"
+          />
+          <DynamicLayoutRoute
+            // exact
+            path="/homepage/LittleMountain"
+            component={LittleMountain}
             layout="FRONT_END_NAV"
           />
           <DynamicLayoutRoute
@@ -242,10 +270,9 @@ function App(props) {
           />
           <DynamicLayoutRoute
             path="/customer-backend/template-edit"
-            component={TemplateEditedPage}
+            component={EditedPage}
             layout="BACK_END_NAV"
           />
-
           <DynamicLayoutRoute
             path="/customer-backend/template-list"
             component={TemplateList}

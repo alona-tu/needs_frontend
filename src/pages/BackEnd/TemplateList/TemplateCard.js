@@ -29,7 +29,7 @@ function TemplateCard(props) {
             }
             return (
               <div className="col-4">
-                <Card className="rounded mb-5" key={index}>
+                <Card className="rounded mb-5 motion" key={index}>
                   <Card.Img
                     className="p-3"
                     variant="top"

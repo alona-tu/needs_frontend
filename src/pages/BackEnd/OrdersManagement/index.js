@@ -16,8 +16,9 @@ const OrdersManagement = (props) => {
   const [searchType, setSearchType] = useState(0)
   const [searchInp, setSearchInp] = useState('')
 
-  // const merchantId = useSelector((state) => state.authentication.user.user.id)
-  const [merchantId, setMerchantId] = useState(12)
+  const isLogin = useSelector((state) => state.authentication.loggedIn)
+  const merchantId = useSelector((state) => state.authentication.user.user.id)
+  // const [merchantId, setMerchantId] = useState(12)
   const [data, setData] = useState([])
   const [pageItems, setPageItems] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
@@ -32,7 +33,8 @@ const OrdersManagement = (props) => {
   const getData = (merchantId, type, searchType, searchInp) => {
     //跟server拿資料
     Axios.get(
-      `http://122.116.38.12:5050/bk-orders-api/list?id=${merchantId}&filter=${type}&page=${currentPage}&searchType=${searchType}&searchInp=${searchInp}`
+      `http://localhost:5000/bk-orders-api/list?id=${merchantId}&filter=${type}&page=${currentPage}
+      &searchType=${searchType}&searchInp=${searchInp}`
     )
       .then((res) => {
         const data = res.data.rows
@@ -63,6 +65,7 @@ const OrdersManagement = (props) => {
 
   //type跟currentPage改變觸發filter
   useEffect(() => {
+    if (!isLogin) return (window.location.href = '/login')
     getData(merchantId, type, searchType, searchInp)
   }, [currentPage, type])
 

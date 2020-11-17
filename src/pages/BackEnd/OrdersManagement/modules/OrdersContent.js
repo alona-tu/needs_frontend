@@ -70,7 +70,7 @@ const OrdersContent = (props) => {
 
   const handleSubmit = (index) => {
     Axios.put(
-      `http://122.116.38.12:5050/bk-orders-api/list?id=${merchantId}&filter=${type}`,
+      `http://localhost:5000/bk-orders-api/list?id=${merchantId}&filter=${type}`,
       formData
     ).then((res) => {
       if (!res.data.success) {
@@ -229,7 +229,7 @@ const OrdersContent = (props) => {
                           <div className="card-body d-flex align-items-center">
                             <div className="productImg">
                               <img
-                                src={`http://122.116.38.12:5050/img/products/${
+                                src={`http://localhost:5000/img/products/${
                                   prod_list.image_path.split(',')[0]
                                 }`}
                                 alt={prod_list.title}

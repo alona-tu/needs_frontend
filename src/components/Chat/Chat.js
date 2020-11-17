@@ -57,16 +57,19 @@ const Chat = (props) => {
     const data = new FormData()
     data.append('file', files[0])
     const url = 'http://localhost:5000'
-    const res = await Axios.post(url, data).catch((err) =>
-      console.log('sendImg', err)
-    )
+    const res = await Axios.post(url, data)
   }
 
   return (
     <div className="outerContainer">
       <div className="chat">
         <InfoBar storeName={storeName} showChatToggle={showChatToggle} />
-        <Messages messages={messages} name={name} image={image} />
+        <Messages
+          messages={messages}
+          name={name}
+          storeName={storeName}
+          image={image}
+        />
         <Input
           message={message}
           setMessage={setMessage}
@@ -77,5 +80,4 @@ const Chat = (props) => {
     </div>
   )
 }
-
 export default Chat

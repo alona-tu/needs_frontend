@@ -24,14 +24,16 @@ const ProductsContent = (props) => {
   const dispatch = useDispatch()
 
   const handleUnlanch = (index) => {
-    Axios.put(`url`).then((res) => {
+    Axios.put(
+      `http://localhost:5000/bk-products-api/unlaunch?id=${index}`
+    ).then((res) => {
       if (!res.data.success) {
         setAlertShow(true)
         setTimeout(() => {
           dispatch(clear())
           setAlertShow(false)
         }, 1500)
-        return dispatch(error('商品已下架'))
+        return dispatch(error('下架失敗'))
       }
       setAlertShow(true)
       getData(merchantId, type, searchType, searchInp)
@@ -39,7 +41,7 @@ const ProductsContent = (props) => {
         dispatch(clear())
         setAlertShow(false)
       }, 1500)
-      return dispatch(success('下架失敗'))
+      return dispatch(success('哭哭TT 商品已下架'))
     })
   }
 
@@ -67,7 +69,7 @@ const ProductsContent = (props) => {
               />
               <div className="productImg">
                 <img
-                  src={`http://122.116.38.12:5050/img/products/${
+                  src={`http://localhost:5000/img/products/${
                     item.image_path.split(',')[0]
                   }`}
                   alt={item.title}
@@ -86,10 +88,15 @@ const ProductsContent = (props) => {
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item href="#/action-1">編輯</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2" onClick={handleUnlanch}>
+                  <Dropdown.Item
+                    href="#/action-2"
+                    onClick={(e) => handleUnlanch(item.id)}
+                  >
                     下架
                   </Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">即時預覽</Dropdown.Item>
+                  <Dropdown.Item href={`/products/${item.id}`} target="_blank">
+                    查看商品
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Row>

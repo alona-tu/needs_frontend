@@ -10,15 +10,7 @@ $bg-gray: #cdcdcd;
 $bg-light: #f0f0f0;
 
 .merberSignup {
-  min-height: calc(100vh - 80px);
-  width: 100%;
-  background: center center no-repeat;
-  background-image: url('../../../assets/img/login/loginbg.png');
-  background-size: cover;
-  display: flex;
-  align-items: center;
-
-  .btn {
+  .btn-secondary {
     font-family: 'Noto Sans TC', sans-serif;
     font-size: 1 rem;
     font-weight: 300;
@@ -28,6 +20,9 @@ $bg-light: #f0f0f0;
     height: 60px;
     border-radius: 3px;
     text-align: center;
+  }
+  .btn:focus {
+    box-shadow: none;
   }
 
   h2,
@@ -42,66 +37,113 @@ $bg-light: #f0f0f0;
   }
 
   //區域
+  min-height: calc(100vh - 80px);
+  width: 100%;
+  background: center center no-repeat;
+  background-image: url('../../../assets/img/login/loginbg.png');
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  .wrap {
-    width: 800px;
+  .side {
+    width: 300px;
     height: 500px;
-    border-radius: 20px;
+    background-color: $primary;
+    color: $white;
+    text-align: center;
+    border-radius: 0 20px 20px 0;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-    background-color: $white;
-    display: flex;
-    .side {
-      width: 300px;
-      position: relative;
-      .logo {
-        width: 100%;
-      }
-      .signUpimg {
-        width: 90%;
-        margin-left: 15px;
+
+    .logo {
+      width: 100%;
+      margin: 70px auto;
+      img {
+        width: 50px;
+        height: 50px;
       }
     }
+    .text {
+      margin-bottom: 90px;
+      p {
+        margin-bottom: 3px;
+      }
+    }
+    a {
+      color: $white;
+      text-decoration: underline;
+      &:hover {
+        color: $danger;
+      }
+    }
+  }
 
-    .main {
-      height: 500px;
-      text-align: center;
+  .main {
+    width: 500px;
+    height: 500px;
+    background-color: $white;
+    border-radius: 20px 0 0 20px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    text-align: center;
+    .socialMedia {
+      margin-bottom: 1rem;
+      a {
+        margin-left: 4px;
+        margin-right: 4px;
+      }
+    }
+    .loginRole {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
-      text-align: center;
-      .signupInput {
-        h4 {
-          color: $secondary;
+      margin: 30px 30px 16px 0px;
+      .btn-link {
+        color: $font-gray;
+        font-weight: 400;
+        height: 25px;
+        line-height: 0;
+      }
+      button.actived {
+        color: $danger;
+        font-weight: 500;
+      }
+      .seperator {
+        // line-height: 1.25;
+        border-left: 1px solid $font-gray;
+        border-radius: 0px;
+      }
+    }
+    .signupInput {
+      h4 {
+        color: $primary;
+        margin-bottom: 16px;
+      }
+      .signupForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        input {
+          width: 300px;
+        }
+        .alertmsg {
+          font-size: 0.875rem;
+          color: $danger;
+          margin-top: -16px;
+          margin-bottom: 5px;
+        }
+        .btn {
           margin-bottom: 16px;
         }
-        .signupForm {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          input {
-            width: 300px;
-          }
-          .alertmsg {
-            font-size: 0.875rem;
-            color: $danger;
-            margin-top: -16px;
-            margin-bottom: 5px;
-          }
-          .btn {
-            margin-bottom: 16px;
-          }
-        }
+      }
 
-        p {
-          font-size: 0.875rem;
-          margin-bottom: 0;
-          a {
+      p {
+        font-size: 0.875rem;
+        margin-bottom: 0;
+        a {
+          color: $danger;
+          &:hover,
+          &:focus {
             color: $danger;
-            &:hover,
-            &:focus {
-              color: $danger;
-            }
           }
         }
       }
@@ -118,29 +160,29 @@ $bg-light: #f0f0f0;
   }
 }
 
-.signUpModal .modal-dialog {
-  text-align: center;
-  width: 400px;
-  .modal-body {
-    margin: 50px;
-    padding: 0;
-    h4 {
-      font-family: 'Noto Sans TC', sans-serif;
-      line-height: 1.75;
-      letter-spacing: 1.2px;
-      color: $secondary;
-    }
-    .btn {
-      font-family: 'Noto Sans TC', sans-serif;
-      font-size: 1 rem;
-      font-weight: 300;
-      line-height: 1.75;
-      letter-spacing: 1.2px;
-      width: 196px;
-      height: 60px;
-      border-radius: 3px;
-      text-align: center;
-      margin-top: 30px;
-    }
-  }
-}
+// .signUpModal .modal-dialog {
+//   text-align: center;
+//   width: 400px;
+//   .modal-body {
+//     margin: 50px;
+//     padding: 0;
+//     h4 {
+//       font-family: 'Noto Sans TC', sans-serif;
+//       line-height: 1.75;
+//       letter-spacing: 1.2px;
+//       color: $secondary;
+//     }
+//     .btn {
+//       font-family: 'Noto Sans TC', sans-serif;
+//       font-size: 1 rem;
+//       font-weight: 300;
+//       line-height: 1.75;
+//       letter-spacing: 1.2px;
+//       width: 196px;
+//       height: 60px;
+//       border-radius: 3px;
+//       text-align: center;
+//       margin-top: 30px;
+//     }
+//   }
+// }

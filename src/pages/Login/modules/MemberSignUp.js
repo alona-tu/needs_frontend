@@ -1,130 +1,129 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import Axios from 'axios'
-import { alertActions } from '../../../actions'
 import { Button, Form, Modal } from 'react-bootstrap'
+import { FaFacebook } from 'react-icons/fa'
+import { AiFillGooglePlusCircle, AiFillTwitterCircle } from 'react-icons/ai'
 import './MemberSignUp.scss'
+
 const MerberSignup = (props) => {
   const dispatch = useDispatch()
-  const { error } = alertActions
+  const {
+    submitted,
+    setSubmitted,
+    formData,
+    handleSetForm,
+    selectedRole,
+    setMember,
+    setMerchant,
+    setNeeds,
+    alertMsg,
+    error,
+  } = props
 
-  const [submitted, setSubmitted] = useState(false)
   const [modalSuccessShow, setModalSuccessShow] = useState(false)
-  const [formData, setFormData] = useState({})
-  const alertMsg = useSelector((state) => state.alert.message)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setSubmitted(true)
-    Axios.post(
-      `http://122.116.38.12:5050/signup-api/merchantsignup`,
-      formData
-    ).then((res) => {
-      if (!res.data.success) {
-        return dispatch(error(res.data.error))
+    Axios.post(`http://localhost:5000/signup-api/membersignup`, formData).then(
+      (res) => {
+        if (!res.data.success) {
+          return dispatch(error(res.data.error))
+        }
+        setModalSuccessShow(true)
       }
-      setModalSuccessShow(true)
-    })
+    )
   }
 
-  const handleSetForm = (e, key) => {
-    const value = e.target.value
-    setFormData({ ...formData, [key]: value })
-  }
   return (
     <>
-      <div className="merberSignup container-fluid">
-        <div className="wrap">
-          <div className="side">
-            <img
-              className="logo"
-              src={require('@assets/img/login/signup_logo.png')}
-              alt=""
-            />
-            <img
-              className="signUpimg"
-              src={require('@assets/img/login/signup_img.jpg')}
-              alt=""
-            />
+      <div className="merberSignup container-fluid d-flex">
+        <div className="main">
+          <div className="loginRole">
+            <Button
+              variant="link"
+              className={`pr-1 ${selectedRole === 'member' ? 'actived' : ''}`}
+              onClick={setMember}
+            >
+              會員
+            </Button>
+            <Button
+              variant="link"
+              className="pl-1 seperator"
+              onClick={setMerchant}
+            >
+              商家
+            </Button>
           </div>
-          <div className="main">
-            <div className="signupInput">
-              <h4>會員註冊</h4>
-              <div className="signupForm">
-                <Form onSubmit={handleSubmit}>
-                  <Form.Group controlId="name">
-                    <Form.Control
-                      type="text"
-                      placeholder="姓名"
-                      value={formData.name}
-                      onChange={(e) => handleSetForm(e, 'name')}
-                      required
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="mobile">
-                    <Form.Control
-                      type="text"
-                      placeholder="手機"
-                      value={formData.mobile}
-                      onChange={(e) => handleSetForm(e, 'mobile')}
-                      required
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="email">
-                    <Form.Control
-                      type="email"
-                      placeholder="信箱"
-                      value={formData.email}
-                      onChange={(e) => handleSetForm(e, 'email')}
-                      required
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="password">
-                    <Form.Control
-                      type="password"
-                      placeholder="密碼"
-                      value={formData.password}
-                      onChange={(e) => handleSetForm(e, 'password')}
-                      required
-                    />
-                  </Form.Group>
-                  <p className={alertMsg ? 'alertmsg' : ''}>{alertMsg}</p>
-                  <Button variant="primary" type="submit">
-                    SIGNUP
-                  </Button>
-                </Form>
-                <p>
-                  <a href="#">會員政策與規則</a>
-                </p>
-                <p>
-                  點擊註冊代表您同意NEEDS之<a href="#">會員條款</a>與
-                  <a href="#">客戶隱私權條款</a>
-                </p>
-              </div>
+          <div className="signupInput">
+            <h4>歡迎加入NEEDS！</h4>
+            <div className="socialMedia">
+              <a href="">
+                <FaFacebook size="44px" color="#3b5998" />
+              </a>
+              <a href="">
+                <AiFillGooglePlusCircle size="50px" color="#dd4b39" />
+              </a>
+              <a href="">
+                <AiFillTwitterCircle size="50px" color="#26a6d1" />
+              </a>
+            </div>
+            <div className="signupForm">
+              <Form noValidate onSubmit={handleSubmit}>
+                <Form.Group>
+                  <Form.Control
+                    type="email"
+                    required
+                    placeholder="手機/信箱"
+                    value={formData.username}
+                    onChange={(e) => handleSetForm(e, 'email')}
+                  />
+                </Form.Group>
+                <Form.Group controlId="password">
+                  <Form.Control
+                    type="password"
+                    required
+                    placeholder="密碼"
+                    value={formData.password1}
+                    onChange={(e) => handleSetForm(e, 'password1')}
+                  />
+                </Form.Group>
+                <Form.Group controlId="password">
+                  <Form.Control
+                    type="password"
+                    required
+                    placeholder="密碼"
+                    value={formData.password2}
+                    onChange={(e) => handleSetForm(e, 'password2')}
+                  />
+                </Form.Group>
+                <p className={alertMsg ? 'alertmsg' : ''}>{alertMsg}</p>
+                <Button variant="secondary" type="submit">
+                  SIGN UP
+                </Button>
+              </Form>
+              <p>
+                點擊註冊代表您同意NEEDS之<a href="">會員條款</a>與
+                <a href="">客戶隱私權條款</a>
+              </p>
             </div>
           </div>
         </div>
-        <Modal
-          aria-labelledby="contained-modal-title-vcenter"
-          className="signUpModal"
-          centered
-          show={modalSuccessShow}
-          onHide={() => setModalSuccessShow(false)}
-        >
-          <Modal.Body>
-            <h4>註冊成功</h4>
-            <h4>馬上開始購物</h4>
-            <Button
-              onClick={() => {
-                setModalSuccessShow(false)
-                props.history.push('/login')
-              }}
-            >
-              出發
-            </Button>
-          </Modal.Body>
-        </Modal>
+        <div className="side">
+          <div className="logo">
+            <img
+              src={require('@assets/img/logo/logo_icon_whiite.png')}
+              alt=""
+            />
+          </div>
+          <div className="text">
+            <p>已經是會員了？</p>
+            <p>立即登入</p>
+          </div>
+          <Link to="/login">LOGIN</Link>
+        </div>
       </div>
     </>
   )

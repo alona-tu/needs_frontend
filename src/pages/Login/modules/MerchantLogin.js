@@ -16,7 +16,6 @@ const MerchantLogin = (props) => {
     setMember,
     setMerchant,
     setNeeds,
-    logout,
     alertMsg,
   } = props
 

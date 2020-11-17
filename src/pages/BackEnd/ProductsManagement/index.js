@@ -25,14 +25,16 @@ const ProductsManagement = (props) => {
   const [searchType, setSearchType] = useState(0)
   const [searchInp, setSearchInp] = useState('')
 
-  // const merchantId = useSelector((state) => state.authentication.user.user.id)
-  const [merchantId, setMerchantId] = useState(12)
+  const isLogin = useSelector((state) => state.authentication.loggedIn)
+  const merchantId = useSelector((state) => state.authentication.user.user.id)
+  // const [merchantId, setMerchantId] = useState(12)
   const [data, setData] = useState([])
   const [pageItems, setPageItems] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
 
   const [categories, setCategories] = useState([])
+  const [specCount, setSpecCount] = useState({ count: 1 })
   const [formData, setFormData] = useState({})
   const [imgList, setImgList] = useState([])
   const [preview, setPreview] = useState([])
@@ -45,7 +47,7 @@ const ProductsManagement = (props) => {
   }
 
   const getCategories = () => {
-    Axios.get(`http://122.116.38.12:5050/get-categories-api`).then((res) => {
+    Axios.get(`http://localhost:5000/get-categories-api`).then((res) => {
       const data = res.data
       setCategories(data)
     })
@@ -54,7 +56,8 @@ const ProductsManagement = (props) => {
   const getData = (merchantId, type) => {
     //跟server拿資料
     Axios.get(
-      `http://122.116.38.12:5050/bk-products-api/list?id=${merchantId}&filter=${type}&page=${currentPage}`
+      `http://localhost:5000/bk-products-api/list?id=${merchantId}&filter=${type}&page=${currentPage}
+      &searchType=${searchType}&searchInp=${searchInp}`
     )
       .then((res) => {
         const data = res.data.rows
@@ -83,9 +86,14 @@ const ProductsManagement = (props) => {
       })
   }
 
+  const createSpec = () => {
+    setSpecCount({ count: specCount.count + 1 })
+  }
+
   //type跟currentPage改變觸發filter
   useEffect(() => {
-    getData(merchantId, type)
+    if (!isLogin) return (window.location.href = '/login')
+    getData(merchantId, type, searchType, searchInp)
   }, [currentPage, type])
 
   return (
@@ -109,6 +117,7 @@ const ProductsManagement = (props) => {
               setShowAddProd={setShowAddProd}
               showAddCourse={showAddCourse}
               setShowAddCourse={setShowAddCourse}
+              categories={categories}
             />
             <ProductsContent
               data={data}
@@ -154,6 +163,8 @@ const ProductsManagement = (props) => {
               alerMsg={alerMsg}
               alerType={alerType}
               getCategories={getCategories}
+              specCount={specCount}
+              createSpec={createSpec}
             />
             <AddCourse
               showAddCourse={showAddCourse}
@@ -177,6 +188,8 @@ const ProductsManagement = (props) => {
               alerMsg={alerMsg}
               alerType={alerType}
               getCategories={getCategories}
+              specCount={specCount}
+              createSpec={createSpec}
             />
           </Container>
         </Col>

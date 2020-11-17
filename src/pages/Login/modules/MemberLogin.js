@@ -19,7 +19,7 @@ const MemberLogin = (props) => {
     login,
     alertMsg,
   } = props
-  console.log('login', login)
+
   return (
     <>
       <div className="memberLogin container-fluid">
@@ -59,7 +59,7 @@ const MemberLogin = (props) => {
           <div className="loginInput">
             <h4
               onClick={() => {
-                setUsername('sherry@gmail.com')
+                setUsername('alona.tjy@gmail.com')
                 setPassword('1234')
               }}
             >

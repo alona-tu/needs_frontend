@@ -18,7 +18,7 @@ const MerchantSignUp = (props) => {
     e.preventDefault()
     setSubmitted(true)
     Axios.post(
-      `http://122.116.38.12:5050/signup-api/merchantsignup`,
+      `http://localhost:5000/signup-api/merchantsignup`,
       formData
     ).then((res) => {
       if (!res.data.success) {
@@ -34,7 +34,7 @@ const MerchantSignUp = (props) => {
   }
   return (
     <>
-      <div className="merchantSignup container-fluid">
+      <div className="merchantSignup container-fluid justify-content-center">
         <div className="wrap">
           <div className="side">
             <img
@@ -50,7 +50,18 @@ const MerchantSignUp = (props) => {
           </div>
           <div className="main">
             <div className="signupInput">
-              <h4>商家註冊</h4>
+              <h4
+                onClick={() =>
+                  setFormData({
+                    name: 'Pika Chu',
+                    mobile: '0911-123-456',
+                    email: 'pchu@qmail.com',
+                    password: '1234',
+                  })
+                }
+              >
+                商家註冊
+              </h4>
               <div className="signupForm">
                 <Form onSubmit={handleSubmit}>
                   <Form.Group controlId="name">

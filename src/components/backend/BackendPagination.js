@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { Row, Pagination } from 'react-bootstrap'
 
 const BackendPagination = (props) => {

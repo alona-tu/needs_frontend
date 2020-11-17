@@ -7,7 +7,6 @@ import Axios from 'axios'
 function AddAdsModal() {
   const [show, setShow] = useState(false)
   const [titleOption, setTitleOption] = useState('')
-  const [fcTitle, setFcTitle] = useState('')
 
   const handleClose = () => {
     setShow(false)
@@ -19,6 +18,7 @@ function AddAdsModal() {
     if (key === 'file') {
       const file = e.target.files[0]
       postData.append('file', file)
+      console.log(file)
       const img = document.createElement('img')
       img.src = URL.createObjectURL(file)
       img.width = 220
@@ -30,6 +30,7 @@ function AddAdsModal() {
       postData.set(key, value)
     }
   }
+
   const refreshPage = () => {
     window.location.reload()
   }
@@ -39,6 +40,18 @@ function AddAdsModal() {
     handleClose()
     refreshPage()
     Axios.post(`http://localhost:5000/dashboard/addnewads`, postData).then(
+      (response) => {
+        console.log(response.data.url)
+      }
+    )
+
+    const fcData = {
+      title: document.form1.title.value,
+      start: document.form1.startdate.value,
+      end: document.form1.enddate.value,
+    }
+    console.log('fcdata', fcData)
+    Axios.post(`http://localhost:5000/dashboard/fcpost`, fcData).then(
       (response) => {
         console.log(response.data.url)
       }
@@ -63,6 +76,7 @@ function AddAdsModal() {
       setTitleOption(titleOption)
     })
   }
+
   useEffect(() => {
     getTitle()
   }, [])
@@ -115,7 +129,9 @@ function AddAdsModal() {
                     type="text"
                     placeholder="發大財"
                     name="title"
-                    onChange={(e) => handleSetForm(e, 'title')}
+                    onChange={(e) => {
+                      handleSetForm(e, 'title')
+                    }}
                   />
                   {/* <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
@@ -205,9 +221,6 @@ function AddAdsModal() {
             </Button>
           </Modal.Footer>
         </Form>
-        <div className="d-none">
-          <AdsCalendar fcTitle={fcTitle} />
-        </div>
       </Modal>
     </>
   )

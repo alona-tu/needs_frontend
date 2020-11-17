@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { Navbar, Nav, NavDropdown, Container, Row } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { AiOutlineShoppingCart, AiOutlineSearch } from 'react-icons/ai'
 import { connect } from 'react-redux'
@@ -8,8 +8,8 @@ import { connect } from 'react-redux'
 import { userActions } from '../actions'
 import '../styles/navbar.scss'
 import logo from '../images/logo.png'
-
 import SerarchBox from './SearchBox/SerarchBox'
+import NavProdCat from './NavPordCat'
 
 function HomeNavbar(props) {
   //從actions中引入登出函式
@@ -24,42 +24,104 @@ function HomeNavbar(props) {
     switch (loginUser.user.role) {
       case 'member':
         return (
-          <Nav.Link
-            href=""
-            onClick={(e) => {
-              e.preventDefault()
-              logout()
-            }}
-          >
-            {loginUser.user.username}會員登出
-          </Nav.Link>
+          <>
+            <div className="memberActions">
+              <div className="memberAvatar">
+                <img
+                  src={`http://localhost:5000/img/avatar/${loginUser.user.avatar}`}
+                  alt=""
+                />
+              </div>
+              <div className="actionsList">
+                <div className="actionsItem memberName">
+                  Hi, {loginUser.user.username}
+                </div>
+                <div className="actionsItem">
+                  <Link to="/member/card">
+                    <span>會員中心</span>
+                  </Link>
+                </div>
+                <div className="actionsItem">
+                  <Link to="/member/like">
+                    <span>關注清單</span>
+                  </Link>
+                </div>
+                <div className="actionsItem">
+                  <Link
+                    to=""
+                    onClick={(e) => {
+                      e.preventDefault()
+                      logout()
+                    }}
+                  >
+                    <span>登出</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </>
         )
       case 'merchant':
         return (
           <>
-            <Nav.Link
-              href=""
-              onClick={(e) => {
-                e.preventDefault()
-                logout()
-              }}
-            >
-              {loginUser.user.username}商家登出
-            </Nav.Link>
+            <div className="merchantActions">
+              <div className="merchantAvatar">
+                <img
+                  src={`http://localhost:5000/img/brands/${loginUser.user.brand_img}`}
+                  alt=""
+                />
+              </div>
+              <div className="actionsList">
+                <div className="actionsItem merchantName">
+                  Hi, {loginUser.user.username}
+                </div>
+                <div className="actionsItem">
+                  <Link to={`/${loginUser.user.brand_en_name}`} target="_blank">
+                    <span>品牌首頁</span>
+                  </Link>
+                </div>
+                <div className="actionsItem">
+                  <Link to="/customer-backend" target="_blank">
+                    <span>品牌管理中心</span>
+                  </Link>
+                </div>
+                <div className="actionsItem">
+                  <Link
+                    to=""
+                    onClick={(e) => {
+                      e.preventDefault()
+                      logout()
+                    }}
+                  >
+                    <span>登出</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </>
         )
       default:
         return (
           <>
-            <Nav.Link
-              href=""
-              onClick={(e) => {
-                e.preventDefault()
-                logout()
-              }}
-            >
-              {loginUser.user.uername}後台登出
-            </Nav.Link>
+            <div className="needsActions">
+              <span className="actionsItem needsName">NEEDS特務</span>
+              <div className="actionsList">
+                <div className="actionsItem needsName">
+                  Hi, {loginUser.user.username}
+                </div>
+                <div className="actionsItem">
+                  <Link
+                    to=""
+                    onClick={(e) => {
+                      e.preventDefault()
+                      logout()
+                    }}
+                  >
+                    <span>登出</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </>
         )
     }
@@ -80,8 +142,13 @@ function HomeNavbar(props) {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="">
+              <div className="prodList">
+                <Nav.Link href="/productlist">所有分類</Nav.Link>
+                <NavProdCat />
+              </div>
+            </Nav>
             <Nav className="mr-auto">
-              <Nav.Link href="/productlist">所有分類</Nav.Link>
               <Nav.Link href="/articles">文章列表</Nav.Link>
               <Nav.Link href="/investment">成為商家</Nav.Link>
             </Nav>
@@ -110,11 +177,8 @@ function HomeNavbar(props) {
               )}
             </Nav>
             <Nav>
-              <div className="d-flex">
-                <AiOutlineSearch
-                  size="20px"
-                  style={{ transform: 'translateY(8px)' }}
-                />
+              <div className="d-flex align-items-center position-relative">
+                <AiOutlineSearch size="20px" />
                 <SerarchBox />
               </div>
             </Nav>

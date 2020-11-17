@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 
@@ -52,7 +52,7 @@ const Product = (props) => {
         <div className="textArea">
           <div className="merchantName">{brand_name}</div>
           <div className="title">{title}</div>
-          <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-center mb-2">
             <div className="priceDiscount">
               NT$ {sale_price ? sale_price : price}
             </div>
@@ -60,8 +60,7 @@ const Product = (props) => {
           </div>
           <div className="d-flex justify-content-center">
             <Button
-              className="cart"
-              variant="danger"
+              className="btn btn-sm btn-danger cart"
               onClick={() =>
                 dispatch(
                   addToCartAction({
@@ -87,6 +86,7 @@ const Product = (props) => {
               ) : (
                 <AiOutlineHeart
                   size={40}
+                  color="#d44f44"
                   onClick={() =>
                     dispatch(
                       addToFavoritesItem({ id, title, image_path, price })

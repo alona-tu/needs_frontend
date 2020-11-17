@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { Row, Dropdown, Form, Modal, Button } from 'react-bootstrap'
+import React from 'react'
+// import { useSelector } from 'react-redux'
+import { Modal, Button } from 'react-bootstrap'
 
 const AddCourse = (props) => {
   const { showAddCourse, setShowAddCourse } = props

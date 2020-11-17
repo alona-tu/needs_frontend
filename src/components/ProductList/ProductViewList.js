@@ -52,7 +52,7 @@ function ProductViewList(props) {
           <div className="merchantName">{brand_name}</div>
           <div className="title">{title}</div>
           <div className="outline">{outline}</div>
-          <div className="d-flex justify-content-center">
+          <div className="d-flex  mb-2">
             <div className="priceDiscount">
               NT$ {sale_price ? sale_price : price}
             </div>
@@ -80,6 +80,7 @@ function ProductViewList(props) {
               ) : (
                 <AiOutlineHeart
                   size={40}
+                  color="#d44f44"
                   onClick={() =>
                     dispatch(
                       addToFavoritesItem({ id, title, image_path, price })

@@ -26,7 +26,7 @@ const MemInformTwo = () => {
 
   return (
     <>
-      <div className="meminform">
+      <div className="memInformTwo">
         <div className="maincard">
           <p className="font-m">
             <div className="d-flex wrapper">

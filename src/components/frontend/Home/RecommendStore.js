@@ -1,7 +1,9 @@
 import React from 'react'
 import { Container, Col, Row, Card, Button } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom'
 
 function RecommendStore() {
+  const history = useHistory()
   return (
     <>
       <Container className="py-5">
@@ -21,7 +23,8 @@ function RecommendStore() {
               <Card.Body>
                 <div className="store-info-wrapper">
                   <div className="store-info-inner">
-                    <div className="store-title">小山坡</div>
+                    <div className="store-title" 
+                    >禮拜文房具</div>
                     <div className="store-follower">關注人數：1246</div>
                   </div>
                   <Button className="store-follower-btn">+關注</Button>
@@ -31,6 +34,8 @@ function RecommendStore() {
                     <img
                       src={require('../../../pages/Home/images/recommend-store-01.jpg')}
                       alt=""
+                      style={{cursor: 'pointer'}}
+                      onClick={()=>{history.push('/homepage/ToolsLiveBy/3')}} 
                     />
                   </div>
                   <div className="store-img-right">
@@ -60,7 +65,7 @@ function RecommendStore() {
                     <div className="store-title">annieeinna_hs</div>
                     <div className="store-follower">關注人數：1246</div>
                   </div>
-                  <Button className="store-follower-btn">+關注</Button>
+                  <Button className="store-follower-btn" >+關注</Button>
                 </div>
                 <div className="store-img">
                   <div className="store-img-left">
@@ -129,3 +134,5 @@ function RecommendStore() {
 }
 
 export default RecommendStore
+
+// ./pages/MerchantHome/ToolsLiveBy3

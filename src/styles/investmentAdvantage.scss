@@ -48,6 +48,9 @@ $bg-light: #f0f0f0;
     .text {
       margin-left: 2%;
       margin-right: 2%;
+      h5 {
+        color: $primary;
+      }
       p {
         color: $font-gray;
         margin-bottom: 3px;

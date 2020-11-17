@@ -13,7 +13,7 @@ $shadow: #e7e7e7;
     width: 155px;
     height: 550px;
 
-    
+
 
 
     .avatar {
@@ -40,19 +40,23 @@ $shadow: #e7e7e7;
         .photoicon {
             margin-right: 0px;
         }
-        
+
     }
-    
-        .photoicon{
-            padding: 0px;
-        }
-  
+
+    .photoicon {
+        padding: 0px;
+    }
+
 }
 
-.memsidebar a:hover {
-    color: $danger;
-}
+.memsidebar a {
+    color: $primary;
 
-.memsidebar a:active {
-    color: $danger;
+    &:hover {
+        color: $danger;
+    }
+
+    &:active {
+        color: $danger;
+    }
 }

@@ -28,6 +28,7 @@ const SideFilter = (props) => {
 
   const checkUseEcoin = () => {
     setEcoin(!ecoin)
+    window.scrollTo(0, 450)
   }
 
   return (
