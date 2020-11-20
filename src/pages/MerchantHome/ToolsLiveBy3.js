@@ -10,6 +10,9 @@ import axios from 'axios'
 import { GiPositionMarker } from 'react-icons/gi';
 import { AiTwotoneShop,AiTwotonePhone } from "react-icons/ai";
 
+import { css } from "@emotion/core";
+import RiseLoader from "react-spinners/DotLoader";
+
 //components
 import Sec1Info from './component/Sec1Info'
 import Sec2MainPro from './component/Sec2MainPro'
@@ -17,7 +20,7 @@ import Sec3ProductList from './component/Sec3ProductList'
 import Sec4Activities from './component/Sec4Activities'
 import Sec5Story from './component/Sec5Story'
 
-const ToolsLiveBy3 = (props) =>{
+const Pommedepin111 = (props) =>{
   const [error,setError] = useState(null)
   const [posts, setPosts] = useState([])
 
@@ -40,6 +43,8 @@ const ToolsLiveBy3 = (props) =>{
   const indexOfLastPost = currentPage * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
+
+  const [ dataLoading,setDataLoading ] = useState(true)
 
 
 
@@ -98,7 +103,6 @@ const ToolsLiveBy3 = (props) =>{
   
     }catch(error){
       setError("oops! error")
-      // setTimeout(()=>setDataLoading(false),500)
     }
   }
   
@@ -152,34 +156,42 @@ const ToolsLiveBy3 = (props) =>{
 
     getMerchantProduct()
     getBrandInfo()
+    setTimeout(()=>setDataLoading(false),500)
+    window.scrollTo(0, 0)
   }, [])
 
 
-    return(
-        <>
-          <div className="Narrative">
+  const override = css`
+  display: block;
+  margin: 300px auto;
+  border-color:#D44F44;
+`;
+
+  const loading = (
+    <>
+      <div className="template">
+      <Col className="offset-2" xs={10}>
+      <div className="sweet-loading">
+          <RiseLoader
+            css={override}
+            size={90}
+            color={"#D44F44"}
+            // loading={this.state.loading}
+          />
+        </div>
+      </Col>
+      </div> 
+    </>
+  )
+
+  const display = (
+    <>
+      <div className="Narrative">
             
             <Sec1Info
               bgColor={bgColor}
               thisMerchantBrandInfo={thisMerchantBrandInfo}
             />
-
-
-            
-            {/* <div className="sec2">
-              <div className="d-flex justify-content-between m-auto">
-              <div className="product-bg-pic"></div>
-              <div className="d-flex flex-column wrapper">
-              <h2>本週主打</h2>
-              <h4>巴川紙68磅筆記本</h4>
-              <div className="product-sml-pic"></div>
-              <p className="sml">台灣製造安心有保障，精選68磅優良米色巴川紙，紙質不易透，可適用於鋼筆書寫攤平書寫更便利，典雅燙金點綴，是手帳愛好者不可錯過的內頁之一。</p>
-              <h2>NT$780</h2>
-              <button className="btn">加入購物車</button>
-              </div>
-              </div>
-              
-            </div> */}
 
             <Sec2MainPro 
               products={products}
@@ -187,58 +199,25 @@ const ToolsLiveBy3 = (props) =>{
             />
 
             <Sec3ProductList />
-          
-
-            {/* <div className="sec4">
-                
-              <div className="activities-wrapper d-flex align-items-end m-auto">
-              <div className="activities-img"></div>
-                <div className="text d-flex flex-column justify-content-between my-auto">
-                      <h2>玩浮水畫 縫中式冊子【 1 人成團】</h2>
-                      <h4>課程日期：</h4>
-                      <p>2020/11/24(二)14:00~16:00</p>
-                      <p>2020/11/26(四)14:00~16:00</p>
-                      <h4>地點：</h4>
-                      <p>來本冊子工作室</p>
-                      <p>苗栗市中正路1381號 (協和醫院旁)</p>
-                      <button className="activity-btn rounded">立即報名</button>
-                    </div>
-              </div>
-            </div> */}
+                   
             <Sec4Activities
             mainActivitiesId={mainActivitiesId}
             activities={activities}
              />
-
-            {/* <div className="sec5 p-5">
-
-            <div className="m-auto">
-              <div className=" underline-wrapper">
-              <div className="underline ml-5">
-              <h2>品牌故事</h2>
-              </div>
-              </div>
-
-              <div className="d-flex adjust">
-              <div className="brandStory_img"></div>
-              <div className=" col-6 text-wrapper ml-5">
-              <h4>
-                愛治文具房-充滿文具的房間 愛治是我奶奶的名字。
-
-                小時候因為父母忙碌也有段時間沒有住在一起，因此奶奶教了我許多生活的道理，處事的方法。溫暖待人是最重要的。今年我的奶奶九十歲了還是很健康的陪在我們家人的身邊：） 希望這家生活文具店能夠像奶奶一樣一直一直在彰化陪著大家走下去。
-              </h4>
-              </div>
-
-              </div>
-              </div>
-
-            </div> */}
+           
             <Sec5Story 
             thisMerchantBrandInfo={thisMerchantBrandInfo}
             
             />
           </div>
+    </>
+  )
+
+
+    return(
+        <>
+          {dataLoading ? loading : display}
         </>
     )
 }
-export default ToolsLiveBy3
+export default Pommedepin111

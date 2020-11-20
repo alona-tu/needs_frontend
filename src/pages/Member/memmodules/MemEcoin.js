@@ -49,11 +49,11 @@ const MemEcoin = () => {
                   <p className="font-s">代幣查詢</p>
                 </div>
               </Link>
-              <Link href="#" className="col-2 d-flex topsidebox">
+              {/* <Link href="#" className="col-2 d-flex topsidebox">
                 <div className="m-auto">
                   <p className="font-s">發放紀錄</p>
                 </div>
-              </Link>
+              </Link> */}
             </div>
           </div>
           {memecoin.map((item, index) => {

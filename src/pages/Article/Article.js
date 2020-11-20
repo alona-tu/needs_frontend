@@ -75,7 +75,7 @@ const Article = (props) => {
                 </h5>
               </div>
 
-              <dvi className="classAritcle">
+              <div className="classAritcle">
                 <h5
                   className="mb-2 aritcleItem"
                   style={{
@@ -85,7 +85,7 @@ const Article = (props) => {
                 >
                   精選文章
                 </h5>
-              </dvi>
+              </div>
             </div>
             <div className="articleItems ">
               {changeArticle === '1' ? lastestArticle : <ArticleClassic />}

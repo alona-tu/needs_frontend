@@ -51,14 +51,25 @@ const Product = (props) => {
         </Link>
         <div className="textArea">
           <div className="merchantName">{brand_name}</div>
-          <div className="title">{title}</div>
+          <Link
+            to={`/products/${id}?room=${brand_en_name}`}
+            className="text-decoration-none"
+            style={{ color: '#323232' }}
+            onClick={() =>
+              dispatch(
+                addToCartAction({ id, title, image_path, price, units: 1 })
+              )
+            }
+          >
+            <div className="title ">{title}</div>
+          </Link>
           <div className="d-flex justify-content-center mb-2">
             <div className="priceDiscount">
               NT$ {sale_price ? sale_price : price}
             </div>
             <div className="price">{sale_price ? ' NT$ ' + price : ''}</div>
           </div>
-          <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-center mb-1">
             <Button
               className="btn btn-sm btn-danger cart"
               onClick={() =>

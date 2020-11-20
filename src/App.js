@@ -19,7 +19,7 @@ import MemberInformTwo from './pages/Member/MemberInformTwo'
 import MemberInformThree from './pages/Member/MemberInformThree'
 import MemberEcoin from './pages/Member/MemberEcoin'
 import MemberComment from './pages/Member/MemberComment'
-// import MemberQA from './pages/Member/MemberQA'
+import MemberQA from './pages/Member/MemberQA'
 import Investment from './pages/Investment'
 import Article from './pages/Article/Article'
 import ProductList from './pages/ProductList/ProductList'
@@ -217,11 +217,11 @@ function App(props) {
             component={MemberComment}
             layout="FRONT_END_NAV"
           />
-          {/* <DynamicLayoutRoute
+          <DynamicLayoutRoute
             path="/member/QA"
             component={MemberQA}
             layout="FRONT_END_NAV"
-          /> */}
+          />
           <DynamicLayoutRoute
             // exact
             path="/homepage/pommedepin111/12"

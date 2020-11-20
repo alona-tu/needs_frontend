@@ -9,7 +9,6 @@ const ProductSideBar = (props) => {
   const toggleClassLinkStyle = (index) => {
     setIsActive({ CateIndex: index })
   }
-  console.log(isActive)
 
   return (
     <>

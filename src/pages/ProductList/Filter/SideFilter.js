@@ -21,8 +21,8 @@ const SideFilter = (props) => {
   }
 
   const onSliderChange = (price) => {
-    console.log(price[0])
-    console.log(price[1])
+    // console.log(price[0])
+    // console.log(price[1])
     setFilterPrice(price)
   }
 

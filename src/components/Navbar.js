@@ -76,7 +76,10 @@ function HomeNavbar(props) {
                   Hi, {loginUser.user.username}
                 </div>
                 <div className="actionsItem">
-                  <Link to={`/${loginUser.user.brand_en_name}`} target="_blank">
+                  <Link
+                    to={`/homepage/${loginUser.user.brand_en_name}/${loginUser.user.id}`}
+                    target="_blank"
+                  >
                     <span>品牌首頁</span>
                   </Link>
                 </div>

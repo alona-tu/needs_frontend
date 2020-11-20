@@ -5,7 +5,7 @@ import './MemShop.scss'
 import { useSelector } from 'react-redux'
 import { BsQuestionSquareFill } from 'react-icons/bs'
 
-import { Button, Collapse } from 'react-bootstrap'
+import { Button, Collapse, Accordion, Card } from 'react-bootstrap'
 import { GoPlusSmall } from 'react-icons/go'
 
 const MemQA = (props) => {
@@ -45,30 +45,27 @@ const MemQA = (props) => {
           </div>
 
           <div className="container questionSec">
-            <div className="questionContent">
+            <div className="questionContent mt-3">
               {memqa.map((item, index) => {
                 return (
-                  <div key={item.question}>
-                    <Button variant="light" onClick={handleOpen}>
-                      <span>{item.question}</span>
-                      <span>
-                        <GoPlusSmall />
-                      </span>
-                    </Button>
-                    <Collapse in={open[false] || false}>
-                      <div>
-                        <div
-                          className="collapseContent"
-                          dangerouslySetInnerHTML={{ __html: item.answer }}
-                        ></div>
-                      </div>
-                    </Collapse>
-                  </div>
+                  <Accordion>
+                    <Card>
+                      <Card.Header>
+                        <Accordion.Toggle
+                          as={Button}
+                          variant="link"
+                          eventKey="0"
+                        >
+                          {item.question}
+                        </Accordion.Toggle>
+                      </Card.Header>
+                      <Accordion.Collapse eventKey="0">
+                        <Card.Body>{item.answer}</Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+                  </Accordion>
                 )
               })}
-              <div>
-                <Button variant="secondary">查看更多問與答 →</Button>
-              </div>
             </div>
           </div>
         </div>

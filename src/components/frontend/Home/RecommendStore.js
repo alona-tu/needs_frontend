@@ -24,6 +24,8 @@ function RecommendStore() {
                 <div className="store-info-wrapper">
                   <div className="store-info-inner">
                     <div className="store-title" 
+                    style={{cursor: 'pointer'}}
+                    onClick={()=>{history.push('/homepage/ToolsLiveBy/3')}}
                     >禮拜文房具</div>
                     <div className="store-follower">關注人數：1246</div>
                   </div>
@@ -62,7 +64,10 @@ function RecommendStore() {
               <Card.Body>
                 <div className="store-info-wrapper">
                   <div className="store-info-inner">
-                    <div className="store-title">annieeinna_hs</div>
+                    <div className="store-title"
+                    style={{cursor: 'pointer'}}
+                    onClick={()=>{history.push('/homepage/Pommedepin111/12')}}
+                    >annieeinna_hs</div>
                     <div className="store-follower">關注人數：1246</div>
                   </div>
                   <Button className="store-follower-btn" >+關注</Button>
@@ -72,6 +77,8 @@ function RecommendStore() {
                     <img
                       src={require('../../../pages/Home/images/recommend-store-04.jpg')}
                       alt=""
+                      style={{cursor: 'pointer'}}
+                      onClick={()=>{history.push('/homepage/Pommedepin111/12')}}
                     />
                   </div>
                   <div className="store-img-right">

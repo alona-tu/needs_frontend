@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import ScrollParallax from 'rc-scroll-anim/lib/ScrollParallax';
+import { Container } from 'react-bootstrap'
+
 function Sec4Activities(props){
   const { mainActivitiesId , activities } = props
     return(
-      <div className="sec4">
+      
+        <div className="sec4">
+        <Container>
       { mainActivitiesId>0 && activities.filter(activity => activity.id == mainActivitiesId)
                   .map((activity, index) => {
                     return (
@@ -32,7 +36,9 @@ function Sec4Activities(props){
           }
            )
       }
+      </Container>
           </div>
+      
     )
 }
 export default Sec4Activities

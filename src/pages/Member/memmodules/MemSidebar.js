@@ -23,6 +23,8 @@ const MemSidebar = (props) => {
   const isLogin = useSelector((state) => state.authentication.loggedIn)
   const loginUser = useSelector((state) => state.authentication.user)
 
+  const userSess = JSON.parse(sessionStorage.getItem('user'))
+
   const getData = async (val) => {
     let url = `http://localhost:5000/member?id=${val}`
     const res = await axios.get(url).catch((err) => console.log('Error'.err))
@@ -38,19 +40,24 @@ const MemSidebar = (props) => {
   }
 
   const sendAvatarToNodejs = (e) => {
-    // e.preventDefault()
+    e.preventDefault()
     // const formData = new FormData()
     // console.log('props.match.params.id', props.match.params.id)
     let url = `http://localhost:5000/member/upload?id=${id}`
-    try {
-      axios.post(url, formData)
-    } catch (err) {
-      if (err.response.status === 500) {
-        console.log('伺服器有點問題')
-      } else {
-        console.log(err.response.data.msg)
-      }
-    }
+    axios
+      .post(url, formData)
+      .then((res) => {
+        userSess.user.avatar = res.data.avatar
+        sessionStorage.setItem('user', JSON.stringify(userSess))
+        window.location.href = '/member/card'
+      })
+      .catch((err) => {
+        if (err.response.status === 500) {
+          console.log('伺服器有點問題')
+        } else {
+          console.log(err.response.data.msg)
+        }
+      })
   }
 
   useEffect(() => {
@@ -73,9 +80,12 @@ const MemSidebar = (props) => {
         />
 
         <div className="d-flex justify-content-end mr-3 mt-1">
-          <Button className="photoicon" variant="primary" onClick={handleShow}>
+          <Button
+            className="photoicon p-1"
+            variant="primary"
+            onClick={handleShow}
+          >
             <MdAddAPhoto />
-            更換頭貼
           </Button>
 
           <Modal show={show} onHide={handleClose} animation={false}>
@@ -100,7 +110,7 @@ const MemSidebar = (props) => {
                   type="file"
                   name="filename"
                   id="filename"
-                  variant="secondary"
+                  variant="primary"
                   onClick={(e) => updateAvatar(e)}
                 >
                   換美美頭貼
@@ -180,7 +190,7 @@ const MemSidebar = (props) => {
               </div>
             </Link>
           </div>
-          {/* <div className="font-s">
+          <div className="font-s">
             <Link to="/member/QA">
               <div className="d-flex  wrapper">
                 <div className="icons">
@@ -189,7 +199,7 @@ const MemSidebar = (props) => {
                 常見問題
               </div>
             </Link>
-          </div> */}
+          </div>
         </div>
       </div>
     </>

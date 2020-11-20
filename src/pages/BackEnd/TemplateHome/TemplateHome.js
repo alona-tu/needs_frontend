@@ -99,7 +99,7 @@ const updateFavToLocalStorage = function (item) {
         <Col className="offset-2" xs={10}>
           <div className="container-fluid w-80">
             <h4 className="mt-4">主題</h4>
-            <Button className="mt-4 btn-light" onClick={()=>{props.history.push('/homepage/Pommedepin111')}}>
+            <Button className="mt-4 btn-light" onClick={()=>{props.history.push('/homepage/Pommedepin111/12')}}>
               <MdVisibility /> 查看目前主頁
             </Button>
             <hr />

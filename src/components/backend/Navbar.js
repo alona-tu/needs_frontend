@@ -157,7 +157,11 @@ function Navbar() {
                     <div className="dropdown-divider"> </div>
                     <Dropdown.Item>
                       <Link
-                        to={isLogin ? `/${loginUser.user.brand_en_name}` : ''}
+                        to={
+                          isLogin
+                            ? `/homepage/${loginUser.user.brand_en_name}/${loginUser.user.id}`
+                            : ''
+                        }
                       >
                         <i class="fas fa-home pr-2"></i>品牌首頁
                       </Link>

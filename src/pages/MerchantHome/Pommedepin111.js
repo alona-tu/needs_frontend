@@ -156,8 +156,8 @@ const Pommedepin111 = (props) =>{
 
     getMerchantProduct()
     getBrandInfo()
-
     setTimeout(()=>setDataLoading(false),500)
+    window.scrollTo(0, 0)
   }, [])
 
 

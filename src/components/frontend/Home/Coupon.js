@@ -87,8 +87,8 @@ function Coupon() {
           setCouponCoverUrl1(couponCoverUrl1)
           couponRowArray1.push(
             <>
-              <Col xs={12} style={{ maxWidth: '22.2%' }}>
-                <div className="promo3">
+              <Col xs={12} md={4} className="promo-rwd">
+                <div className="promo1">
                   <img src={couponImgUrl1} alt="" />
                 </div>
                 <div className="promo-info">
@@ -120,12 +120,12 @@ function Coupon() {
           setCouponCoverUrl2(couponCoverUrl2)
           couponRowArray2.push(
             <>
-              <Col xs={12} style={{ maxWidth: '22.2%' }}>
-                <div className="promo3">
+              <Col xs={12} md={4} className="promo-rwd">
+                <div className="promo2">
                   <img src={couponImgUrl2} alt="" />
                 </div>
                 <div className="promo-info">
-                  <div className="promo-title">{coupon2TitleArray[i]}</div>
+                  <div className="promo-title">{coupon3TitleArray[i]}</div>
                   <div className="promo-brand">小山坡</div>
                   <span className="promo-price">
                     NT$ {coupon2PriceArray[i]}
@@ -153,7 +153,7 @@ function Coupon() {
           setCouponCoverUrl3(couponCoverUrl3)
           couponRowArray3.push(
             <>
-              <Col xs={12} style={{ maxWidth: '22.2%' }}>
+              <Col xs={12} md={4} className="promo-rwd">
                 <div className="promo3">
                   <img src={couponImgUrl3} alt="" />
                 </div>
@@ -193,28 +193,34 @@ function Coupon() {
         </Row>
 
         <Row className="promo-wrapper">
-          <Col xs={12} style={{ maxWidth: '33.3%' }}>
+          <Col xs={12} md={4} className="promo-rwd">
             <div className="promo-primary">
               <img src={couponCoverUrl1} alt="" className="w-100" />
             </div>
           </Col>
-          {couponArray1}
+          <Col xs={12} md={8} className="p-0">
+            <Row className="promo-wrapper m-0">{couponArray1}</Row>
+          </Col>
         </Row>
         <Row className="promo-wrapper">
-          <Col xs={12} style={{ maxWidth: '33.3%' }}>
+          <Col xs={12} md={4} className="promo-rwd">
             <div className="promo-primary">
-              <img src={couponCoverUrl2} alt="" />
+              <img src={couponCoverUrl2} alt="" className="w-100" />
             </div>
           </Col>
-          {couponArray2}
+          <Col xs={12} md={8} className="p-0">
+            <Row className="promo-wrapper m-0">{couponArray2}</Row>
+          </Col>
         </Row>
         <Row className="promo-wrapper">
-          <Col xs={12} style={{ maxWidth: '33.3%' }}>
+          <Col xs={12} md={4} className="promo-rwd">
             <div className="promo-primary">
-              <img src={couponCoverUrl3} alt="" />
+              <img src={couponCoverUrl3} alt="" className="w-100" />
             </div>
           </Col>
-          {couponArray3}
+          <Col xs={12} md={8} className="p-0">
+            <Row className="promo-wrapper m-0">{couponArray3}</Row>
+          </Col>
         </Row>
         <hr />
       </Container>
