@@ -8,6 +8,7 @@ import History from './components/history'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import FixedButtons from './components/FixedButtons'
+import NavbarProdDetails from './components/NavbarProdDetails'
 
 import Home from './pages/Home'
 import MemberCard from './pages/Member/MemberCard'
@@ -49,7 +50,6 @@ import TemplateList from './pages/BackEnd/TemplateList/TemplateList'
 import ArticleDetial from './pages/Article/ArticleDetial'
 import TestArticleDetial from './pages/Article/TestArticleDetial'
 import ProductsManagement from './pages/BackEnd/ProductsManagement'
-import Breadcrumb from './components/backend/Breadcrumb'
 import ContractsManagement from './pages/BackEnd/ContractsManagement'
 import OrdersManagement from './pages/BackEnd/OrdersManagement'
 
@@ -67,6 +67,16 @@ const DynamicLayoutRoute = (props) => {
       return (
         <>
           <Navbar />
+          <FixedButtons />
+          {actualRouteComponent}
+          <Footer />
+        </>
+      )
+    }
+    case 'FRONT_END_PROD_NAV': {
+      return (
+        <>
+          <NavbarProdDetails />
           <FixedButtons />
           {actualRouteComponent}
           <Footer />
@@ -123,7 +133,7 @@ function App(props) {
           <DynamicLayoutRoute
             path="/products/:id"
             component={ProductDetail}
-            layout="FRONT_END_NAV"
+            layout="FRONT_END_PROD_NAV"
           />
           <DynamicLayoutRoute
             path="/cart_list"

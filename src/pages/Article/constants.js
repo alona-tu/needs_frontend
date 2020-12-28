@@ -28,7 +28,8 @@ export const EDITOR_JS_TOOLS = {
     config: {
       endpoints: {
         accept: 'image/*',
-        byFile: 'http://localhost:5000/article/fetchUrl',
+        // byFile: 'http://localhost:5000/article/fetchUrl',
+        byFile: 'http://122.116.38.12:5050/article/fetchUrl',
       },
     },
   },

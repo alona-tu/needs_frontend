@@ -121,7 +121,12 @@ const CreateArticle = (props) => {
   const sendContent = async () => {
     setShowSendInfo(false)
     await axios
-      .post('http://localhost:5000/article', [title, image, outline, showHTML])
+      .post('http://122.116.38.12:5050/article', [
+        title,
+        image,
+        outline,
+        showHTML,
+      ])
       .catch((error) => {
         console.log('Error', error)
       })
@@ -132,7 +137,7 @@ const CreateArticle = (props) => {
     const data = { __html: showHTML }
     // const email = 'deri19911010@gmail.com'
     await axios
-      .post('http://localhost:5000/article/email', [title, image, data])
+      .post('http://122.116.38.12:5050/article/email', [title, image, data])
       .catch((error) => {
         console.log('Error', error)
       })

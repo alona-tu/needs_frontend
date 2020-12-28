@@ -9,6 +9,7 @@ $bg-light: #f0f0f0;
 $shadow: #e7e7e7;
 $enable-caret: false;
 
+@import '~antd/dist/antd.css';
 @import '~bootstrap/scss/bootstrap.scss';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap');
 

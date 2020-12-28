@@ -10,6 +10,10 @@
   }
 }
 
+.navBlock .navbar.navbar-light.NavProdDetails {
+  box-shadow: none;
+}
+
 .navBlock {
   height: 80px;
   position: relative;
@@ -53,7 +57,7 @@
       .merchantActions,
       .needsActions {
         position: relative;
-        font-size: 14px;
+        font-size: 16px;
         .memberAvatar,
         .merchantAvatar {
           width: 40px;
