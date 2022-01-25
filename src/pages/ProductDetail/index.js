@@ -31,7 +31,7 @@ function ProductDetail(props) {
   const [review, setReview] = useState([])
 
   async function getProductDetail() {
-    const url = `http://localhost:5000/products/${props.match.params.id}`
+    const url = `https://needs-api.uniday.tw/products/${props.match.params.id}`
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({
@@ -47,7 +47,7 @@ function ProductDetail(props) {
 
   async function getMerchantInfo() {
     const url =
-      `http://localhost:5000/products/merchant/${productDetail.merchant_id}` +
+      `https://needs-api.uniday.tw/products/merchant/${productDetail.merchant_id}` +
       `?exclude=${props.match.params.id}`
     const request = new Request(url, {
       method: 'GET',
@@ -62,7 +62,7 @@ function ProductDetail(props) {
   }
 
   async function getReview() {
-    const url = `http://localhost:5000/products/review/${props.match.params.id}`
+    const url = `https://needs-api.uniday.tw/products/review/${props.match.params.id}`
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({

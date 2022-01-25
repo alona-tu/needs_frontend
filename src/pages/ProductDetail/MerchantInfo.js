@@ -13,7 +13,7 @@ function MerchantInfo(props) {
             {merchantInfo.index_img ? (
               <img
                 className="merchant-logo rounded"
-                src={`http://localhost:5000/img/brands/${merchantInfo.index_img}`}
+                src={`https://needs-api.uniday.tw/img/brands/${merchantInfo.index_img}`}
                 alt=""
               />
             ) : (

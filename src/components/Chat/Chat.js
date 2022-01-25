@@ -11,7 +11,7 @@ import Axios from 'axios'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
-const ENDPOINT = 'http://localhost:5000'
+const ENDPOINT = 'https://needs-api.uniday.tw'
 
 let socket
 
@@ -56,7 +56,7 @@ const Chat = (props) => {
     const files = e.target.files
     const data = new FormData()
     data.append('file', files[0])
-    const url = 'http://localhost:5000'
+    const url = 'https://needs-api.uniday.tw'
     const res = await Axios.post(url, data)
   }
 

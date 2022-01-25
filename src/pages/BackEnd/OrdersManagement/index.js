@@ -33,7 +33,7 @@ const OrdersManagement = (props) => {
   const getData = (merchantId, type, searchType, searchInp) => {
     //跟server拿資料
     Axios.get(
-      `http://localhost:5000/bk-orders-api/list?id=${merchantId}&filter=${type}&page=${currentPage}
+      `https://needs-api.uniday.tw/bk-orders-api/list?id=${merchantId}&filter=${type}&page=${currentPage}
       &searchType=${searchType}&searchInp=${searchInp}`
     )
       .then((res) => {

@@ -33,7 +33,7 @@ function TemplateCard(props) {
                   <Card.Img
                     className="p-3"
                     variant="top"
-                    src={`http://localhost:5000/img/template/${template.img}`}
+                    src={`https://needs-api.uniday.tw/img/template/${template.img}`}
                     alt=""
                   />
 

@@ -8,7 +8,7 @@ function Coupon() {
   const [couponArray3, setCouponArray3] = useState('')
 
   const getCoupon1 = (e) => {
-    Axios.get(`http://localhost:5000/dashboard/adsforproduct1`).then(
+    Axios.get(`https://needs-api.uniday.tw/dashboard/adsforproduct1`).then(
       (response) => {
         const data = response.data
         console.log(data)
@@ -17,7 +17,7 @@ function Coupon() {
           let productImg1 = data[i].image_path.split(',')
           productImg1 = productImg1[0]
           let productImg1Url = productImg1
-            ? 'http://localhost:5000/adsProduct/' + productImg1
+            ? 'https://needs-api.uniday.tw/adsProduct/' + productImg1
             : ''
           couponRowArray1.push(
             <>
@@ -41,7 +41,7 @@ function Coupon() {
   }
 
   const getCoupon2 = (e) => {
-    Axios.get(`http://localhost:5000/dashboard/adsforproduct2`).then(
+    Axios.get(`https://needs-api.uniday.tw/dashboard/adsforproduct2`).then(
       (response) => {
         const data = response.data
         console.log(data)
@@ -50,7 +50,7 @@ function Coupon() {
           let productImg2 = data[i].image_path.split(',')
           productImg2 = productImg2[0]
           let productImg2Url = productImg2
-            ? 'http://localhost:5000/adsProduct/' + productImg2
+            ? 'https://needs-api.uniday.tw/adsProduct/' + productImg2
             : ''
           couponRowArray2.push(
             <>
@@ -74,7 +74,7 @@ function Coupon() {
   }
 
   const getCoupon3 = (e) => {
-    Axios.get(`http://localhost:5000/dashboard/adsforproduct3`).then(
+    Axios.get(`https://needs-api.uniday.tw/dashboard/adsforproduct3`).then(
       (response) => {
         const data = response.data
         console.log(data)
@@ -83,7 +83,7 @@ function Coupon() {
           let productImg3 = data[i].image_path.split(',')
           productImg3 = productImg3[0]
           let productImg3Url = productImg3
-            ? 'http://localhost:5000/adsProduct/' + productImg3
+            ? 'https://needs-api.uniday.tw/adsProduct/' + productImg3
             : ''
           couponRowArray3.push(
             <>

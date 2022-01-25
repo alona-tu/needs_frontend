@@ -44,7 +44,7 @@ function login(username, password, selectedRole) {
 }
 
 const checkAuth = (username, password, selectedRole) => {
-  const url = `http://localhost:5000/login-api/${selectedRole}login`
+  const url = `https://needs-api.uniday.tw/login-api/${selectedRole}login`
   const req = new Request(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

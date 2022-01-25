@@ -8,7 +8,7 @@ function Sec4Acts(props){
                       return (
                         <>
               <div className="activities-wrapper d-flex align-items-end m-auto">
-              <img className="activities-img" src={`http://localhost:5000/img/products/${activity.image_path.split(',')[0]}`} key={index}/>
+              <img className="activities-img" src={`https://needs-api.uniday.tw/img/products/${activity.image_path.split(',')[0]}`} key={index}/>
               {/* <div className="activities-img" style={{ backgroundImage : `url(${displayActImg})`}} key={index}></div> */}
                 <div className="text d-flex flex-column justify-content-between my-auto">
                       <h2>{activity.title}</h2>

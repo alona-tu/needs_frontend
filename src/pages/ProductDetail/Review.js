@@ -18,7 +18,7 @@ function Review(props) {
                   <div className="mr-4 ml-3">
                     <img
                       className="avatar rounded"
-                      src={`http://localhost:5000/img/avatar/${value.avatar}`}
+                      src={`https://needs-api.uniday.tw/img/avatar/${value.avatar}`}
                       alt=""
                     />
                   </div>
@@ -44,7 +44,7 @@ function Review(props) {
                     {merchantInfo.index_img ? (
                       <img
                         className="avatar rounded mx-4"
-                        src={`http://localhost:5000/img/brands/${merchantInfo.index_img}`}
+                        src={`https://needs-api.uniday.tw/img/brands/${merchantInfo.index_img}`}
                         alt=""
                       />
                     ) : (
@@ -70,7 +70,7 @@ function Review(props) {
                     <img
                       className="avatar rounded"
                       // src={require('../../assets/img/brands/pommedepin111_300x300.jpg')}
-                      src={`http://localhost:5000/img/avatar/${value.avatar}`}
+                      src={`https://needs-api.uniday.tw/img/avatar/${value.avatar}`}
                       alt=""
                     />
                   </div>
@@ -96,7 +96,7 @@ function Review(props) {
                     {merchantInfo.index_img ? (
                       <img
                         className="avatar rounded mx-4"
-                        src={`http://localhost:5000/img/brands/${merchantInfo.index_img}`}
+                        src={`https://needs-api.uniday.tw/img/brands/${merchantInfo.index_img}`}
                         alt=""
                       />
                     ) : (

@@ -9,12 +9,12 @@ function Sec2MainProduct(props){
                     .map((product, index) => {
                       return (
                         <>
-                            <img className="product-bg-pic" src={`http://localhost:5000/img/products/${product.image_path.split(',')[0]}`} key={index}/>
+                            <img className="product-bg-pic" src={`https://needs-api.uniday.tw/img/products/${product.image_path.split(',')[0]}`} key={index}/>
                             <div className="d-flex flex-column wrapper">
                             <h2>本週主打</h2>
                             <h4>{product.title}</h4>
                             {/* <div className="product-sml-pic" style={{ backgroundImage : `url(${displayMainImg})`}} ></div> */}
-                            <img className="product-sml-pic" src={`http://localhost:5000/img/products/${product.image_path.split(',')[1]}`} />
+                            <img className="product-sml-pic" src={`https://needs-api.uniday.tw/img/products/${product.image_path.split(',')[1]}`} />
                             <p className="sml">{product.outline}</p>
                             <h2>NT${product.price}</h2>
                             <button className="btn">加入購物車</button>

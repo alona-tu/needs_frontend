@@ -15,7 +15,7 @@ const MemQA = (props) => {
   const isLogin = useSelector((state) => state.authentication.loggedIn)
   const loginUser = useSelector((state) => state.authentication.user)
   const getData = async (val) => {
-    let url = `http://localhost:5000/qa?customer_id=${val}`
+    let url = `https://needs-api.uniday.tw/qa?customer_id=${val}`
     const res = await axios.get(url).catch((err) => console.log('Error'.err))
     setMemQA(res.data)
   }

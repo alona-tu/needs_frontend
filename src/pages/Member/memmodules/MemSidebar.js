@@ -26,7 +26,7 @@ const MemSidebar = (props) => {
   const userSess = JSON.parse(sessionStorage.getItem('user'))
 
   const getData = async (val) => {
-    let url = `http://localhost:5000/member?id=${val}`
+    let url = `https://needs-api.uniday.tw/member?id=${val}`
     const res = await axios.get(url).catch((err) => console.log('Error'.err))
     setAvatar(res.data[0].avatar)
     // console.log('res.data[0].avatar', res.data[0].avatar)
@@ -43,7 +43,7 @@ const MemSidebar = (props) => {
     e.preventDefault()
     // const formData = new FormData()
     // console.log('props.match.params.id', props.match.params.id)
-    let url = `http://localhost:5000/member/upload?id=${id}`
+    let url = `https://needs-api.uniday.tw/member/upload?id=${id}`
     axios
       .post(url, formData)
       .then((res) => {
@@ -75,7 +75,7 @@ const MemSidebar = (props) => {
       <div className="d-flex flex-column memsidebar ">
         <img
           className="avatar mx-auto"
-          src={`http://localhost:5000/img/avatar/${avatar}`}
+          src={`https://needs-api.uniday.tw/img/avatar/${avatar}`}
           alt="avatar"
         />
 

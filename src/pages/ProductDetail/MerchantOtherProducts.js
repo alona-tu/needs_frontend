@@ -16,7 +16,7 @@ function MerchantOtherProducts(props) {
                     {value.image_path ? (
                       <img
                         className="w-100 h-100 cover rounded"
-                        src={`http://localhost:5000/img/products/${value.image_path}`}
+                        src={`https://needs-api.uniday.tw/img/products/${value.image_path}`}
                         alt=""
                       />
                     ) : (

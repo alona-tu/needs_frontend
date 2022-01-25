@@ -52,7 +52,7 @@ const Pommedepin111 = (props) =>{
     // async function getMerchantProduct(){
     //   // setDataLoading(true)
     //   // console.log('type',type)
-    //   const url =`http://localhost:5000/Template/merchant_product?merchant_id=12`
+    //   const url =`https://needs-api.uniday.tw/Template/merchant_product?merchant_id=12`
     //   const request = new Request(url, {
     //       method:'GET',
     //       headers:new Headers({
@@ -84,7 +84,7 @@ const Pommedepin111 = (props) =>{
   async function getMerchantProduct(){
     // setDataLoading(true)
     // console.log('type',type)
-    const url =`http://localhost:5000/Template/merchant_product?merchant_id=3`
+    const url =`https://needs-api.uniday.tw/Template/merchant_product?merchant_id=3`
     const request = new Request(url, {
         method:'GET',
         headers:new Headers({
@@ -110,7 +110,7 @@ const Pommedepin111 = (props) =>{
   async function getBrandInfo(){
     // setDataLoading(true)
     // console.log('type',type)
-    const url =`http://localhost:5000/Template/merchant_info?merchants=3`
+    const url =`https://needs-api.uniday.tw/Template/merchant_info?merchants=3`
     const request = new Request(url, {
         method:'GET',
         headers:new Headers({
@@ -142,14 +142,14 @@ const Pommedepin111 = (props) =>{
   
   useEffect(() => {
     const fetchPosts = async () => {
-      let url = 'http://localhost:5000/productlist'
+      let url = 'https://needs-api.uniday.tw/productlist'
       const res = await axios.get(url).catch((err) => console.log('Error', err))
       setPosts(res.data)
     }
 
     fetchPosts()
     const fetchMerchantAllData = async () =>{
-      let url = 'http://localhost:5000/productlist'
+      let url = 'https://needs-api.uniday.tw/productlist'
       const res = await axios.get(url).catch((err) => console.log('Error', err))
       setPosts(res.data)
     }

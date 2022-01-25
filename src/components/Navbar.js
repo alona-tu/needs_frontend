@@ -28,7 +28,7 @@ function HomeNavbar(props) {
             <div className="memberActions">
               <div className="memberAvatar">
                 <img
-                  src={`http://localhost:5000/img/avatar/${loginUser.user.avatar}`}
+                  src={`https://needs-api.uniday.tw/img/avatar/${loginUser.user.avatar}`}
                   alt=""
                 />
               </div>
@@ -67,7 +67,7 @@ function HomeNavbar(props) {
             <div className="merchantActions">
               <div className="merchantAvatar">
                 <img
-                  src={`http://localhost:5000/img/brands/${loginUser.user.brand_img}`}
+                  src={`https://needs-api.uniday.tw/img/brands/${loginUser.user.brand_img}`}
                   alt=""
                 />
               </div>

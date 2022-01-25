@@ -14,7 +14,7 @@ const MemEcoin = () => {
   const loginUser = useSelector((state) => state.authentication.user) //redux初始值設定為空值
 
   const getData = async (val) => {
-    let url = `http://localhost:5000/member?id=${val}`
+    let url = `https://needs-api.uniday.tw/member?id=${val}`
     const res = await axios.get(url).catch((err) => console.log('error'.err))
     setMemEcoin(res.data)
   }

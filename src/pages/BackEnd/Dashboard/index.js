@@ -39,7 +39,7 @@ function Dashboard() {
   const [getNumberOfTotalOrders, setNumberOfTotalOrders] = useState()
 
   const getAmountOfOrdersAPI = () => {
-    Axios.get('http://localhost:5000/dashboard/amountoforders').then(
+    Axios.get('https://needs-api.uniday.tw/dashboard/amountoforders').then(
       (response) => {
         const data = response.data
         let amountOfOrders = data.length
@@ -76,7 +76,7 @@ function Dashboard() {
   }
 
   const getDashboardData = () => {
-    Axios.get('http://localhost:5000/dashboard/data').then((response) => {
+    Axios.get('https://needs-api.uniday.tw/dashboard/data').then((response) => {
       const data = response.data
       let numberOfFansArray = []
       let totalFans = 0
@@ -108,7 +108,7 @@ function Dashboard() {
   }
 
   // const getThisIncome = () => {
-  //   Axios.get('http://localhost:5000/dashboard/incomethisweek').then(
+  //   Axios.get('https://needs-api.uniday.tw/dashboard/incomethisweek').then(
   //     (response) => {
   //       const data = response.data
   //       let thisWeekIncomeArray = []
@@ -125,7 +125,7 @@ function Dashboard() {
   // }
 
   const getLastIncome = () => {
-    Axios.get('http://localhost:5000/dashboard/incomelastweek').then(
+    Axios.get('https://needs-api.uniday.tw/dashboard/incomelastweek').then(
       (response) => {
         const data = response.data
         let lastWeekIncomeArray = []

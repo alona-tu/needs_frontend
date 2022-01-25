@@ -18,7 +18,7 @@ const MemComment = () => {
   const isLogin = useSelector((state) => state.authentication.loggedIn)
   const loginUser = useSelector((state) => state.authentication.user)
   const getData = async (val) => {
-    let url = `http://localhost:5000/comment?customer_id=${val}&filter=${type}`
+    let url = `https://needs-api.uniday.tw/comment?customer_id=${val}&filter=${type}`
     const res = await axios.get(url).catch((err) => console.log('Error'.err))
     console.log('res.data', res.data)
 
@@ -40,7 +40,7 @@ const MemComment = () => {
 
   const updatecomment = async (val) => {
     // const newData = { buyer_message, id }
-    let url = `http://localhost:5000/comment?comment_id=${val}&filter=${type}`
+    let url = `https://needs-api.uniday.tw/comment?comment_id=${val}&filter=${type}`
     const res = await axios
       .post(url, edit_comment)
       .then((res) => {
@@ -97,7 +97,7 @@ const MemComment = () => {
                     <div className="informbar d-flex justify-content-center">
                       <img
                         className="sign"
-                        src={`http://localhost:5000/img/products/${item.image_path}`}
+                        src={`https://needs-api.uniday.tw/img/products/${item.image_path}`}
                         alt="products"
                       />
 
@@ -118,7 +118,7 @@ const MemComment = () => {
                   >
                     <img
                       className="sign"
-                      src={`http://localhost:5000/img/products/${item.image_path}`}
+                      src={`https://needs-api.uniday.tw/img/products/${item.image_path}`}
                       alt="products"
                     />
 

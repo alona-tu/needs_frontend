@@ -36,7 +36,7 @@ function AddToCartModal(props) {
                 {image ? (
                   <img
                     className="w-100 h-100 cover rounded"
-                    src={`http://localhost:5000/img/products/${image_s}`}
+                    src={`https://needs-api.uniday.tw/img/products/${image_s}`}
                     alt=""
                   />
                 ) : (

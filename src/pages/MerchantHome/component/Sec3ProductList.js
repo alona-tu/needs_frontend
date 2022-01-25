@@ -51,7 +51,7 @@ const Sec3ProductList = (props) => {
   useEffect(() => {
     const fetchPosts = async () => {
       setDataLoading(true)
-      let url = 'http://localhost:5000/productlist?sort=' + sort
+      let url = 'https://needs-api.uniday.tw/productlist?sort=' + sort
       const res = await axios.get(url).catch((err) => console.log('Error', err))
       setAllPosts(res.data)
       setShowPosts(res.data)
@@ -63,7 +63,7 @@ const Sec3ProductList = (props) => {
 
   const getCategories = async () => {
     setDataLoading(true)
-    let url = 'http://localhost:5000/productlist/categories'
+    let url = 'https://needs-api.uniday.tw/productlist/categories'
     const res = await axios
       .get(url)
       .catch((err) => console.log(`'Can't get categories`))

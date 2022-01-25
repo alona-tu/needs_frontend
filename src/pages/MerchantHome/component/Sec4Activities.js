@@ -19,7 +19,7 @@ function Sec4Activities(props){
                             duration={1000}
                             > 
             <div className="activities-wrapper d-flex align-items-end m-auto">
-            <img className="activities-img d-flex align-items-center m-auto" src={`http://localhost:5000/img/products/${activity.image_path.split(',')[0]}`} key={index}/>
+            <img className="activities-img d-flex align-items-center m-auto" src={`https://needs-api.uniday.tw/img/products/${activity.image_path.split(',')[0]}`} key={index}/>
            
               <div className="text d-flex flex-column justify-content-between my-auto">
                     <h2>{activity.title}</h2>

@@ -18,7 +18,7 @@ const MerchantSignUp = (props) => {
     e.preventDefault()
     setSubmitted(true)
     Axios.post(
-      `http://localhost:5000/signup-api/merchantsignup`,
+      `https://needs-api.uniday.tw/signup-api/merchantsignup`,
       formData
     ).then((res) => {
       if (!res.data.success) {

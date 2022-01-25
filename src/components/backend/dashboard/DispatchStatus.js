@@ -12,7 +12,7 @@ function DispatchStatus() {
   const [status5, setStatus5] = useState(0)
   const [status6, setStatus6] = useState(0)
   const getDispatchAmount = () => {
-    Axios.get('http://localhost:5000/dashboard//deliverystatusamount').then(
+    Axios.get('https://needs-api.uniday.tw/dashboard//deliverystatusamount').then(
       (response) => {
         let status0Array = []
         let status1Array = []

@@ -47,7 +47,7 @@ const ProductsManagement = (props) => {
   }
 
   const getCategories = () => {
-    Axios.get(`http://localhost:5000/get-categories-api`).then((res) => {
+    Axios.get(`https://needs-api.uniday.tw/get-categories-api`).then((res) => {
       const data = res.data
       setCategories(data)
     })
@@ -56,7 +56,7 @@ const ProductsManagement = (props) => {
   const getData = (merchantId, type) => {
     //跟server拿資料
     Axios.get(
-      `http://localhost:5000/bk-products-api/list?id=${merchantId}&filter=${type}&page=${currentPage}
+      `https://needs-api.uniday.tw/bk-products-api/list?id=${merchantId}&filter=${type}&page=${currentPage}
       &searchType=${searchType}&searchInp=${searchInp}`
     )
       .then((res) => {

@@ -8,7 +8,7 @@ import moment from 'moment'
 function Fc() {
   const [fc, setFc] = useState('')
   const getFcData = () => {
-    Axios.get('http://localhost:5000/dashboard/fc').then((response) => {
+    Axios.get('https://needs-api.uniday.tw/dashboard/fc').then((response) => {
       const data = response.data
       let fcArray = []
       for (let i = 0; i < data.length; i++) {

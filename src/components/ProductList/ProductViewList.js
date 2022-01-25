@@ -43,7 +43,7 @@ function ProductViewList(props) {
             {e_points_usable ? <div className="ecoinUse">e-Coin</div> : ''}
             <div className="storeContent">詳細資訊</div>
             <img
-              src={`http://localhost:5000/img/products/${image_path}`}
+              src={`https://needs-api.uniday.tw/img/products/${image_path}`}
               alt=""
             ></img>
           </div>

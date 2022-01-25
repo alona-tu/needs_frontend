@@ -39,7 +39,7 @@ function AddAdsModal() {
     e.preventDefault()
     handleClose()
     refreshPage()
-    Axios.post(`http://localhost:5000/dashboard/addnewads`, postData).then(
+    Axios.post(`https://needs-api.uniday.tw/dashboard/addnewads`, postData).then(
       (response) => {
         console.log(response.data.url)
       }
@@ -51,7 +51,7 @@ function AddAdsModal() {
       end: document.form1.enddate.value,
     }
     console.log('fcdata', fcData)
-    Axios.post(`http://localhost:5000/dashboard/fcpost`, fcData).then(
+    Axios.post(`https://needs-api.uniday.tw/dashboard/fcpost`, fcData).then(
       (response) => {
         console.log(response.data.url)
       }
@@ -59,7 +59,7 @@ function AddAdsModal() {
   }
 
   const getTitle = () => {
-    Axios.get('http://localhost:5000/dashboard/adsproduct').then((response) => {
+    Axios.get('https://needs-api.uniday.tw/dashboard/adsproduct').then((response) => {
       const data = response.data
       let productTitleArray = []
       for (let i = 0; i < data.length; i++) {

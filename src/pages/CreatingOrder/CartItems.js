@@ -29,7 +29,7 @@ function CartItems(props) {
                 <Col md={5} className="d-flex">
                   <div className="item-product d-flex">
                     <img
-                      src={`http://localhost:5000/img/products/${product.image_path}`}
+                      src={`https://needs-api.uniday.tw/img/products/${product.image_path}`}
                       alt=""
                     />
                     <div className="ml-5">

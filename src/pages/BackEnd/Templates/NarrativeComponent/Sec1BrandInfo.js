@@ -37,7 +37,7 @@ function Sec1BrandInfo(props){
                 {merchantInfos.index_img ? (
               <img
                 className="avatar rounded pb-3"
-                src={`http://localhost:5000/img/brands/${merchantInfos.index_img}`}
+                src={`https://needs-api.uniday.tw/img/brands/${merchantInfos.index_img}`}
                 alt=""
               />
             ) : (

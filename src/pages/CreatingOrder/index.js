@@ -22,7 +22,7 @@ function CreatingOrder(props) {
   const skuIds = products.map((v) => v.skuid)
 
   async function getUserInfo() {
-    const url = `http://localhost:5000/products/userInfo`
+    const url = `https://needs-api.uniday.tw/products/userInfo`
     const request = new Request(url, {
       method: 'POST',
       headers: new Headers({
@@ -44,7 +44,7 @@ function CreatingOrder(props) {
     const orderContent = props.orderContent
     const customer_id = loginUser.user.id
     const orderData = { customer_id, userInfo, payment, orderContent }
-    const url = `http://localhost:5000/orders`
+    const url = `https://needs-api.uniday.tw/orders`
     const request = new Request(url, {
       method: 'POST',
       headers: new Headers({

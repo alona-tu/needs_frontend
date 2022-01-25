@@ -15,7 +15,7 @@ const TestArticleDetial = (props) => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const url = `http://localhost:5000/article/${props.match.params.id}`
+      const url = `https://needs-api.uniday.tw/article/${props.match.params.id}`
       const res = await axios.get(url).catch((err) => console.log('Error', err))
       setGetDetial(res.data)
     }
@@ -32,7 +32,7 @@ const TestArticleDetial = (props) => {
   }, [])
 
   const DeleteBtn = async () => {
-    const url = `http://localhost:5000/article/${props.match.params.id}`
+    const url = `https://needs-api.uniday.tw/article/${props.match.params.id}`
     await axios.delete(url).catch((err) => console.log('ErrDelete', err))
     window.history.back(-1)
   }

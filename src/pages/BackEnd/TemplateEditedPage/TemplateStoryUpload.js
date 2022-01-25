@@ -62,7 +62,7 @@ const TemplateUpload = (props) => {
         listType="picture-card"
         className="avatar-uploader"
         showUploadList={false}
-        action="http://localhost:5000/template/postStoryImg?merchantid=12"
+        action="https://needs-api.uniday.tw/template/postStoryImg?merchantid=12"
         beforeUpload={beforeUpload}
         onChange={handleChange}
       >

@@ -13,7 +13,7 @@ function SerarchBox() {
 
   useEffect(() => {
     const AllData = async () => {
-      let url = 'http://localhost:5000/productlist'
+      let url = 'https://needs-api.uniday.tw/productlist'
       const res = await axios.get(url)
       if (res) setGetAllData(res.data)
     }
@@ -72,7 +72,7 @@ function SerarchBox() {
                 <a href={`/products/${item.id}?room=${item.brand_en_name}`}>
                   <div className="prodImg">
                     <img
-                      src={`http://localhost:5000/img/products/${item.image_path}`}
+                      src={`https://needs-api.uniday.tw/img/products/${item.image_path}`}
                     />
                   </div>
                   <OverlayTrigger

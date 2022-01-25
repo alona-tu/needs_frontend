@@ -36,7 +36,7 @@ function Ads() {
 
 
   const getDataTable = () => {
-    Axios.get('http://localhost:5000/dashboard/adsinprogress').then(
+    Axios.get('https://needs-api.uniday.tw/dashboard/adsinprogress').then(
       (response) => {
         const data = response.data
         let adsDataTable = []
@@ -79,7 +79,7 @@ function Ads() {
         setDataTable(adsDataTable)
 
         const getCtrData = (sid) => {
-          Axios.get('http://localhost:5000/dashboard/adsinprogressforctr').then(
+          Axios.get('https://needs-api.uniday.tw/dashboard/adsinprogressforctr').then(
             (response) => {
               const data = response.data
               let clicksArray = []
@@ -108,7 +108,7 @@ function Ads() {
         }
 
         const getSum = (sid) => {
-          Axios.get('http://localhost:5000/dashboard/adsinprogressforsum').then(
+          Axios.get('https://needs-api.uniday.tw/dashboard/adsinprogressforsum').then(
             (response) => {
               const data = response.data
 
@@ -133,7 +133,7 @@ function Ads() {
         }
 
         const getProduct1 = (sid) => {
-          Axios.get('http://localhost:5000/dashboard/adsforproduct1').then(
+          Axios.get('https://needs-api.uniday.tw/dashboard/adsforproduct1').then(
             (response) => {
               const data = response.data
               for (let i = 0; i < data.length; i++) {
@@ -150,7 +150,7 @@ function Ads() {
         }
 
         const getProduct2 = (sid) => {
-          Axios.get('http://localhost:5000/dashboard/adsforproduct2').then(
+          Axios.get('https://needs-api.uniday.tw/dashboard/adsforproduct2').then(
             (response) => {
               const data = response.data
               for (let i = 0; i < data.length; i++) {
@@ -167,7 +167,7 @@ function Ads() {
         }
 
         const getProduct3 = (sid) => {
-          Axios.get('http://localhost:5000/dashboard/adsforproduct3').then(
+          Axios.get('https://needs-api.uniday.tw/dashboard/adsforproduct3').then(
             (response) => {
               const data = response.data
               for (let i = 0; i < data.length; i++) {

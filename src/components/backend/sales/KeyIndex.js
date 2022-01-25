@@ -14,7 +14,7 @@ function KeyIndex() {
   const [getNumberOfTotalOrders, setNumberOfTotalOrders] = useState()
 
   const getAmountOfOrdersAPI = () => {
-    Axios.get('http://localhost:5000/dashboard/amountoforders').then(
+    Axios.get('https://needs-api.uniday.tw/dashboard/amountoforders').then(
       (response) => {
         const data = response.data
         let amountOfOrders = data.length

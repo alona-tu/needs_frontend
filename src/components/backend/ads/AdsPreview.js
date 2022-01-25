@@ -4,24 +4,24 @@ import CTR from '../../../components/backend/ads/charts/CTR'
 
 function AdsPreview(props) {
   let imgPre = props.imgPre
-  let imgPreUrl = imgPre ? 'http://localhost:5000/adsCover/' + imgPre : ''
+  let imgPreUrl = imgPre ? 'https://needs-api.uniday.tw/adsCover/' + imgPre : ''
   let productTitle1 = props.productTitle1
   let productOutline1 = props.productOutline1
   let productImg1 = props.productImg1
   let productImg1Url = productImg1
-    ? 'http://localhost:5000/adsProduct/' + productImg1
+    ? 'https://needs-api.uniday.tw/adsProduct/' + productImg1
     : ''
   let productTitle2 = props.productTitle2
   let productOutline2 = props.productOutline2
   let productImg2 = props.productImg2
   let productImg2Url = productImg2
-    ? 'http://localhost:5000/adsProduct/' + productImg2
+    ? 'https://needs-api.uniday.tw/adsProduct/' + productImg2
     : ''
   let productTitle3 = props.productTitle3
   let productOutline3 = props.productOutline3
   let productImg3 = props.productImg3
   let productImg3Url = productImg3
-    ? 'http://localhost:5000/adsProduct/' + productImg3
+    ? 'https://needs-api.uniday.tw/adsProduct/' + productImg3
     : ''
 
   return (

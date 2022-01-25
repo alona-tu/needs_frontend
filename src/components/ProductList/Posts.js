@@ -22,7 +22,7 @@ const Posts = (props) => {
 
   // const addWishListBtn = async (id) => {
   //   const product_id = id
-  //   const url = 'http://localhost:5000/productlist/wishlist'
+  //   const url = 'https://needs-api.uniday.tw/productlist/wishlist'
 
   //   await axios
   //     .post(url, [customerId, product_id])

@@ -37,7 +37,7 @@ function Cart(props) {
   }
 
   async function getMerchantCarts() {
-    const url = `http://localhost:5000/products/bulk-get-product-skus`
+    const url = `https://needs-api.uniday.tw/products/bulk-get-product-skus`
     const request = new Request(url, {
       method: 'POST',
       headers: new Headers({

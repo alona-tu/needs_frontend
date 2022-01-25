@@ -13,7 +13,7 @@ function MemLike() {
   const isLogin = useSelector((state) => state.authentication.loggedIn)
   const loginUser = useSelector((state) => state.authentication.user)
   const getData = async (val) => {
-    let url = `http://localhost:5000/like?customer_id=${val}&filter=${type}`
+    let url = `https://needs-api.uniday.tw/like?customer_id=${val}&filter=${type}`
     const res = await axios.get(url).catch((err) => console.log('Error'.err))
     setMemLike(res.data.rows)
     console.log(res.data.rows)
@@ -41,7 +41,7 @@ function MemLike() {
       <div className="likecard">
         <img
           className="likemark"
-          src={`http://localhost:5000/img/brands/${item.index_img}`}
+          src={`https://needs-api.uniday.tw/img/brands/${item.index_img}`}
           alt="brands"
         />
         <p className="font-s">{item.brand_name}</p>
@@ -59,7 +59,7 @@ function MemLike() {
       <div className="likecard2">
         <img
           className="likemark"
-          src={`http://localhost:5000/img/products/${item.image_path}`}
+          src={`https://needs-api.uniday.tw/img/products/${item.image_path}`}
           alt="products"
         />
         <p className="font-s">{item.title}</p>

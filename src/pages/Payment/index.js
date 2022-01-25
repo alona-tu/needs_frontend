@@ -13,7 +13,7 @@ function Payment(props) {
   const order_number = props.orderId.order_number || []
 
   async function getTradeInfo() {
-    const url = `http://localhost:5000/payments/${payment_insertId}/trade/info`
+    const url = `https://needs-api.uniday.tw/payments/${payment_insertId}/trade/info`
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({

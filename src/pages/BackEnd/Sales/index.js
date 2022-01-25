@@ -12,7 +12,7 @@ function Sales() {
   const [dataTableForAmount, setDataTableForAmount] = useState([])
   const [dataTableForCate, setDataTableForCate] = useState([])
   const getProductRank = () => {
-    Axios.get('http://localhost:5000/dashboard/merchantsellrank').then(
+    Axios.get('https://needs-api.uniday.tw/dashboard/merchantsellrank').then(
       (response) => {
         const data = response.data
         let dataObject = {}
@@ -86,7 +86,7 @@ function Sales() {
 
   const getProductRankByCate = () => {
     Axios.get(
-      'http://localhost:5000/dashboard/merchantsellrankgroupbyname'
+      'https://needs-api.uniday.tw/dashboard/merchantsellrankgroupbyname'
     ).then((response) => {
       const data = response.data
       let dataObject = {}

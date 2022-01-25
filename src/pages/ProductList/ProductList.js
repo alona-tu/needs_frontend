@@ -47,7 +47,7 @@ const ProductList = (props) => {
   useEffect(() => {
     const fetchPosts = async () => {
       setDataLoading(true)
-      let url = 'http://localhost:5000/productlist?sort=' + sort
+      let url = 'https://needs-api.uniday.tw/productlist?sort=' + sort
       const res = await axios.get(url)
       if (res) {
         setAllPosts(res.data)
@@ -90,7 +90,7 @@ const ProductList = (props) => {
   //get all data
   const getCategories = async () => {
     setDataLoading(true)
-    let url = 'http://localhost:5000/productlist/categories'
+    let url = 'https://needs-api.uniday.tw/productlist/categories'
     const res = await axios.get(url)
     if (res) {
       setCategories(res.data)

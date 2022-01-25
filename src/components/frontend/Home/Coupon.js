@@ -11,7 +11,7 @@ function Coupon() {
   const [couponCoverUrl3, setCouponCoverUrl3] = useState('')
 
   const getCoupon1 = (e) => {
-    Axios.get(`http://localhost:5000/dashboard/adsforproduct1`).then(
+    Axios.get(`https://needs-api.uniday.tw/dashboard/adsforproduct1`).then(
       (response) => {
         const data = response.data
       }
@@ -19,9 +19,9 @@ function Coupon() {
   }
 
   const getAll = () => {
-    Axios.get(`http://localhost:5000/dashboard/allproduct`).then((response) => {
+    Axios.get(`https://needs-api.uniday.tw/dashboard/allproduct`).then((response) => {
       const productData = response.data
-      Axios.get(`http://localhost:5000/dashboard/allads`).then((response) => {
+      Axios.get(`https://needs-api.uniday.tw/dashboard/allads`).then((response) => {
         const adsData = response.data
         let couponProductArray = []
         let couponProductID1
@@ -78,11 +78,11 @@ function Coupon() {
           couponImg1 = coupon1ImgArray[i].split(',')
           couponImg1 = couponImg1[0]
           let couponImgUrl1 = couponImg1
-            ? 'http://localhost:5000/adsProduct/' + couponImg1
+            ? 'https://needs-api.uniday.tw/adsProduct/' + couponImg1
             : ''
           let couponCover = adsData[0].img
           let couponCoverUrl1 = couponCover
-            ? 'http://localhost:5000/adsCover/' + couponCover
+            ? 'https://needs-api.uniday.tw/adsCover/' + couponCover
             : ''
           setCouponCoverUrl1(couponCoverUrl1)
           couponRowArray1.push(
@@ -111,11 +111,11 @@ function Coupon() {
           couponImg2 = coupon2ImgArray[i].split(',')
           couponImg2 = couponImg2[0]
           let couponImgUrl2 = couponImg2
-            ? 'http://localhost:5000/adsProduct/' + couponImg2
+            ? 'https://needs-api.uniday.tw/adsProduct/' + couponImg2
             : ''
           let couponCover = adsData[1].img
           let couponCoverUrl2 = couponCover
-            ? 'http://localhost:5000/adsCover/' + couponCover
+            ? 'https://needs-api.uniday.tw/adsCover/' + couponCover
             : ''
           setCouponCoverUrl2(couponCoverUrl2)
           couponRowArray2.push(
@@ -144,11 +144,11 @@ function Coupon() {
           couponImg3 = coupon3ImgArray[i].split(',')
           couponImg3 = couponImg3[0]
           let couponImgUrl3 = couponImg3
-            ? 'http://localhost:5000/adsProduct/' + couponImg3
+            ? 'https://needs-api.uniday.tw/adsProduct/' + couponImg3
             : ''
           let couponCover = adsData[2].img
           let couponCoverUrl3 = couponCover
-            ? 'http://localhost:5000/adsCover/' + couponCover
+            ? 'https://needs-api.uniday.tw/adsCover/' + couponCover
             : ''
           setCouponCoverUrl3(couponCoverUrl3)
           couponRowArray3.push(

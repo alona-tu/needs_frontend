@@ -11,7 +11,7 @@ const MemInformOne = () => {
   const isLogin = useSelector((state) => state.authentication.loggedIn)
   const loginUser = useSelector((state) => state.authentication.user)
   const getData = async (val) => {
-    let url = `http://localhost:5000/inform/one?customer_id=${val}`
+    let url = `https://needs-api.uniday.tw/inform/one?customer_id=${val}`
     const res = await axios.get(url).catch((err) => console.log('Error'.err))
     setMemInformone(res.data)
   }
@@ -65,7 +65,7 @@ const MemInformOne = () => {
               <div className="informbar d-flex justify-content-start">
                 <img
                   className="sign"
-                  src={`http://localhost:5000/img/brands/${item.index_img}`}
+                  src={`https://needs-api.uniday.tw/img/brands/${item.index_img}`}
                   alt="brands"
                 />
                 <div className="textbox">

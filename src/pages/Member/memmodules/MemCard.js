@@ -15,7 +15,7 @@ function MemCard(props) {
   //axios get data
   //先接收資料後再判斷memid,val=memid從前端先判斷需求是否有傳到後端
   const getData = async (val) => {
-    let url = `http://localhost:5000/member?id=${val}`
+    let url = `https://needs-api.uniday.tw/member?id=${val}`
     const res = await axios.get(url).catch((err) => console.log('Error'.err))
     setMemcard(res.data)
   }

@@ -21,7 +21,7 @@ function MemCardEdit(props) {
   //axios get data
   //先接收資料後再判斷memid,val=memid從前端先判斷需求是否有傳到後端
   const getData = async (val) => {
-    let url = `http://localhost:5000/member?id=${val}`
+    let url = `https://needs-api.uniday.tw/member?id=${val}`
     const res = await axios.get(url).catch((err) => console.log('Error'.err))
     console.log('res.data', res.data)
 
@@ -39,7 +39,7 @@ function MemCardEdit(props) {
     const newData = { name, gender, phone_number, address, email, credit_card }
     console.log('newData', newData)
 
-    let url = `http://localhost:5000/member?id=${val}`
+    let url = `https://needs-api.uniday.tw/member?id=${val}`
     const res = await axios
       .post(url, newData) //post資料
       .catch((err) => console.log('Error'.err)) //若失敗的話

@@ -7,42 +7,42 @@ const ArticleRecommentProduct = (props) => {
   const data = [
     {
       img:
-        'http://localhost:5000/articleImg/Classic/899129dbd090c48a7d9611f487ec37d9-700x700.jpg',
+        'https://needs-api.uniday.tw/articleImg/Classic/899129dbd090c48a7d9611f487ec37d9-700x700.jpg',
       title: 'Uptrend My diary ｜超級空白手帳 VII ',
       merchant: '小鹿文具所',
       price: 'NT$250',
       salePrice: 'NT$175',
     },
     {
-      img: 'http://localhost:5000/articleImg/product/1603955094157.jpg',
+      img: 'https://needs-api.uniday.tw/articleImg/product/1603955094157.jpg',
       title: 'KING JIM 複式筆記本蓋',
       merchant: '品墨良行',
       price: 'NT$1000',
       salePrice: 'NT$889',
     },
     {
-      img: 'http://localhost:5000/articleImg/product/1603954567476.jpg',
+      img: 'https://needs-api.uniday.tw/articleImg/product/1603954567476.jpg',
       title: 'KING JIM Kraft工藝筆記本書套',
       merchant: '品墨良行',
       price: 'NT$250',
       salePrice: 'NT$175',
     },
     {
-      img: 'http://localhost:5000/articleImg/product/1603934767688.jpg',
+      img: 'https://needs-api.uniday.tw/articleImg/product/1603934767688.jpg',
       title: 'KACO ALIO商務A5筆記包',
       merchant: '小鹿文具所',
       price: 'NT$1020',
       salePrice: 'NT$960',
     },
     {
-      img: 'http://localhost:5000/articleImg/product/1603941507539.jpg',
+      img: 'https://needs-api.uniday.tw/articleImg/product/1603941507539.jpg',
       title: '珠友 布麻帆A5多功能手提式書衣',
       merchant: '小鹿文具所',
       price: 'NT$1000',
       salePrice: 'NT$960',
     },
     {
-      img: 'http://localhost:5000/articleImg/product/1603938981986.jpg',
+      img: 'https://needs-api.uniday.tw/articleImg/product/1603938981986.jpg',
       title: 'WORLD CRAFT 可滑手機收納型筆記本書衣B6',
       merchant: '直物生活文具',
       price: 'NT$650',

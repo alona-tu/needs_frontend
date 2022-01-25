@@ -65,7 +65,7 @@ const [error,setError] = useState(null)
 //圖片
 const sendBgImgToNode = async () => {
   await axios
-    .put('http://localhost:5000/template/editpage?merchantid=12', [bgImg])
+    .put('https://needs-api.uniday.tw/template/editpage?merchantid=12', [bgImg])
     .catch((error) => {
       console.log('Error', error)
     })
@@ -80,7 +80,7 @@ const sendDataToNode = (e) => {
   // formData.set('story_text', JSON.stringify(text))
 
   axios
-    .post('http://localhost:5000/template/editpage/changeData?id=12', [text,color,selectedProduct,selectedActivities])
+    .post('https://needs-api.uniday.tw/template/editpage/changeData?id=12', [text,color,selectedProduct,selectedActivities])
     .catch((error) => {
       console.log('Error', error)
     })
@@ -105,7 +105,7 @@ const sendDataToNode = (e) => {
 
 const sendStoryImgToNode = async () => {
   await axios
-    .put('http://localhost:5000/template/postStoryImg?merchantid=12', [storyImg])
+    .put('https://needs-api.uniday.tw/template/postStoryImg?merchantid=12', [storyImg])
     .catch((error) => {
       console.log('Error', error)
     })
@@ -116,7 +116,7 @@ const sendStoryImgToNode = async () => {
 async function getMerchantProduct(){
   // setDataLoading(true)
   // console.log('type',type)
-  const url =`http://localhost:5000/Template/merchant_product?merchant_id=12`
+  const url =`https://needs-api.uniday.tw/Template/merchant_product?merchant_id=12`
   const request = new Request(url, {
       method:'GET',
       headers:new Headers({
@@ -143,7 +143,7 @@ async function getMerchantProduct(){
 async function getBrandInfo(){
   // setDataLoading(true)
   // console.log('type',type)
-  const url =`http://localhost:5000/Template/merchant_info?merchants=12`
+  const url =`https://needs-api.uniday.tw/Template/merchant_info?merchants=12`
   const request = new Request(url, {
       method:'GET',
       headers:new Headers({

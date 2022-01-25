@@ -25,7 +25,7 @@ function Sec1Info(props){
             {merchantInfos.bg_img ? (
               <img
                 className="sec1_background"
-                src={`http://localhost:5000/BackgroundImg/${merchantInfos.bg_img}`}
+                src={`https://needs-api.uniday.tw/BackgroundImg/${merchantInfos.bg_img}`}
                 alt=""
               />
             ) : (
@@ -65,7 +65,7 @@ function Sec1Info(props){
                 {merchantInfos.index_img ? (
               <img
                 className="avatar rounded pb-3"
-                src={`http://localhost:5000/img/brands/${merchantInfos.index_img}`}
+                src={`https://needs-api.uniday.tw/img/brands/${merchantInfos.index_img}`}
                 alt=""
               />
             ) : (

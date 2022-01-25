@@ -25,7 +25,7 @@ const ProductsContent = (props) => {
 
   const handleUnlanch = (index) => {
     Axios.put(
-      `http://localhost:5000/bk-products-api/unlaunch?id=${index}`
+      `https://needs-api.uniday.tw/bk-products-api/unlaunch?id=${index}`
     ).then((res) => {
       if (!res.data.success) {
         setAlertShow(true)
@@ -69,7 +69,7 @@ const ProductsContent = (props) => {
               />
               <div className="productImg">
                 <img
-                  src={`http://localhost:5000/img/products/${
+                  src={`https://needs-api.uniday.tw/img/products/${
                     item.image_path.split(',')[0]
                   }`}
                   alt={item.title}

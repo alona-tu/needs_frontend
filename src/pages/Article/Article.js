@@ -18,7 +18,7 @@ const Article = (props) => {
   //載入資料
   useEffect(() => {
     const fetchPosts = async () => {
-      const url = 'http://localhost:5000/article'
+      const url = 'https://needs-api.uniday.tw/article'
       const res = await axios.get(url)
       if (res) setArticles(res.data)
     }

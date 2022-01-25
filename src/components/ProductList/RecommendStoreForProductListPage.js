@@ -5,23 +5,23 @@ const HistoryItem = () => {
   const data = [
     {
       storeName: '花吉商店',
-      image_path: 'http://localhost:5000/img/brands/花吉商店.jpg',
+      image_path: 'https://needs-api.uniday.tw/img/brands/花吉商店.jpg',
     },
     {
       storeName: '喵吉星 Miao Stelle',
-      image_path: 'http://localhost:5000/img/brands/MiaoStelle.jpg',
+      image_path: 'https://needs-api.uniday.tw/img/brands/MiaoStelle.jpg',
     },
     {
       storeName: '木匠兄妹',
-      image_path: 'http://localhost:5000/img/brands/木匠兄妹.jpg',
+      image_path: 'https://needs-api.uniday.tw/img/brands/木匠兄妹.jpg',
     },
     {
       storeName: '品墨良行',
-      image_path: 'http://localhost:5000/img/brands/品墨良行.jpg',
+      image_path: 'https://needs-api.uniday.tw/img/brands/品墨良行.jpg',
     },
     {
       storeName: '淳祿工作室',
-      image_path: 'http://localhost:5000/img/brands/淳祿工作室.jpg',
+      image_path: 'https://needs-api.uniday.tw/img/brands/淳祿工作室.jpg',
     },
   ]
 

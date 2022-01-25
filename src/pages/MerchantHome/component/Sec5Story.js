@@ -25,14 +25,14 @@ function Sec5Story(props){
             {merchantInfos.brandStory_img ? (
               <img
                 className="brandStory_img"
-                src={`http://localhost:5000/BrandStoryImg/${merchantInfos.brandStory_img}`}
+                src={`https://needs-api.uniday.tw/BrandStoryImg/${merchantInfos.brandStory_img}`}
                 alt=""
               />
             ) : (
               ''
             )}
          
-            {/* http://localhost:5000/BrandStoryImg/ */}
+            {/* https://needs-api.uniday.tw/BrandStoryImg/ */}
             <ScrollParallax 
                             animation={{ x: 0, opacity: 1, playScale: [0.1, 0.8] }}
                             style={{ transform: 'translateX(100px)', opacity: 0 }}

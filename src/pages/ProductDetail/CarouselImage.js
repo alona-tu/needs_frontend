@@ -12,7 +12,7 @@ function CarouselImage(props) {
             <div key={index} className="photos-content">
               <img
                 className="w-100 h-100 cover"
-                src={`http://localhost:5000/img/products/${value}`}
+                src={`https://needs-api.uniday.tw/img/products/${value}`}
                 alt=""
               />
             </div>

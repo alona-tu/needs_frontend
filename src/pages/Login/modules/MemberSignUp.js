@@ -27,7 +27,7 @@ const MerberSignup = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     setSubmitted(true)
-    Axios.post(`http://localhost:5000/signup-api/membersignup`, formData).then(
+    Axios.post(`https://needs-api.uniday.tw/signup-api/membersignup`, formData).then(
       (res) => {
         if (!res.data.success) {
           return dispatch(error(res.data.error))

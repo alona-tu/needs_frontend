@@ -34,7 +34,7 @@ import SignUp from './pages/Login/SignUp'
 import Pommedepin111 from './pages/MerchantHome/Pommedepin111'
 import Annieeinna_hs from './pages/MerchantHome/annieeinna_hs'
 import ToolsLiveBy3 from './pages/MerchantHome/ToolsLiveBy3'
-import LittleMountain from './pages/MerchantHome/小山坡'
+import LittleMountain from './pages/MerchantHome/LittleMountain'
 
 //商家後台
 import BackEndSidebar from './components/backend/Sidebar'

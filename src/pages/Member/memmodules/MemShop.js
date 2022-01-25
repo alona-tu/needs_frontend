@@ -12,7 +12,7 @@ function MemShop() {
   const isLogin = useSelector((state) => state.authentication.loggedIn)
   const loginUser = useSelector((state) => state.authentication.user)
   const getData = async (val) => {
-    let url = `http://localhost:5000/shop?customer_id=${val}`
+    let url = `https://needs-api.uniday.tw/shop?customer_id=${val}`
     const res = await axios.get(url).catch((err) => console.log('Error'.err))
     setMemshop(res.data)
     console.log('res.data', res.data)
@@ -75,7 +75,7 @@ function MemShop() {
                               <td className="d-flex">
                                 <img
                                   className="box"
-                                  src={`http://localhost:5000/img/products/${merchants.image_path}`}
+                                  src={`https://needs-api.uniday.tw/img/products/${merchants.image_path}`}
                                   alt="brands"
                                 />
                                 <div className="align-self-center">

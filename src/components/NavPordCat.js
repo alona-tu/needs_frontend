@@ -5,7 +5,7 @@ const NavProdCat = () => {
   const [categories, setCategories] = useState([])
 
   const getCategories = () => {
-    Axios.get(`http://localhost:5000/get-categories-api`).then((res) => {
+    Axios.get(`https://needs-api.uniday.tw/get-categories-api`).then((res) => {
       const data = res.data
       setCategories(data)
     })

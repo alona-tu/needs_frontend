@@ -142,7 +142,7 @@ function Navbar() {
                       <img
                         src={
                           isLogin
-                            ? `http://localhost:5000/img/brands/${loginUser.user.brand_img}`
+                            ? `https://needs-api.uniday.tw/img/brands/${loginUser.user.brand_img}`
                             : avatar
                         }
                       />

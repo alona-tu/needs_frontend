@@ -52,10 +52,10 @@ useEffect(() => {
 
 // console.log(props)
 //   let upload = {
-//     backgroundImage: `url('http://localhost:5000/BackgroundImg/${props.bgImg}')`
+//     backgroundImage: `url('https://needs-api.uniday.tw/BackgroundImg/${props.bgImg}')`
 //   }
 //   let noUpload = {
-//     backgroundImage: `url('http://localhost:5000/BackgroundImg/4ba827cb-a7ea-45f4-8849-28f919659d04.jpeg')`
+//     backgroundImage: `url('https://needs-api.uniday.tw/BackgroundImg/4ba827cb-a7ea-45f4-8849-28f919659d04.jpeg')`
 //   }
   // var ifBgImg = displayBgImg ? {upload} : {noUpload}
   
@@ -100,11 +100,11 @@ export default Narrative
 //   //   backgroundImage: `url(${props.bgImg})`
 //   // }
 //   // let noUpload = {
-//   //   backgroundImage: `url('http://localhost:5000/BackgroundImg/4ba827cb-a7ea-45f4-8849-28f919659d04.jpeg')`
+//   //   backgroundImage: `url('https://needs-api.uniday.tw/BackgroundImg/4ba827cb-a7ea-45f4-8849-28f919659d04.jpeg')`
 //   // }
 
 //   // let upload = ${props.bgImg}
-//   // let noUpload = 'http://localhost:5000/BackgroundImg/4ba827cb-a7ea-45f4-8849-28f919659d04.jpeg'
+//   // let noUpload = 'https://needs-api.uniday.tw/BackgroundImg/4ba827cb-a7ea-45f4-8849-28f919659d04.jpeg'
 //   // const displayStyle ={}
 //   // (props.bgImg) ? props.bgImg : noUpload
 

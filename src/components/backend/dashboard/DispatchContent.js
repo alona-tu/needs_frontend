@@ -7,7 +7,7 @@ import 'moment/locale/zh-tw'
 function DispatchStatus() {
   const [dispatchData, setDispatchData] = useState('')
   const getDispatchData = () => {
-    Axios.get('http://localhost:5000/dashboard/deliverytablefordashboard').then(
+    Axios.get('https://needs-api.uniday.tw/dashboard/deliverytablefordashboard').then(
       (response) => {
         const data = response.data
         let dataTable = []

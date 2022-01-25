@@ -14,7 +14,7 @@ function Review() {
   const [oneStar, setOneStar] = useState(0)
 
   const getStar = () => {
-    Axios.get('http://localhost:5000/dashboard/star').then((response) => {
+    Axios.get('https://needs-api.uniday.tw/dashboard/star').then((response) => {
       const data = response.data
       let reviewStars = ''
       let avgReviewStar
@@ -27,35 +27,35 @@ function Review() {
     })
   }
   const getFiveStar = () => {
-    Axios.get('http://localhost:5000/dashboard/5star').then((response) => {
+    Axios.get('https://needs-api.uniday.tw/dashboard/5star').then((response) => {
       let dataLength = response.data.length
       setFiveStar(dataLength)
     })
   }
 
   const getFourStar = () => {
-    Axios.get('http://localhost:5000/dashboard/4star').then((response) => {
+    Axios.get('https://needs-api.uniday.tw/dashboard/4star').then((response) => {
       let dataLength = response.data.length
       setFourStar(dataLength)
     })
   }
 
   const getThreeStar = () => {
-    Axios.get('http://localhost:5000/dashboard/3star').then((response) => {
+    Axios.get('https://needs-api.uniday.tw/dashboard/3star').then((response) => {
       let dataLength = response.data.length
       setThreeStar(dataLength)
     })
   }
 
   const getTwoStar = () => {
-    Axios.get('http://localhost:5000/dashboard/2star').then((response) => {
+    Axios.get('https://needs-api.uniday.tw/dashboard/2star').then((response) => {
       let dataLength = response.data.length
       setTwoStar(dataLength)
     })
   }
 
   const getOneStar = () => {
-    Axios.get('http://localhost:5000/dashboard/1star').then((response) => {
+    Axios.get('https://needs-api.uniday.tw/dashboard/1star').then((response) => {
       let dataLength = response.data.length
       setOneStar(dataLength)
     })

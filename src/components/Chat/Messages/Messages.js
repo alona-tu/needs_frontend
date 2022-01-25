@@ -11,7 +11,7 @@ const Messages = ({ messages, name, storeName }) => {
   // get histroyMessage
   useEffect(() => {
     const getHistoryMsg = async () => {
-      const url = 'http://localhost:5000/chat'
+      const url = 'https://needs-api.uniday.tw/chat'
       const res = await axios(url)
       if (res) setHistoryMessage(res.data)
     }

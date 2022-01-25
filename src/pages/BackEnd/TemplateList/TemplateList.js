@@ -150,7 +150,7 @@ function TemplateList(props) {
   async function getTemplateData(type) {
     setDataLoading(true)
     // console.log('type',type)
-    const url = `http://localhost:5000/Template?type=${type}`
+    const url = `https://needs-api.uniday.tw/Template?type=${type}`
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({
@@ -227,12 +227,12 @@ function TemplateList(props) {
               <div className="row rounded d-flex align-items-center">
                 <div className="col-8">
                   <img
-                    src={`http://localhost:5000/img/template/${Img}`}
+                    src={`https://needs-api.uniday.tw/img/template/${Img}`}
                     className="main-small-pic"
                     alt="Responsive image"
                   ></img>
                   <img
-                    src={`http://localhost:5000/img/template/${
+                    src={`https://needs-api.uniday.tw/img/template/${
                       type == 2 ? 'sparo_bg.png' : 'minimal_bg.png'
                     }`}
                     className="img-fluid main-bg-pic"

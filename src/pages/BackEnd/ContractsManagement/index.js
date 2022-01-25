@@ -36,7 +36,7 @@ const ContractsManagement = (props) => {
   const getData = (merchantId, type) => {
     //跟server拿資料
     Axios.get(
-      `http://localhost:5000/bk-contracts-api/list?id=${merchantId}&filter=${type}&page=${currentPage}`
+      `https://needs-api.uniday.tw/bk-contracts-api/list?id=${merchantId}&filter=${type}&page=${currentPage}`
     )
       .then((res) => {
         const data = res.data.rows
